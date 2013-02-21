@@ -1,7 +1,6 @@
 module ApplicationHelper
  def icons
     File.readlines('icons.txt')
-    puts"***\n\n\n\n\n\n\n\n********\n\n\n\n\n/n/n/n/n/n"
   end
 
   def openwebicons
