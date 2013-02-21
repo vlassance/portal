@@ -2,10 +2,8 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <!-- Always force latest IE rendering engine or request Chrome Frame -->
   <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
-  <!-- Use title if it's in the page YAML frontmatter -->
-  <title><%= data.page.title || "Whitemin Theme" %></title>
+  <title><%= "Portal de Estágios PCS - DOTOOOOOR" %></title>
 
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,800">
@@ -24,13 +22,13 @@
 </head>
 
 <body>
-<%= partial "partials/app_ui/sidebar" %>
-<%= partial "partials/app_ui/top-bar" %>
+<%= render "partials/app_ui/sidebar" %>
+<%= render "partials/app_ui/top-bar" %>
 
 <section id="main">
-  <%= partial "partials/app_ui/breadcrumbs" %>
+  <%= render "partials/app_ui/breadcrumbs" %>
   <%= yield %>
-  <%= partial "partials/app_ui/footer" %>
+  <%= render "partials/app_ui/footer" %>
 </section>
 
 
