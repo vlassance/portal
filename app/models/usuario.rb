@@ -7,4 +7,5 @@ class Usuario
   field :cidade
   field :cep
   
+  belongs_to :grupo
 end
