@@ -1,61 +1,82 @@
-<%= form_for(@empresa) do |f| %>
-  <% if @empresa.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@empresa.errors.count, "error") %> prohibited this empresa from being saved:</h2>
+<div class="container-fluid">
 
-      <ul>
-      <% @empresa.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
+  <div class="row-fluid">
+    <div class="span12">
+
+      <div class="box bordered">
+        <div class="box-header">
+          <i class="icon-th-list"></i> <%= @title %>
+          <div class="pull-right">
+            <div class="btn-group">
+              <a class="dropdown-toggle" data-toggle="dropdown">
+                <i class="icon-cog"></i>
+              </a>
+              <ul class="dropdown-menu dropdown-left">
+                <li><a href="#">Salvar</a></li>
+                <li><a href="#">Cancelar</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="row-fluid">
+
+          <div class="span12">
+            <div class="padded">
+              <div class="section-title">
+                Dados da Empresa
+              </div>
+              <%= form_for(@empresa) do |f| %>
+              <div class="vpadded">
+                 <div class="input full-width">
+                      <%= f.label :nome %>
+                       <%= f.text_field :nome, :placeholder => "Nome" %>
+                  </div>
+                 <div class="input full-width">
+                      <%= f.label :endereco %>
+                       <%= f.text_field :endereco, :placeholder => "Endereço" %>
+                  </div>
+                 <div class="input full-width">
+                      <%= f.label :cidade %>
+                       <%= f.text_field :cidade, :placeholder => "Cidade" %>
+                  </div>
+                 <div class="input full-width">
+                      <%= f.label :estado %>
+                       <%= f.text_field :estado, :placeholder => "Estado" %>
+                  </div>
+                 <div class="input full-width">
+                      <%= f.label :pais %>
+                       <%= f.text_field :pais, :placeholder => "País" %>
+                  </div>
+                 <div class="input full-width">
+                      <%= f.label :cep %>
+                       <%= f.text_field :cep, :placeholder => "CEP" %>
+                  </div>
+                 <div class="input full-width">
+                      <%= f.label :telefone %>
+                       <%= f.text_field :telefone, :placeholder => "Telefone" %>
+                  </div>
+
+                 <div class="input full-width">
+                      <%= f.label :email %>
+                       <%= f.text_field :email, :placeholder => "E-mail" %>
+                  </div>
+                 <div class="input full-width">
+                      <%= f.label :site %>
+                       <%= f.text_field :site, :placeholder => "Site" %>
+                  </div>
+                 <div class="input full-width">
+                      <%= f.label :descricao %>
+                       <%= f.text_area :site, :placeholder => "Descriçao das atividades da empresa" %>
+                  </div>
+    <%= f.submit "Salvar", :class => "btn light-blue inverse" %>
+               <% end %>   
+             </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
-  <% end %>
+  </div>
+</div>
 
-  <div class="field">
-    <%= f.label :nome %><br />
-    <%= f.text_field :nome %>
-  </div>
-  <div class="field">
-    <%= f.label :endereco %><br />
-    <%= f.text_field :endereco %>
-  </div>
-  <div class="field">
-    <%= f.label :cidade %><br />
-    <%= f.text_field :cidade %>
-  </div>
-  <div class="field">
-    <%= f.label :cep %><br />
-    <%= f.text_field :cep %>
-  </div>
-  <div class="field">
-    <%= f.label :telefone %><br />
-    <%= f.text_field :telefone %>
-  </div>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.text_field :email %>
-  </div>
-  <div class="field">
-    <%= f.label :cidade %><br />
-    <%= f.text_field :cidade %>
-  </div>
-  <div class="field">
-    <%= f.label :pais %><br />
-    <%= f.text_field :pais %>
-  </div>
-  <div class="field">
-    <%= f.label :estado %><br />
-    <%= f.text_field :estado %>
-  </div>
-  <div class="field">
-    <%= f.label :descricao %><br />
-    <%= f.text_field :descricao %>
-  </div>
-  <div class="field">
-    <%= f.label :site %><br />
-    <%= f.text_field :site %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
-<% end %>
