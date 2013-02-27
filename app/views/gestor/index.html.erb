@@ -1,0 +1,39 @@
+<h1>Listing gestor</h1>
+
+<table>
+  <tr>
+    <th>Nome</th>
+    <th>Email</th>
+    <th>Telefone</th>
+    <th>Celular</th>
+    <th>Cpf</th>
+    <th>Cidade</th>
+    <th>Estado</th>
+    <th>Pais</th>
+    <th>Cep</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @gestor.each do |gestor| %>
+  <tr>
+    <td><%= gestor.nome %></td>
+    <td><%= gestor.email %></td>
+    <td><%= gestor.telefone %></td>
+    <td><%= gestor.celular %></td>
+    <td><%= gestor.cpf %></td>
+    <td><%= gestor.cidade %></td>
+    <td><%= gestor.estado %></td>
+    <td><%= gestor.pais %></td>
+    <td><%= gestor.cep %></td>
+    <td><%= link_to 'Show', gestor %></td>
+    <td><%= link_to 'Edit', edit_gestor_path(gestor) %></td>
+    <td><%= link_to 'Destroy', gestor, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Gestor', new_gestor_path %>

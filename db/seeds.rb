@@ -5,3 +5,7 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+#Menu.create(:nome => 'Home', :url => '/home')
+#Menu.create(:nome => 'Usuarios', :url => '/users')
+#Menu.create(:nome => 'Grupos de Acesso', :url => '/grupos')

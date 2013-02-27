@@ -1,0 +1,3 @@
+class Gestor < Usuario
+
+end

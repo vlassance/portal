@@ -1,0 +1,39 @@
+<h1>Listing admin_empresa</h1>
+
+<table>
+  <tr>
+    <th>Nome</th>
+    <th>Email</th>
+    <th>Telefone</th>
+    <th>Celular</th>
+    <th>Cpf</th>
+    <th>Cidade</th>
+    <th>Estado</th>
+    <th>Pais</th>
+    <th>Cep</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @admin_empresa.each do |admin_empresa| %>
+  <tr>
+    <td><%= admin_empresa.nome %></td>
+    <td><%= admin_empresa.email %></td>
+    <td><%= admin_empresa.telefone %></td>
+    <td><%= admin_empresa.celular %></td>
+    <td><%= admin_empresa.cpf %></td>
+    <td><%= admin_empresa.cidade %></td>
+    <td><%= admin_empresa.estado %></td>
+    <td><%= admin_empresa.pais %></td>
+    <td><%= admin_empresa.cep %></td>
+    <td><%= link_to 'Show', admin_empresa %></td>
+    <td><%= link_to 'Edit', edit_admin_empresa_path(admin_empresa) %></td>
+    <td><%= link_to 'Destroy', admin_empresa, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Admin empresa', new_admin_empresa_path %>
