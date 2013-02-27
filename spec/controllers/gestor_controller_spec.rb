@@ -24,7 +24,7 @@ describe GestorController do
   # Gestor. As you add validations to Gestor, be sure to
   # update the return value of this method accordingly.
   def valid_attributes
-    {  }
+    { "nome" => "MyString" }
   end
 
   # This should return the minimal set of values that should be in the session
@@ -89,14 +89,14 @@ describe GestorController do
       it "assigns a newly created but unsaved gestor as @gestor" do
         # Trigger the behavior that occurs when invalid params are submitted
         Gestor.any_instance.stub(:save).and_return(false)
-        post :create, {:gestor => {  }}, valid_session
+        post :create, {:gestor => { "nome" => "invalid value" }}, valid_session
         assigns(:gestor).should be_a_new(Gestor)
       end
 
       it "re-renders the 'new' template" do
         # Trigger the behavior that occurs when invalid params are submitted
         Gestor.any_instance.stub(:save).and_return(false)
-        post :create, {:gestor => {  }}, valid_session
+        post :create, {:gestor => { "nome" => "invalid value" }}, valid_session
         response.should render_template("new")
       end
     end
@@ -110,8 +110,8 @@ describe GestorController do
         # specifies that the Gestor created on the previous line
         # receives the :update_attributes message with whatever params are
         # submitted in the request.
-        Gestor.any_instance.should_receive(:update_attributes).with({ "these" => "params" })
-        put :update, {:id => gestor.to_param, :gestor => { "these" => "params" }}, valid_session
+        Gestor.any_instance.should_receive(:update_attributes).with({ "nome" => "MyString" })
+        put :update, {:id => gestor.to_param, :gestor => { "nome" => "MyString" }}, valid_session
       end
 
       it "assigns the requested gestor as @gestor" do
@@ -132,7 +132,7 @@ describe GestorController do
         gestor = Gestor.create! valid_attributes
         # Trigger the behavior that occurs when invalid params are submitted
         Gestor.any_instance.stub(:save).and_return(false)
-        put :update, {:id => gestor.to_param, :gestor => {  }}, valid_session
+        put :update, {:id => gestor.to_param, :gestor => { "nome" => "invalid value" }}, valid_session
         assigns(:gestor).should eq(gestor)
       end
 
@@ -140,7 +140,7 @@ describe GestorController do
         gestor = Gestor.create! valid_attributes
         # Trigger the behavior that occurs when invalid params are submitted
         Gestor.any_instance.stub(:save).and_return(false)
-        put :update, {:id => gestor.to_param, :gestor => {  }}, valid_session
+        put :update, {:id => gestor.to_param, :gestor => { "nome" => "invalid value" }}, valid_session
         response.should render_template("edit")
       end
     end

@@ -1,8 +1,8 @@
 require 'spec_helper'
 
-describe "gestor/show" do
+describe "admin_empresa/show" do
   before(:each) do
-    @gestor = assign(:gestor, stub_model(Gestor,
+    @admin_empresa = assign(:admin_empresa, stub_model(AdminEmpresa,
       :nome => "Nome",
       :email => "Email",
       :telefone => "Telefone",

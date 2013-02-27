@@ -1,10 +1,10 @@
-<%= form_for(@gestor) do |f| %>
-  <% if @gestor.errors.any? %>
+<%= form_for(@admin_empresa) do |f| %>
+  <% if @admin_empresa.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@gestor.errors.count, "error") %> prohibited this gestor from being saved:</h2>
+      <h2><%= pluralize(@admin_empresa.errors.count, "error") %> prohibited this admin_empresa from being saved:</h2>
 
       <ul>
-      <% @gestor.errors.full_messages.each do |msg| %>
+      <% @admin_empresa.errors.full_messages.each do |msg| %>
         <li><%= msg %></li>
       <% end %>
       </ul>

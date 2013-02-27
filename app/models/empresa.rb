@@ -1,5 +1,4 @@
 class Empresa < Lugar
-  include Mongoid::Document
    
   field :pais, type: String
   field :descricao, type: String

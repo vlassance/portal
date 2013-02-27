@@ -1,9 +1,9 @@
 require 'spec_helper'
 
-describe "gestor/index" do
+describe "admin_empresa/index" do
   before(:each) do
-    assign(:gestor, [
-      stub_model(Gestor,
+    assign(:admin_empresa, [
+      stub_model(AdminEmpresa,
         :nome => "Nome",
         :email => "Email",
         :telefone => "Telefone",
@@ -14,7 +14,7 @@ describe "gestor/index" do
         :pais => "Pais",
         :cep => "Cep"
       ),
-      stub_model(Gestor,
+      stub_model(AdminEmpresa,
         :nome => "Nome",
         :email => "Email",
         :telefone => "Telefone",
@@ -28,7 +28,7 @@ describe "gestor/index" do
     ])
   end
 
-  it "renders a list of gestor" do
+  it "renders a list of admin_empresa" do
     render
     # Run the generator again with the --webrat flag if you want to use webrat matchers
     assert_select "tr>td", :text => "Nome".to_s, :count => 2
