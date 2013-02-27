@@ -1,4 +1,19 @@
 Rails3MongoidDevise::Application.routes.draw do
+  resources :gestor
+
+
+  get "gestor/new"
+
+  get "gestor/create"
+
+  get "gestor/index"
+
+  get "gestor/destroy"
+
+  get "gestor/update"
+
+  get "gestor/edit"
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

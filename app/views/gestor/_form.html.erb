@@ -1,0 +1,17 @@
+<%= form_for(@gestor) do |f| %>
+  <% if @gestor.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@gestor.errors.count, "error") %> prohibited this gestor from being saved:</h2>
+
+      <ul>
+      <% @gestor.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
