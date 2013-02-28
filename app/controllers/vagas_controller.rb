@@ -14,7 +14,6 @@ class VagasController < ApplicationController
   # GET /vagas/1.json
   def show
     @vaga = Vaga.find(params[:id])
-
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @vaga }
