@@ -1,4 +1,7 @@
 Rails3MongoidDevise::Application.routes.draw do
+  resources :vagas
+
+
   resources :admin_empresa
 
 

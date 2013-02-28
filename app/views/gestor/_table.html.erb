@@ -1,0 +1,30 @@
+<table class="table table-striped data-table">
+    <thead>
+        <tr>
+            <th>Nome</th>
+            <th>E-mail</th>
+            <th>Número de Estagiários Ativos</th>
+            <th>Ações</th>
+        </tr>
+    </thead>
+    <tbody>
+        <% @gestor.each do |gestor| %>
+            <tr class="gradeX">
+                <td><%= gestor.nome %></td>
+                <td><%= gestor.email %></td>
+                <td><%= gestor.id %></td>
+                <td class="td-actions">
+                    <a class="btn btn-mini dark-blue">
+                        <i class=" icon-ok"></i>
+                    </a>
+                    <a class="btn btn-mini light-blue inverse">
+                        <i class=" icon-remove"></i>
+                    </a>
+<%#= link_to 'Show', empresa %>
+<%#= link_to 'Edit', edit_empresa_path(empresa) %>
+<%#= link_to 'Destroy', empresa, method: :delete, data: { confirm: 'Are you sure?' } %>
+                </td>
+            </tr>
+        <% end %>
+    </tbody>
+</table>

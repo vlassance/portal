@@ -1,0 +1,32 @@
+
+<table class="table table-striped data-table">
+    <thead>
+        <tr>
+            <th>Nome</th>
+            <th>Empresa</th>
+            <th>Número de Vagas</th>
+            <th>Salário</th>
+        </tr>
+    </thead>
+    <tbody>
+        <% @vagas.each do |vaga| %>
+            <tr class="gradeX">
+                <td><%= vaga.nome %></td>
+                <td><%= vaga.email %></td>
+                <td><%= vaga.id %></td>
+                <td><%= vaga.id %></td>
+                <td class="td-actions">
+                    <a class="btn btn-mini dark-blue">
+                        <i class=" icon-ok"></i>
+                    </a>
+                    <a class="btn btn-mini light-blue inverse">
+                        <i class=" icon-remove"></i>
+                    </a>
+<%#= link_to 'Show', empresa %>
+<%#= link_to 'Edit', edit_empresa_path(empresa) %>
+<%#= link_to 'Destroy', empresa, method: :delete, data: { confirm: 'Are you sure?' } %>
+                </td>
+            </tr>
+        <% end %>
+    </tbody>
+</table>
