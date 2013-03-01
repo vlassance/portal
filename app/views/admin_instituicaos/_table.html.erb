@@ -1,0 +1,37 @@
+
+<table class="table table-striped data-table">
+	<thead>
+		<tr>
+			<th>Nome</th>
+			<th>Email</th>
+			<th>Telefone</th>
+			<th>Ações</th>
+		</tr>
+	</thead>
+	<tbody>
+		<% @admin_instituicaos.each do |admin_instituicao| %>
+			<tr class="gradeX">
+				<td><%= admin_instituicao.nome %></td>
+				<td><%= admin_instituicao.email %></td>
+				<td><%= admin_instituicao.telefone %></td>
+				<td class="td-actions">
+					<a class="btn btn-mini dark-blue">
+						<i class=" icon-ok"></i>
+						<%= link_to 'Show', admin_instituicao %>
+					</a>
+					<a class="btn btn-mini dark-blue">
+						<i class=" icon-ok"></i>
+						<%= link_to 'Edit', edit_admin_instituicao_path(admin_instituicao) %>
+					</a>
+					<a class="btn btn-mini light-blue inverse">
+						<i class=" icon-remove">
+							
+						</i>
+<%= link_to 'Destroy', admin_instituicao, method: :delete, data: { confirm: 'Are you sure?' } %> 
+						
+					</a>
+				</td>
+			</tr>
+		<% end %>
+	</tbody>
+</table>
