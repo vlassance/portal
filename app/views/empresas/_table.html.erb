@@ -15,15 +15,16 @@
 				<td><%= empresa.cidade %></td>
 				<td><%= empresa.site %></td>
 				<td class="td-actions">
-					<a class="btn btn-mini dark-blue">
-						<i class=" icon-ok"></i>
-					</a>
-					<a class="btn btn-mini light-blue inverse">
-						<i class=" icon-remove"></i>
-					</a>
-<%#= link_to 'Show', empresa %>
-<%#= link_to 'Edit', edit_empresa_path(empresa) %>
-<%#= link_to 'Destroy', empresa, method: :delete, data: { confirm: 'Are you sure?' } %>
+					<div class="btn-group">
+    					<a class="btn medium-blue" href="#"><i class="icon-leaf"></i> Opções</a>
+    					<a class="btn medium-blue dropdown-toggle" data-toggle="dropdown" href="#"><span class="icon-caret-down"></span></a>
+    					<ul class="dropdown-menu">
+      						<li><a href="/empresas/<%= empresa.id %>"><i class="icon-eye-open"></i> Exibir</a></li>
+            				<li><a href="/empresas/<%= empresa.id %>/edit"><i class="icon-pencil"></i> Editar</a></li>
+      						<li><a href="/empresas/<%= empresa.id %>" data-confirm="<%= "Deseja remover a Empresa?" %>" data-method="delete" rel="nofollow"><i class="icon-trash"></i> Remover</a></li>
+    					</ul>
+  					</div>
+
 				</td>
 			</tr>
 		<% end %>
