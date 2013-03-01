@@ -1,53 +1,47 @@
 <%= form_for(@gestor) do |f| %>
-  <% if @gestor.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@gestor.errors.count, "error") %> prohibited this gestor from being saved:</h2>
-
-      <ul>
-      <% @gestor.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
+  <div class="vpadded">
+   <div class="input full-width">
+        <%= f.label :nome %>
+         <%= f.text_field :nome, :placeholder => "Nome" %>
     </div>
-  <% end %>
+   <div class="input full-width">
+        <%= f.label :email %>
+         <%= f.text_field :email, :placeholder => "E-mail" %>
+    </div>
+   <div class="input full-width">
+        <%= f.label :celular %>
+         <%= f.text_field :celular, :placeholder => "Celular" %>
+    </div>  
+   <div class="input full-width">
+        <%= f.label :telefone %>
+         <%= f.text_field :telefone, :placeholder => "Telefone" %>
+    </div>  
+     <div class="input full-width">
+        <%= f.label :cpf %>
+         <%= f.text_field :cpf, :placeholder => "CPF" %>
+    </div>   
+    <div class="input full-width">
+        <%= f.label :cidade %>
+         <%= f.text_field :cidade, :placeholder => "cidade" %>
+    </div>
 
-  <div class="field">
-    <%= f.label :nome %><br />
-    <%= f.text_field :nome %>
+   <div class="input full-width">
+        <%= f.label :estado %>
+         <%= f.text_field :estado, :placeholder => "Estado" %>
+    </div>
+   <div class="input full-width">
+        <%= f.label :pais %>
+         <%= f.text_field :pais, :placeholder => "País" %>
+    </div>
+   <div class="input full-width">
+        <%= f.label :cep %>
+         <%= f.text_field :cep, :placeholder => "CEP" %>
+    </div>
+   <div class="input full-width">
+        <%= f.label :email %>
+         <%= f.text_field :email, :placeholder => "E-mail" %>
   </div>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.text_field :email %>
-  </div>
-  <div class="field">
-    <%= f.label :telefone %><br />
-    <%= f.text_field :telefone %>
-  </div>
-  <div class="field">
-    <%= f.label :celular %><br />
-    <%= f.text_field :celular %>
-  </div>
-  <div class="field">
-    <%= f.label :cpf %><br />
-    <%= f.text_field :cpf %>
-  </div>
-  <div class="field">
-    <%= f.label :cidade %><br />
-    <%= f.text_field :cidade %>
-  </div>
-  <div class="field">
-    <%= f.label :estado %><br />
-    <%= f.text_field :estado %>
-  </div>
-  <div class="field">
-    <%= f.label :pais %><br />
-    <%= f.text_field :pais %>
-  </div>
-  <div class="field">
-    <%= f.label :cep %><br />
-    <%= f.text_field :cep %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
-<% end %>
+   <%= f.submit "Salvar", :class => "btn light-blue inverse" %>
+  <% end %>   
+
+

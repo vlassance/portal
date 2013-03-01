@@ -1,0 +1,31 @@
+
+<table class="table table-striped data-table">
+	<thead>
+		<tr>
+			<th>Nome</th>
+			<th>Cidade</th>
+			<th>Site</th>
+			<th>Ações</th>
+		</tr>
+	</thead>
+	<tbody>
+		<% @empresas.each do |empresa| %>
+			<tr class="gradeX">
+				<td><%= empresa.nome %></td>
+				<td><%= empresa.cidade %></td>
+				<td><%= empresa.site %></td>
+				<td class="td-actions">
+					<a class="btn btn-mini dark-blue">
+						<i class=" icon-ok"></i>
+					</a>
+					<a class="btn btn-mini light-blue inverse">
+						<i class=" icon-remove"></i>
+					</a>
+<%#= link_to 'Show', empresa %>
+<%#= link_to 'Edit', edit_empresa_path(empresa) %>
+<%#= link_to 'Destroy', empresa, method: :delete, data: { confirm: 'Are you sure?' } %>
+				</td>
+			</tr>
+		<% end %>
+	</tbody>
+</table>
