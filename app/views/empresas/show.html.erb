@@ -1,60 +1,75 @@
-<p id="notice"><%= notice %></p>
+<div class="container-fluid">
 
-<p>
-  <b>Nome:</b>
-  <%= @empresa.nome %>
-</p>
+  <div class="row-fluid">
+    <div class="span12">
 
-<p>
-  <b>Endereco:</b>
-  <%= @empresa.endereco %>
-</p>
+      <div class="box bordered">
+        <div class="box-header">
+          <i class="icon-th-list"></i> Detalhes da Empresa <%= @empresa.nome.capitalize %>
+          <div class="pull-right">
+            <div class="btn-group">
+              <a class="dropdown-toggle" data-toggle="dropdown">
+                <i class="icon-cog"></i>
+              </a>
+              <ul class="dropdown-menu dropdown-left">
+                <li><a href="/empresas/<%= @empresa.id %>/edit">Editar</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
 
-<p>
-  <b>Cidade:</b>
-  <%= @empresa.cidade %>
-</p>
+        <div class="row-fluid">
 
-<p>
-  <b>Cep:</b>
-  <%= @empresa.cep %>
-</p>
+          <div class="span6">
+            <div class="padded">
+              <div class="section-title">
+                Dados Básicos
+              </div>
+          <div class="input full-width">
+             <label> Nome : <%= @empresa.nome %> </label>
+             <label> Site : <%= @empresa.site %> </label>
+             <label> E-mail : <%= @empresa.email %> </label>
+             <label> Telefone : <%= @empresa.telefone %> </label>
+          </div>
+          <br/>
+              <div class="section-title">
+                Vagas em Aberto
+              </div>
 
-<p>
-  <b>Telefone:</b>
-  <%= @empresa.telefone %>
-</p>
+            </div>
+          </div>
 
-<p>
-  <b>Email:</b>
-  <%= @empresa.email %>
-</p>
+          <div class="span6">
+            <div class="padded">
+              <%=image_tag "/assets/users/logo.png", :style => "height:200px" %>
 
-<p>
-  <b>Cidade:</b>
-  <%= @empresa.cidade %>
-</p>
-
-<p>
-  <b>Pais:</b>
-  <%= @empresa.pais %>
-</p>
-
-<p>
-  <b>Estado:</b>
-  <%= @empresa.estado %>
-</p>
-
-<p>
-  <b>Descricao:</b>
-  <%= @empresa.descricao %>
-</p>
-
-<p>
-  <b>Site:</b>
-  <%= @empresa.site %>
-</p>
+              <div class="section-title">
+                Atividades
+              </div>
+          <div class="input full-width">
+             <label>  <%= @empresa.descricao %> </label>
+          </div>
 
 
-<%= link_to 'Edit', edit_empresa_path(@empresa) %> |
-<%= link_to 'Back', empresas_path %>
+              <div class="section-title">
+                Localização
+              </div>
+             <div class="input full-width">
+                <label> Endereço : <%= @empresa.endereco %> </label>
+                <label> Cidade : <%= @empresa.cidade %> </label>
+                <label> Estado : <%= @empresa.estado %> </label>
+                <label> Pais : <%= @empresa.pais %> </label>
+                <label> CEP : <%= @empresa.cep %> </label>
+                  <%=image_tag "http://maps.google.com/maps/api/staticmap?size=450x300&sensor=false&zoom=16&markers=0%2C0", :alt => "Mapa" %>
+
+          </div>
+
+              </div>
+
+            </div>
+          </div>
+        </div>
+    </div>
+  </div>
+</div>
+
