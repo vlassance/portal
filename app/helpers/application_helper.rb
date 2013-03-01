@@ -71,20 +71,13 @@ module ApplicationHelper
   end
 
   def nav_active(options = {})
-    a = request.path
-    current_route = request.path.split("/")
-    @primary = nil
-    @secondary = nil
-    if  current_route.count > 0
-    	@primary = current_route.first.split(".").first # dashboard
-    	@secondary = current_route.last.split(".").first
-	end
-    if options[:primary]
-      return "active" if options[:primary] == @primary
+    cumbs = request.fullpath.to_s
+    if options[:secondary] and cumbs.include? options[:secondary].to_s
+      return "active" 
+    elsif options[:primary] and cumbs.include? options[:primary].to_s
+      return "active" 
     end
-
-    if  options[:secondary]
-      return "active" if options[:secondary] == @secondary
-    end
+      return ""
   end
+
 end
