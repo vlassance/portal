@@ -2,6 +2,22 @@ module ApplicationHelper
  
 
   def layout_index (options)
+    notice = ""
+    flash.each do |name, msg|       
+      if name.to_s == "notice_success"
+        notice += "<div class='alert green fade in'>
+            <button type='button' class='close' data-dismiss='alert'>x</button>
+             <strong>Sucesso!</strong> 
+             #{ msg }  
+          </div> "
+      else
+        notice += "<div class='alert red fade in'>
+            <button type='button' class='close' data-dismiss='alert'>x</button>
+             <strong>Erro!</strong> 
+             #{ msg }  
+          </div> "
+        end
+    end
     canAdd = true
     link_new_tag = !canAdd ? nil : ( link_to options[:button_title].to_s, options[:button_path].to_s, :class => "btn light-blue inverse" )  
     html = <<-HTML
@@ -13,6 +29,7 @@ module ApplicationHelper
                     <div class="box-header" >
                       <i class="icon-signal"></i> #{ options[:title].to_s }
                    </div>
+                    #{ notice }
                     #{ render "table" }
                   </div>             
                </div>

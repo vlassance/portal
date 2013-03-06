@@ -1,4 +1,7 @@
 Rails3MongoidDevise::Application.routes.draw do
+  resources :coordenador_estagio
+
+
   resources :admin_instituicaos
 
 
