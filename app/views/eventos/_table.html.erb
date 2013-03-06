@@ -1,0 +1,32 @@
+<table class="table table-striped data-table">
+  <thead>
+    <tr>
+      <th>Nome</th>
+      <th>Data de Inicio</th>
+      <th>Horario de Inicio</th>
+      <th>Horario de Termino</th>
+    </tr>
+  </thead>
+
+<tbody>
+    <% @eventos.each do |evento| %>
+      <tr class="gradeX">
+        <td><%= evento.nome %></td>
+        <td><%= evento.dataInicio %></td>
+        <td><%= evento.horarioInicio %></td>
+        <td><%= evento.horarioFim %></td>
+        <td class="td-actions">
+          <div class="btn-group">
+              <a class="btn medium-blue" href="#"><i class="icon-leaf"></i> Opções</a>
+              <a class="btn medium-blue dropdown-toggle" data-toggle="dropdown" href="#"><span class="icon-caret-down"></span></a>
+              <ul class="dropdown-menu">
+                  <li><a href="/eventos/<%= evento.id %>"><i class="icon-eye-open"></i> Exibir</a></li>
+                    <li><a href="/eventos/<%= evento.id %>/edit"><i class="icon-pencil"></i> Editar</a></li>
+                  <li><a href="/eventos/<%= evento.id %>" data-confirm="<%= "Deseja remover esse Evento?" %>" data-method="delete" rel="nofollow"><i class="icon-trash"></i> Remover</a></li>
+              </ul>
+            </div>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
