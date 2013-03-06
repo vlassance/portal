@@ -1,14 +1,5 @@
 class AdminEmpresaController < ApplicationController
-  # GET /admin_empresa
-  # GET /admin_empresa.json
-  def index
-    @admin_empresa = AdminEmpresa.all
 
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @admin_empresa }
-    end
-  end
 
   # GET /admin_empresa/1
   # GET /admin_empresa/1.json

@@ -10,10 +10,11 @@ class Usuario
 	field :estado, :type => String
 	field :pais, :type => String
 	field :cep, :type => String
+	field :endereco, :type => String
 
 	#validations
 	validates_presence_of :nome, :message => "digite um nome"
-	# validates_presence_of :endereco, :message => "digite um endereco"
+	validates_presence_of :endereco, :message => "digite um endereco"
 	validates_presence_of :cep, :message => "digite um CEP"
 	validates_presence_of :cpf, :message => "digite um CPF"
 	validates_presence_of :cidade, :message => "digite uma cidade"

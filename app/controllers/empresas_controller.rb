@@ -44,10 +44,10 @@ class EmpresasController < ApplicationController
 
     respond_to do |format|
       if @empresa.save
-        format.html { redirect_to @empresa, notice: 'Empresa was successfully created.' }
+        format.html { redirect_success("Empresa adicionada com sucesso!",:empresas, :index)}
         format.json { render json: @empresa, status: :created, location: @empresa }
       else
-        format.html { render action: "new" }
+        format.html { redirect_error("Nao foi possivel adicionar a empresa!",:empresas, :index)}
         format.json { render json: @empresa.errors, status: :unprocessable_entity }
       end
     end
@@ -60,10 +60,10 @@ class EmpresasController < ApplicationController
 
     respond_to do |format|
       if @empresa.update_attributes(params[:empresa])
-        format.html { redirect_to @empresa, notice: 'Empresa was successfully updated.' }
+        format.html { redirect_success("Empresa alterada com sucesso!",:empresas, :index)}
         format.json { head :no_content }
       else
-        format.html { render action: "edit" }
+        format.html { redirect_error("Nao foi possivel editar a empresa!",:empresas, :index)}
         format.json { render json: @empresa.errors, status: :unprocessable_entity }
       end
     end

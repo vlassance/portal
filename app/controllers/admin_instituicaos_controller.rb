@@ -1,15 +1,5 @@
 class AdminInstituicaosController < ApplicationController
-  # GET /admin_instituicaos
-  # GET /admin_instituicaos.json
-  def index
-    @admin_instituicaos = AdminInstituicao.all
-
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @admin_instituicaos }
-    end
-  end
-
+ 
   # GET /admin_instituicaos/1
   # GET /admin_instituicaos/1.json
   def show

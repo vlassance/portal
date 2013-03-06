@@ -1,19 +1,10 @@
 Rails3MongoidDevise::Application.routes.draw do
   resources :coordenador_estagios
-
-
+  resources :eventos
   resources :admin_instituicaos
-
-
   resources :vagas
-
-
   resources :admin_empresa
-
-
   resources :empresas
-
-
   resources :gestor
 
 

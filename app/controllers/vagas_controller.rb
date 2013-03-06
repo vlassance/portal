@@ -43,10 +43,10 @@ class VagasController < ApplicationController
 
     respond_to do |format|
       if @vaga.save
-        format.html { redirect_to @vaga, notice: 'Vaga was successfully created.' }
+        format.html { redirect_success("Vaga criada com sucesso !",:vagas, :index)}
         format.json { render json: @vaga, status: :created, location: @vaga }
       else
-        format.html { render action: "new" }
+        format.html { redirect_error("Erro ao adicionar a vaga!",:vagas, :index)}
         format.json { render json: @vaga.errors, status: :unprocessable_entity }
       end
     end
@@ -59,10 +59,10 @@ class VagasController < ApplicationController
 
     respond_to do |format|
       if @vaga.update_attributes(params[:vaga])
-        format.html { redirect_to @vaga, notice: 'Vaga was successfully updated.' }
+        format.html { redirect_success("Vaga criada com sucesso !",:vagas, :index)}
         format.json { head :no_content }
       else
-        format.html { render action: "edit" }
+        format.html { redirect_error("Erro ao alterar a vaga!",:vagas, :index)}
         format.json { render json: @vaga.errors, status: :unprocessable_entity }
       end
     end
