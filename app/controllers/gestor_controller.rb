@@ -44,10 +44,10 @@ class GestorController < ApplicationController
 
     respond_to do |format|
       if @gestor.save
-        format.html { redirect_to @gestor, notice: 'Gestor was successfully created.' }
+        format.html { redirect_success("Gestor adicionado com sucesso!",:gestor, :index)}
         format.json { render json: @gestor, status: :created, location: @gestor }
       else
-        format.html { render action: "new" }
+        format.html { redirect_error("Erro ao adicionar o gestor!",:gestor, :index)}
         format.json { render json: @gestor.errors, status: :unprocessable_entity }
       end
     end
@@ -60,10 +60,10 @@ class GestorController < ApplicationController
 
     respond_to do |format|
       if @gestor.update_attributes(params[:gestor])
-        format.html { redirect_to @gestor, notice: 'Gestor was successfully updated.' }
-        format.json { head :no_content }
+        format.html { redirect_success("Gestor alterado com sucesso!",:gestor, :index)}
+        format.json { render json: @gestor, status: :created, location: @gestor }
       else
-        format.html { render action: "edit" }
+        format.html { redirect_error("Erro ao atualizar o gestor!",:gestor, :index)}
         format.json { render json: @gestor.errors, status: :unprocessable_entity }
       end
     end
