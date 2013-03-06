@@ -6,7 +6,7 @@
 #   inflect.plural /^(ox)$/i, '\1en'
 #   inflect.singular /^(ox)en/i, '\1'
 #   inflect.irregular 'person', 'people'
-   inflect.uncountable %w( fish gestor admin_empresa adminEmpresa )
+   inflect.uncountable %w( fish gestor admin_empresa adminEmpresa  coordenadorEstagio coordenador_estagio )
  end
 #
 # These inflection rules are supported but not enabled by default:
