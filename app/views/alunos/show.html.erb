@@ -1,0 +1,12 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Nome:</b>
+  <%= @aluno.nome %>
+  <b>Curriculo:</b>
+  <%= link_to "Curriculo", @aluno.curriculo.attachment.url if @aluno.curriculo %>
+</p>
+
+
+<%= link_to 'Edit', edit_aluno_path(@aluno) %> |
+<%= link_to 'Back', alunos_path %>

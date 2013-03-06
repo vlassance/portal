@@ -1,0 +1,2 @@
+class Curriculo < Documento
+end
