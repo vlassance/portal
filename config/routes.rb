@@ -1,4 +1,7 @@
 Rails3MongoidDevise::Application.routes.draw do
+  resources :eventos
+
+
   resources :admin_instituicaos
 
 
