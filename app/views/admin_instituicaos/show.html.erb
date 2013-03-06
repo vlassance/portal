@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Nome:</b>
+  <%= @admin_instituicao.nome %>
+</p>
+
+<p>
+  <b>Email:</b>
+  <%= @admin_instituicao.email %>
+</p>
+
+<p>
+  <b>Telefone:</b>
+  <%= @admin_instituicao.telefone %>
+</p>
+
+<p>
+  <b>Datanascimento:</b>
+  <%= @admin_instituicao.dataNascimento %>
+</p>
+
+<p>
+  <b>Rg:</b>
+  <%= @admin_instituicao.rg %>
+</p>
+
+<p>
+  <b>Cpf:</b>
+  <%= @admin_instituicao.cpf %>
+</p>
+
+
+<%= link_to 'Edit', edit_admin_instituicao_path(@admin_instituicao) %> |
+<%= link_to 'Back', admin_instituicaos_path %>

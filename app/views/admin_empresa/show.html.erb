@@ -1,0 +1,50 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Nome:</b>
+  <%= @admin_empresa.nome %>
+</p>
+
+<p>
+  <b>Email:</b>
+  <%= @admin_empresa.email %>
+</p>
+
+<p>
+  <b>Telefone:</b>
+  <%= @admin_empresa.telefone %>
+</p>
+
+<p>
+  <b>Celular:</b>
+  <%= @admin_empresa.celular %>
+</p>
+
+<p>
+  <b>Cpf:</b>
+  <%= @admin_empresa.cpf %>
+</p>
+
+<p>
+  <b>Cidade:</b>
+  <%= @admin_empresa.cidade %>
+</p>
+
+<p>
+  <b>Estado:</b>
+  <%= @admin_empresa.estado %>
+</p>
+
+<p>
+  <b>Pais:</b>
+  <%= @admin_empresa.pais %>
+</p>
+
+<p>
+  <b>Cep:</b>
+  <%= @admin_empresa.cep %>
+</p>
+
+
+<%= link_to 'Edit', edit_admin_empresa_path(@admin_empresa) %> |
+<%= link_to 'Back', admin_empresa_index_path %>

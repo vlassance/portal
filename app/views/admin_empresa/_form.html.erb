@@ -1,0 +1,47 @@
+<%= form_for(@admin_empresa) do |f| %>
+  <div class="vpadded">
+   <div class="input full-width">
+        <%= f.label :nome %>
+         <%= f.text_field :nome, :placeholder => "Nome" %>
+    </div>
+   <div class="input full-width">
+        <%= f.label :email %>
+         <%= f.text_field :email, :placeholder => "E-mail" %>
+    </div>
+   <div class="input full-width">
+        <%= f.label :celular %>
+         <%= f.text_field :celular, :placeholder => "Celular" %>
+    </div>  
+   <div class="input full-width">
+        <%= f.label :telefone %>
+         <%= f.text_field :telefone, :placeholder => "Telefone" %>
+    </div>  
+     <div class="input full-width">
+        <%= f.label :cpf %>
+         <%= f.text_field :cpf, :placeholder => "CPF" %>
+    </div>   
+    <div class="input full-width">
+        <%= f.label :cidade %>
+         <%= f.text_field :cidade, :placeholder => "cidade" %>
+    </div>
+
+   <div class="input full-width">
+        <%= f.label :estado %>
+         <%= f.text_field :estado, :placeholder => "Estado" %>
+    </div>
+   <div class="input full-width">
+        <%= f.label :pais %>
+         <%= f.text_field :pais, :placeholder => "País" %>
+    </div>
+   <div class="input full-width">
+        <%= f.label :cep %>
+         <%= f.text_field :cep, :placeholder => "CEP" %>
+    </div>
+   <div class="input full-width">
+        <%= f.label :email %>
+         <%= f.text_field :email, :placeholder => "E-mail" %>
+  </div>
+   <%= f.submit "Salvar", :class => "btn light-blue inverse" %>
+<% end %>   
+
+

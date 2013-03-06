@@ -1,0 +1,32 @@
+
+<table class="table table-striped data-table">
+	<thead>
+		<tr>
+			<th>Nome</th>
+			<th>Cidade</th>
+			<th>Site</th>
+			<th>Ações</th>
+		</tr>
+	</thead>
+	<tbody>
+		<% @empresas.each do |empresa| %>
+			<tr class="gradeX">
+				<td><%= empresa.nome %></td>
+				<td><%= empresa.cidade %></td>
+				<td><%= empresa.site %></td>
+				<td class="td-actions">
+					<div class="btn-group">
+    					<a class="btn medium-blue" href="#"><i class="icon-leaf"></i> Opções</a>
+    					<a class="btn medium-blue dropdown-toggle" data-toggle="dropdown" href="#"><span class="icon-caret-down"></span></a>
+    					<ul class="dropdown-menu">
+      						<li><a href="/empresas/<%= empresa.id %>"><i class="icon-eye-open"></i> Exibir</a></li>
+            				<li><a href="/empresas/<%= empresa.id %>/edit"><i class="icon-pencil"></i> Editar</a></li>
+      						<li><a href="/empresas/<%= empresa.id %>" data-confirm="<%= "Deseja remover a Empresa?" %>" data-method="delete" rel="nofollow"><i class="icon-trash"></i> Remover</a></li>
+    					</ul>
+  					</div>
+
+				</td>
+			</tr>
+		<% end %>
+	</tbody>
+</table>

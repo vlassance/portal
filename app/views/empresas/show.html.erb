@@ -1,0 +1,75 @@
+<div class="container-fluid">
+
+  <div class="row-fluid">
+    <div class="span12">
+
+      <div class="box bordered">
+        <div class="box-header">
+          <i class="icon-th-list"></i> Detalhes da Empresa <%= @empresa.nome.capitalize %>
+          <div class="pull-right">
+            <div class="btn-group">
+              <a class="dropdown-toggle" data-toggle="dropdown">
+                <i class="icon-cog"></i>
+              </a>
+              <ul class="dropdown-menu dropdown-left">
+                <li><a href="/empresas/<%= @empresa.id %>/edit">Editar</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="row-fluid">
+
+          <div class="span6">
+            <div class="padded">
+              <div class="section-title">
+                Dados Básicos
+              </div>
+          <div class="input full-width">
+             <label> Nome : <%= @empresa.nome %> </label>
+             <label> Site : <%= @empresa.site %> </label>
+             <label> E-mail : <%= @empresa.email %> </label>
+             <label> Telefone : <%= @empresa.telefone %> </label>
+          </div>
+          <br/>
+              <div class="section-title">
+                Vagas em Aberto
+              </div>
+
+            </div>
+          </div>
+
+          <div class="span6">
+            <div class="padded">
+              <%=image_tag "/assets/users/logo.png", :style => "height:200px" %>
+
+              <div class="section-title">
+                Atividades
+              </div>
+          <div class="input full-width">
+             <label>  <%= @empresa.descricao %> </label>
+          </div>
+
+
+              <div class="section-title">
+                Localização
+              </div>
+             <div class="input full-width">
+                <label> Endereço : <%= @empresa.endereco %> </label>
+                <label> Cidade : <%= @empresa.cidade %> </label>
+                <label> Estado : <%= @empresa.estado %> </label>
+                <label> Pais : <%= @empresa.pais %> </label>
+                <label> CEP : <%= @empresa.cep %> </label>
+                  <%=image_tag "http://maps.google.com/maps/api/staticmap?size=450x300&sensor=false&zoom=16&markers=0%2C0", :alt => "Mapa" %>
+
+          </div>
+
+              </div>
+
+            </div>
+          </div>
+        </div>
+    </div>
+  </div>
+</div>
+

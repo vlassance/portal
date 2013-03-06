@@ -1,0 +1,71 @@
+<nav id="primary" class="main-nav collapsible-nav">
+  <!-- Brand -->
+  <a id="sidebar-brand" href="../pages/dashboard.html">
+     Portal de Estágios do PCS
+  </a>
+  <button type="button" class="btn btn-navbar btn-inverse" data-toggle="collapse" data-target=".nav-collapse">
+    <i class="icon-reorder"></i>
+  </button>
+
+  <ul class="nav-collapse collapse">
+
+  <!-- Profile -->
+    <li class="profile">
+      <a href="#profile-opts" class="accordion-toggle" data-toggle="collapse">
+         <img class="avatar user3">
+          <span class="text" id="profile-text">
+            Jorge Risco <b class="caret"></b>
+          </span>
+      </a>
+
+      <ul id="profile-opts" class="collapse secondary">
+        <li class="<%= nav_active(secondary: "profile-settings") %>">
+          <a href="#">
+            Alterar Senha
+          </a>
+        </li>
+        <li class="<%= nav_active(secondary: "change-pass") %>">
+          <a href="#">
+            Meu Perfil
+          </a>
+        </li>
+        <li class="<%= nav_active(secondary: "logout") %>">
+          <a href="#">
+            Sair
+          </a>
+        </li>
+      </ul>
+    </li>
+
+    <!-- Components -->
+    <li class="<%= nav_active(primary: "aluno") %>">
+      <a href="/alunos" class="accordion-toggle" >
+          <span class="icon">
+            <i class="icon-persona"></i>
+          </span>
+          <span class="text">
+            Alunos 
+          </span>
+      </a>
+    </li>    
+    <li class="<%= nav_active(primary: "empresas") %>">
+      <a href="/empresas" class="accordion-toggle" >
+          <span class="icon">
+            <i class="icon-microformats"></i>
+          </span>
+          <span class="text">
+            Empresas 
+          </span>
+      </a>
+    </li>   
+     <li class="<%= nav_active(primary: "vagas") %>">
+      <a href="/vagas" class="accordion-toggle" >
+          <span class="icon">
+            <i class="icon-list"></i>
+          </span>
+          <span class="text">
+            Vagas 
+          </span>
+      </a>
+    </li>
+</nav>

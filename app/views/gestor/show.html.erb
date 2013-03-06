@@ -1,0 +1,50 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Nome:</b>
+  <%= @gestor.nome %>
+</p>
+
+<p>
+  <b>Email:</b>
+  <%= @gestor.email %>
+</p>
+
+<p>
+  <b>Telefone:</b>
+  <%= @gestor.telefone %>
+</p>
+
+<p>
+  <b>Celular:</b>
+  <%= @gestor.celular %>
+</p>
+
+<p>
+  <b>Cpf:</b>
+  <%= @gestor.cpf %>
+</p>
+
+<p>
+  <b>Cidade:</b>
+  <%= @gestor.cidade %>
+</p>
+
+<p>
+  <b>Estado:</b>
+  <%= @gestor.estado %>
+</p>
+
+<p>
+  <b>Pais:</b>
+  <%= @gestor.pais %>
+</p>
+
+<p>
+  <b>Cep:</b>
+  <%= @gestor.cep %>
+</p>
+
+
+<%= link_to 'Edit', edit_gestor_path(@gestor) %> |
+<%= link_to 'Back', gestor_index_path %>
