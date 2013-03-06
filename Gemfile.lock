@@ -51,14 +51,11 @@ GEM
       xpath (~> 1.0.0)
     childprocess (0.3.8)
       ffi (~> 1.0, >= 1.0.11)
-<<<<<<< HEAD
+    chunky_png (1.2.7)
     climate_control (0.0.3)
       activesupport (>= 3.0)
     cocaine (0.5.1)
       climate_control (>= 0.0.3, < 1.0)
-=======
-    chunky_png (1.2.7)
->>>>>>> origin/develop
     coderay (1.0.8)
     coffee-rails (3.2.2)
       coffee-script (>= 2.2.0)

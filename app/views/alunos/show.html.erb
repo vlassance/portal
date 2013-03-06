@@ -1,12 +1,39 @@
-<p id="notice"><%= notice %></p>
+<div class="container-fluid">
 
-<p>
-  <b>Nome:</b>
-  <%= @aluno.nome %>
-  <b>Curriculo:</b>
-  <%= link_to "Curriculo", @aluno.curriculo.attachment.url if @aluno.curriculo %>
-</p>
+  <div class="row-fluid">
+    <div class="span12">
 
+      <div class="box bordered">
+        <div class="box-header">
+          <i class="icon-th-list"></i> Detalhes do Aluno <%= @aluno.nome %>
+          <div class="pull-right">
+            <div class="btn-group">
+              <a class="dropdown-toggle" data-toggle="dropdown">
+                <i class="icon-cog"></i>
+              </a>
+              <ul class="dropdown-menu dropdown-left">
+                <li><a href="/alunos/<%= @aluno.id %>/edit">Editar</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
 
-<%= link_to 'Edit', edit_aluno_path(@aluno) %> |
-<%= link_to 'Back', alunos_path %>
+        <div class="row-fluid">
+
+          <div class="span6">
+            <div class="padded">
+              <div class="section-title">
+                Dados Básicos
+              </div>
+          		<div class="input full-width">
+             		<label> Nome : <%= @aluno.nome %> </label>
+          		</div>
+          		<br/>
+          	</div>
+          </div>
+        </div>
+			</div>
+    </div>
+  </div>
+</div>
+

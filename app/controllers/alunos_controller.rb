@@ -42,8 +42,8 @@ class AlunosController < ApplicationController
   def create
     curriculo_seed = params[:aluno].delete(:curriculo)
     curriculo = Curriculo.gerar(curriculo_seed)
+    params[:aluno][:curriculo] = curriculo
     @aluno = Aluno.new(params[:aluno])
-    @aluno.curriculo = curriculo
     respond_to do |format|
       if @aluno.save
         format.html { redirect_to @aluno, notice: 'Aluno was successfully created.' }
@@ -58,6 +58,9 @@ class AlunosController < ApplicationController
   # PUT /alunos/1
   # PUT /alunos/1.json
   def update
+    curriculo_seed = params[:aluno].delete(:curriculo)
+    curriculo = Curriculo.gerar(curriculo_seed)
+    params[:aluno][:curriculo] = curriculo
     @aluno = Aluno.find(params[:id])
 
     respond_to do |format|
