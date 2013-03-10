@@ -44,3 +44,4 @@
 //= require justgage/justgage
 //= require gauges
 //= require ie-hacks
+//= require rails.validations
