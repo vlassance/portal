@@ -1,0 +1,92 @@
+<%= javascript_include_tag "jquery.ui.timepicker.js" %>
+<%= stylesheet_link_tag    "jquery.ui.timepicker.css" %>
+<script>
+
+ $(document).ready(function(){
+  
+  $( "#evento_horarioInicio" ).timepicker();
+
+  $( "#evento_horarioFim" ).timepicker();
+
+$( "#evento_dataInicio" ).datepicker({
+             regional: "pt-BR",
+      onClose: function ()
+    {
+        this.focus();
+    }
+ });
+ $( "#evento_dataFim" ).datepicker({
+         regional: "pt-BR",
+  onClose: function ()
+    {
+        this.focus();
+    }
+ });
+ });
+ 
+ 
+ 
+ function validate(){
+  var camposNaoPreenchidos = false;
+  var dataErrada = false;
+  var DateToValue = $("#evento_tempoFim").val();
+  var DateFromValue = $("#evento_tempoInicio").val();
+
+  
+   var parts = DateToValue.split("/");
+   var date_inicio = new Date(parts[1] + "/" + parts[0] + "/" + parts[2]);
+
+   parts = DateFromValue.split("/");
+   var date_final = new Date(parts[1] + "/" + parts[0] + "/" + parts[2]);
+
+  if ((date_inicio.getTime()) < (date_final.getTime())) {
+    alert("Data final deve ser maior que a inicial!");
+    dataErrada = true;
+    var e = window.event;
+    e.cancelBubble = true;
+    e.returnValue = false;
+
+    if (e.stopPropagation) {
+            e.stopPropagation();
+            e.preventDefault();
+      }
+    return false; 
+  } 
+  
+  
+    
+}
+ 
+ 
+</script>
+
+<%= form_for(@evento) do |f| %>
+  <div class="vpadded">
+
+  <div class="input full-width">
+    <%= f.label :nome %>
+    <%= f.text_field :nome , :placeholder => "Nome do evento" %>
+  </div>
+  <div class="input full-width">
+    <%= f.label :"data de inicio" %>
+    <%= f.text_field :dataInicio%>
+  </div>
+    <div class="input full-width">
+    <%= f.label :"horario de inicio" %>
+    <%= f.text_field :horarioInicio%>
+  </div>
+  <div class="input full-width">
+    <%= f.label :"data de fim" %>
+    <%= f.text_field :dataFim %>
+  </div>
+    <div class="input full-width">
+    <%= f.label :"horario de fim" %>
+    <%= f.text_field :horarioFim%>
+  </div>
+  <div class="input full-width">
+    <%= f.label :descricao %>
+    <%= f.text_area :descricao, :placeholder => "Breve descrição do evento" %>
+  </div>
+     <%= f.submit "Salvar", :class => "btn light-blue inverse" %>
+   </div>
+<% end %>

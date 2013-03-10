@@ -39,6 +39,8 @@ gem 'jquery-rails'
 
 gem "puma", ">= 1.6.3"
 gem "mongoid", ">= 3.1.0"
+gem "mongoid-paperclip", :require => "mongoid_paperclip"
+gem "aws-s3",            :require => "aws/s3"
 gem "rspec-rails", ">= 2.12.2", :group => [:development, :test]
 gem "database_cleaner", ">= 0.9.1", :group => :test
 gem "mongoid-rspec", ">= 1.6.0", :group => :test
