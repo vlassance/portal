@@ -68,12 +68,15 @@
     element.trigger('element:validate:before.ClientSideValidations');
     passElement = function() {
       element.removeClass("error");
+      element.nextAll().remove();
       element.addClass("success");
       return element.trigger('element:validate:pass.ClientSideValidations').data('valid', null);
     };
     failElement = function(message) {
       element.trigger('element:validate:fail.ClientSideValidations', message).data('valid', false);
+      element.removeClass("success");
       element.addClass("error");
+      element.after('<span class="input-error" data-original-title=""> Erro <i class="icon-exclamation-sign"></i></span>')
       return false;
     };
     afterValidate = function() {
