@@ -1,8 +1,13 @@
 ﻿  <script type="text/javascript">
   $(function() {
 
-    var sin = [[1,10]];
-    
+    var sin = [[1,9]];
+    sin = [
+    <% @historico_estagios.each do |t|%>
+    ['<%= t.modulo.to_s %>', <%= t.nota %>],
+    <% end %>
+    [,]
+  ];
     var plot = $.plot("#historicos", [
       { data: sin, label: "notas"}
     ], {
@@ -23,8 +28,9 @@
         max: 10.0
       },
       xaxis: {
-        min: 0.0,
-        max: 5.0
+        min: 1.0,
+        max: 5.0,
+      ticks: [[1, "1o módulo"], [2, "2o módulo"], [3, "3o módulo"], [4, "4o módulo"], [5, "5o módulo"]]
       }
     });
 
@@ -50,11 +56,11 @@
           previousPoint = item.dataIndex;
 
           $("#tooltip").remove();
-          var x = item.datapoint[0].toFixed(2),
-          y = item.datapoint[1].toFixed(2);
+          var x = item.datapoint[0],
+          y = item.datapoint[1].toFixed(1);
 
           showTooltip(item.pageX, item.pageY,
-               "nota do módulo " + x + " = " + y);
+               "nota do módulo " + x + " => " + y);
         }
       } else {
         $("#tooltip").remove();
