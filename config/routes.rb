@@ -1,5 +1,8 @@
 Rails3MongoidDevise::Application.routes.draw do
 
+  resources :historico_estagios
+
+
   resources :alunos
 
   resources :eventos
