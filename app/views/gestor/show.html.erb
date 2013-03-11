@@ -1,50 +1,56 @@
-<p id="notice"><%= notice %></p>
+<div class="container-fluid">
 
-<p>
-  <b>Nome:</b>
-  <%= @gestor.nome %>
-</p>
+  <div class="row-fluid">
+    <div class="span12">
 
-<p>
-  <b>Email:</b>
-  <%= @gestor.email %>
-</p>
+      <div class="box bordered">
+        <div class="box-header">
+          <i class="icon-th-list"></i> Detalhes do Gestor 
+          <div class="pull-right">
+            <div class="btn-group">
+              <a class="dropdown-toggle" data-toggle="dropdown">
+                <i class="icon-cog"></i>
+              </a>
+              <ul class="dropdown-menu dropdown-left">
+                <li><a href="/gestor/<%= @gestor.id %>/edit">Editar</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
 
-<p>
-  <b>Telefone:</b>
-  <%= @gestor.telefone %>
-</p>
+        <div class="row-fluid">
 
-<p>
-  <b>Celular:</b>
-  <%= @gestor.celular %>
-</p>
+          <div class="span6">
+            <div class="padded">
+              <div class="section-title">
+                Dados Básicos
+              </div>
+          <div class="input full-width">
+             <label> Nome : <%= @gestor.nome %> </label>
+             <label> CPF : <%= @gestor.cpf %> </label>
+             <label> Cidade : <%= @gestor.cidade %> </label>
+             <label> Estado : <%= @gestor.estado %> </label>
+             <label> Pais : <%= @gestor.pais %> </label>
+          </div>
+          <br/>
+        </div>
+      </div>
 
-<p>
-  <b>Cpf:</b>
-  <%= @gestor.cpf %>
-</p>
+      <div class="span6">
+        <div class="padded">
+            <div class="section-title">
+              Contato
+              </div>
+              <div class="input full-width">
+             <label> Telefone : <%= @gestor.telefone %> </label>
+              <label> Celular : <%= @gestor.celular %> </label>
+              <label> E-mail : <%= @gestor.email %> </label>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 
-<p>
-  <b>Cidade:</b>
-  <%= @gestor.cidade %>
-</p>
-
-<p>
-  <b>Estado:</b>
-  <%= @gestor.estado %>
-</p>
-
-<p>
-  <b>Pais:</b>
-  <%= @gestor.pais %>
-</p>
-
-<p>
-  <b>Cep:</b>
-  <%= @gestor.cep %>
-</p>
-
-
-<%= link_to 'Edit', edit_gestor_path(@gestor) %> |
-<%= link_to 'Back', gestor_index_path %>
