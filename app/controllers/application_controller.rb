@@ -1,4 +1,5 @@
 class ApplicationController < ActionController::Base
+  before_filter :authenticate_usuario!
   protect_from_forgery
 
   def redirect_success(message,controller, action)

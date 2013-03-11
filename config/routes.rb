@@ -1,31 +1,17 @@
 Rails3MongoidDevise::Application.routes.draw do
 
+  devise_for :usuarios
+
   resources :historico_estagios
-
-
   resources :alunos
-
   resources :eventos
   resources :coordenador_estagio
-
   resources :admin_instituicaos
   resources :vagas
   resources :admin_empresa
   resources :empresas
   resources :gestor
 
-
-  get "gestor/new"
-
-  get "gestor/create"
-
-  get "gestor/index"
-
-  get "gestor/destroy"
-
-  get "gestor/update"
-
-  get "gestor/edit"
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
