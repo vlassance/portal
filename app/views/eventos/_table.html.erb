@@ -13,7 +13,7 @@
 <tbody>
     <% @eventos.each do |evento| %>
       <tr class="gradeX">
-        <td><%= evento.nome %></td>
+        <td><%=link_to evento.nome, evento%></td>
         <td><%= evento.dataInicio %></td>
         <td><%= evento.dataFim %></td>
         <td><%= evento.horarioInicio %></td>
