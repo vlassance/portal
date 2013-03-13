@@ -1,5 +1,8 @@
 class Usuario
   include Mongoid::Document
+  include Mongoid::Paperclip
+
+  has_mongoid_attached_file :avatar, :styles => { :medium => "300x300>", :thumb => "100x100>" }
 
   field :nome, :type => String
   field :email, :type => String
