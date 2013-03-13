@@ -30,7 +30,8 @@
           </a>
         </li>
         <li class="<%= nav_active(secondary: "logout") %>">
-          <a href="#">
+          <a href="/usuarios/sign_out">
+                <%= link_to 'Logout', destroy_usuario_session_path, :method=>'delete' %>
             Sair
           </a>
         </li>
