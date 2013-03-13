@@ -27,6 +27,8 @@ Rails3MongoidDevise::Application.routes.draw do
 
   get "gestor/edit"
 
+  get "meu_perfil/index"
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
