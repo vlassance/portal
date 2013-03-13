@@ -40,6 +40,10 @@ class EventosController < ApplicationController
   # POST /eventos
   # POST /eventos.json
   def create
+    a = Date.strptime(params[:evento][:dataInicio], '%m/%d/%Y')
+    b = Date.strptime(params[:evento][:dataFim], '%m/%d/%Y')
+    params[:evento][:dataInicio] = a
+    params[:evento][:dataFim] = b
     @evento = Evento.new(params[:evento])
 
     respond_to do |format|

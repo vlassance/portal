@@ -1,15 +1,15 @@
 ﻿  <script type="text/javascript">
   $(function() {
 
-    var sin = [[1,9]];
-    sin = [
+    var notas = [];
+    notas = [
     <% @historico_estagios.each do |t|%>
     ['<%= t.modulo.to_s %>', <%= t.nota %>],
     <% end %>
     [,]
   ];
     var plot = $.plot("#historicos", [
-      { data: sin, label: "notas"}
+      { data: notas, label: "notas"}
     ], {
       series: {
         lines: {
