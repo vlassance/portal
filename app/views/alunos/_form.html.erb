@@ -16,7 +16,7 @@
     <%= f.text_field :nome %>
   </div>
   <div class="field">
-    <%= f.label :curriculo %>
+    <%= f.label "Currículo #{"(última versão carregada em #{@aluno.curriculo.attachment_updated_at.to_date.strftime('%d/%m/%Y')})" if @aluno.curriculo}" %>
     <%= f.file_field :curriculo %>
   </div>
   <div class="actions">
