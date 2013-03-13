@@ -1,6 +1,7 @@
 Rails3MongoidDevise::Application.routes.draw do
 
   devise_for :usuarios
+  devise_for :admin_instituicao
 
   resources :historico_estagios
   resources :alunos
