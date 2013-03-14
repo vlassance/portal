@@ -1,0 +1,32 @@
+<table class="table table-striped data-table">
+	<thead>
+		<tr>
+			<th>Nome</th>
+			<th>Descrição</th>
+			<th>Tipo</th>
+			<th>Perguntas</th>
+		</tr>
+	</thead>
+	<tbody>
+		<% @questionarios.each do |questionario| %>
+			<tr class="gradeX">
+				<td><%= questionario.nome %></td>
+				<td><%= questionario.descricao %></td>
+				<td><%= questionario.tipo %></td>
+				<td><%= questionario.perguntas.size %></td>
+				<td class="td-actions">
+					<div class="btn-group">
+    					<a class="btn medium-blue" href="#"><i class="icon-leaf"></i> Opções</a>
+    					<a class="btn medium-blue dropdown-toggle" data-toggle="dropdown" href="#"><span class="icon-caret-down"></span></a>
+    					<ul class="dropdown-menu">
+      						<li><a href="/questionarios/<%= questionario.id %>"><i class="icon-eye-open"></i> Exibir</a></li>
+            				<li><a href="/questionarios/<%= questionario.id %>/edit"><i class="icon-pencil"></i> Editar</a></li>
+      						<li><a href="/questionarios/<%= questionario.id %>" data-confirm="<%= "Deseja remover o Questionário?" %>" data-method="delete" rel="nofollow"><i class="icon-trash"></i> Remover</a></li>
+    					</ul>
+  					</div>
+
+				</td>
+			</tr>
+		<% end %>
+	</tbody>
+</table>
