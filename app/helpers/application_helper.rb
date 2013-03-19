@@ -41,6 +41,7 @@ module ApplicationHelper
 
 
   def layout_edit_and_new (options)
+    options[:partial] = "form" if options[:partial].blank?
     html = <<-HTML
     
           <div class="container-fluid">
@@ -67,7 +68,7 @@ module ApplicationHelper
                         <div class="section-title">
                           #{ options[:subtitle].to_s }
                         </div>
-                        #{ render 'form' }
+                        #{ render options[:partial].to_s }
                       </div>
                     </div>
                   </div>

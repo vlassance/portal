@@ -45,6 +45,10 @@
         <%= f.label :descricao %>
          <%= f.text_area :descricao, :placeholder => "Descriçao das atividades da empresa" %>
     </div>
+     <div class="input full-width">
+        <%= f.label :logo %>
+         <%= f.file_field :logo %>
+    </div>
    <%= f.submit "Salvar", :class => "btn light-blue inverse" %>
  </div>
   <% end %>   

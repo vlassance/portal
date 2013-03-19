@@ -17,19 +17,17 @@
             </div>
           </div>
         </div>
-
         <div class="row-fluid">
-
           <div class="span6">
             <div class="padded">
               <div class="section-title">
                 Dados Básicos
               </div>
-          		<div class="input full-width">
-             		<label> Nome : <%= @aluno.nome %> </label>
-          		</div>
-          		<br/>
-          	</div>
+            <div class="input full-width">
+              <%= render partial: "partials/usuarios/show", locals: { usuario: @aluno } %>
+              <label> Curriculo : <%= link_to "Curriculo", @aluno.curriculo.attachment.url if @aluno.curriculo %> </label>
+            </div>
+          </br>
           </div>
         </div>
 			</div>

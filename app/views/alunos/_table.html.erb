@@ -7,7 +7,7 @@
 	<tbody>
 		<% @alunos.each do |aluno| %>
 			<tr class="gradeX">
-				<td><%= aluno.nome %></td>
+				<td><%=link_to aluno.nome, aluno%></td>
 				<td class="td-actions">
 					<div class="btn-group">
     					<a class="btn medium-blue" href="#"><i class="icon-leaf"></i> Opções</a>

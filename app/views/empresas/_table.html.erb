@@ -11,7 +11,7 @@
 	<tbody>
 		<% @empresas.each do |empresa| %>
 			<tr class="gradeX">
-				<td><%= empresa.nome %></td>
+				<td><%=link_to empresa.nome, empresa%></td>
 				<td><%= empresa.cidade %></td>
 				<td><%= empresa.site %></td>
 				<td class="td-actions">
