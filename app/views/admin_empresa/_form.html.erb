@@ -1,6 +1,12 @@
 ﻿<%= form_for(@admin_empresa, :validate => true)  do |f| %>
   <div class="vpadded">
    <div class="input full-width">
+        <label> Empresa </label>
+    <%= collection_select :empresa, :id, @empresas, :id,:nome, options = {}, html_options={:class => "long_text", :id => "selectEmpresa"}%>
+    </div>
+
+
+   <div class="input full-width">
         <%= f.label :nome %>
          <%= f.text_field :nome, :placeholder => "Nome" %>
     </div>

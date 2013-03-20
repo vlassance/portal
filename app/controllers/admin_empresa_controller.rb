@@ -16,7 +16,7 @@ class AdminEmpresaController < ApplicationController
   # GET /admin_empresa/new.json
   def new
     @admin_empresa = AdminEmpresa.new
-
+    @empresas = Empresa.all
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @admin_empresa }
@@ -26,14 +26,17 @@ class AdminEmpresaController < ApplicationController
   # GET /admin_empresa/1/edit
   def edit
     @admin_empresa = AdminEmpresa.find(params[:id])
+    @empresas = Empresa.all
   end
 
   # POST /admin_empresa
   # POST /admin_empresa.json
   def create
     @admin_empresa = AdminEmpresa.new(params[:admin_empresa])
-    grupo_admin = Grupo.where(internal_id: GRUPO::ADMIN_EMPRESA).first
+    grupo_admin = Grupo.where(internal_id: Grupo::ADMIN_EMPRESA).first
     @admin_empresa.grupo = grupo_admin
+    empresa = Empresa.find(params[:empresa][:id].to_s)
+    @admin_empresa.empresa = empresa
 
     respond_to do |format|
       if @admin_empresa.save
@@ -50,6 +53,8 @@ class AdminEmpresaController < ApplicationController
   # PUT /admin_empresa/1.json
   def update
     @admin_empresa = AdminEmpresa.find(params[:id])
+    empresa = Empresa.find(params[:empresa][:id].to_s)
+    @admin_empresa.empresa = empresa
 
     respond_to do |format|
       if @admin_empresa.update_attributes(params[:admin_empresa])

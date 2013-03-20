@@ -43,7 +43,7 @@ class GestorController < ApplicationController
     @gestor = Gestor.new(params[:gestor])
     @gestor.password = "12345678"
     @gestor.password_confirmation = "12345678"
-    grupo_gestor = Grupo.where(internal_id: GRUPO::GESTOR).first
+    grupo_gestor = Grupo.where(internal_id: Grupo::GESTOR).first
     @gestor.grupo = grupo_gestor
 
     respond_to do |format|

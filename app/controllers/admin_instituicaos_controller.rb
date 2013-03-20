@@ -31,7 +31,7 @@ class AdminInstituicaosController < ApplicationController
   # POST /admin_instituicaos.json
   def create
     @admin_instituicao = AdminInstituicao.new(params[:admin_instituicao])
-    grupo_admin = Grupo.where(internal_id: GRUPO::ADMIN_INSTITUICAO).first
+    grupo_admin = Grupo.where(internal_id: Grupo::ADMIN_INSTITUICAO).first
     @admin_instituicao.grupo = grupo_admin
 
     respond_to do |format|

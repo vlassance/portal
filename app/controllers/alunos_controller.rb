@@ -46,7 +46,7 @@ class AlunosController < ApplicationController
     @aluno = Aluno.new(params[:aluno])
     @aluno.password = "12345678"
     @aluno.password_confirmation = "12345678"
-    grupo_aluno = Grupo.where(internal_id: GRUPO::ALUNO).first
+    grupo_aluno = Grupo.where(internal_id: Grupo::ALUNO).first
     @aluno.grupo = grupo_aluno
     respond_to do |format|
       if @aluno.save
