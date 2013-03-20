@@ -6,9 +6,10 @@ class DatasMailer < ActionMailer::Base
   #
   #   en.datas_mailer.datas.subject
   #
-  def datas (email)
-    @greeting = "Hi"
-
-    mail to: email, subject: "RailsCasts Weekly"
-  end
+  def datas (email, data, nome, descricao)
+    @data = data
+    @nome = nome
+    @detalhes = descricao
+    evento = "Portal de Estagios - Evento " + @nome
+    mail to: email, subject: evento
 end

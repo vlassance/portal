@@ -3,7 +3,6 @@ class EventosController < ApplicationController
   # GET /eventos.json
   def index
     @eventos = Evento.all
-
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @eventos }
@@ -48,6 +47,8 @@ class EventosController < ApplicationController
 
     respond_to do |format|
       if @evento.save
+       t1 = Thread.new {sendEmail params[:evento][:dataInicio].to_s, params[:evento][:nome].to_s , params[:evento][:descricao].to_s}
+       #t1.join
         format.html { redirect_to @evento, notice: 'Evento was successfully created.' }
         format.json { render json: @evento, status: :created, location: @evento }
       else
