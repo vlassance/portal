@@ -40,8 +40,8 @@ class EventosController < ApplicationController
   # POST /eventos
   # POST /eventos.json
   def create
-    a = Date.strptime(params[:evento][:dataInicio], '%m/%d/%Y')
-    b = Date.strptime(params[:evento][:dataFim], '%m/%d/%Y')
+    a = Date.strptime(params[:evento][:dataInicio], '%d/%m/%Y')
+    b = Date.strptime(params[:evento][:dataFim], '%d/%m/%Y')
     params[:evento][:dataInicio] = a
     params[:evento][:dataFim] = b
     @evento = Evento.new(params[:evento])
