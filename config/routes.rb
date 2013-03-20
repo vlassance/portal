@@ -2,7 +2,6 @@ Rails3MongoidDevise::Application.routes.draw do
 
   resources :coordenador_estagio
 
-
   devise_for :usuarios
   devise_for :admin_instituicao
 
@@ -16,6 +15,10 @@ Rails3MongoidDevise::Application.routes.draw do
   resources :admin_empresa
   resources :empresas
   resources :gestor
+
+  resources :questionarios
+
+  resources :avaliacoes_estagio
 
   get "gestor/new"
   get "gestor/create"

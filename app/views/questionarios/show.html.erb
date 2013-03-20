@@ -1,0 +1,55 @@
+<div class="container-fluid">
+
+	<div class="row-fluid">
+		<div class="span12">
+
+			<div class="box bordered">
+				<div class="box-header">
+					<i class="icon-th-list"></i> Detalhes do Questionário <%= @questionario.nome %>
+					<div class="pull-right">
+						<div class="btn-group">
+							<a class="dropdown-toggle" data-toggle="dropdown">
+								<i class="icon-cog"></i>
+							</a>
+							<ul class="dropdown-menu dropdown-left">
+								<li><a href="/questionarios/<%= @questionario.id %>/edit">Editar</a></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+
+				<div class="row-fluid">
+
+					<div class="span6">
+						<div class="padded">
+							<div class="section-title">
+								Dados Básicos
+							</div>
+							<div class="input full-width">
+								<label> Nome: <%= @questionario.nome %> </label>
+							</div>
+							<br/>
+							<div class="input full-width">
+								<label> Descrição: <%= @questionario.descricao %> </label>
+							</div>
+							<br/>
+							<div class="input full-width">
+								<label> Tipo: <%= @questionario.tipo %> </label>
+							</div>
+							<br/>
+							<label>Perguntas</label>
+							<br/>
+							<% @questionario.perguntas.each do |p| %>
+								<div class="input full-width">
+									<label> <%= p.descricao %> </label>
+								</div>
+								<br/>
+							<% end %>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
