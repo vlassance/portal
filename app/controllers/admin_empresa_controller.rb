@@ -16,7 +16,7 @@ class AdminEmpresaController < ApplicationController
   # GET /admin_empresa/new.json
   def new
     @admin_empresa = AdminEmpresa.new
-
+    @empresas = Empresa.all
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @admin_empresa }
@@ -26,16 +26,21 @@ class AdminEmpresaController < ApplicationController
   # GET /admin_empresa/1/edit
   def edit
     @admin_empresa = AdminEmpresa.find(params[:id])
+    @empresas = Empresa.all
   end
 
   # POST /admin_empresa
   # POST /admin_empresa.json
   def create
     @admin_empresa = AdminEmpresa.new(params[:admin_empresa])
+    grupo_admin = Grupo.where(internal_id: Grupo::ADMIN_EMPRESA).first
+    @admin_empresa.grupo = grupo_admin
+    empresa = Empresa.find(params[:empresa][:id].to_s)
+    @admin_empresa.empresa = empresa
 
     respond_to do |format|
       if @admin_empresa.save
-        format.html { redirect_to @admin_empresa, notice: 'Admin empresa was successfully created.' }
+        format.html { redirect_success_show("Administrador adicionado com sucesso!",:admin_empresa, @admin_empresa.id)}
         format.json { render json: @admin_empresa, status: :created, location: @admin_empresa }
       else
         format.html { render action: "new" }
@@ -48,10 +53,12 @@ class AdminEmpresaController < ApplicationController
   # PUT /admin_empresa/1.json
   def update
     @admin_empresa = AdminEmpresa.find(params[:id])
+    empresa = Empresa.find(params[:empresa][:id].to_s)
+    @admin_empresa.empresa = empresa
 
     respond_to do |format|
       if @admin_empresa.update_attributes(params[:admin_empresa])
-        format.html { redirect_to @admin_empresa, notice: 'Admin empresa was successfully updated.' }
+        format.html { redirect_success_show("Administrador alterado com sucesso!",:admin_empresa, @admin_empresa.id)}
         format.json { head :no_content }
       else
         format.html { render action: "edit" }

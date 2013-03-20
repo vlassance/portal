@@ -98,7 +98,50 @@ module ApplicationHelper
       return ""
   end
 
+  def notice_helper
+    notice = ""
+    flash.each do |name, msg|       
+      if name.to_s == "notice_success"
+        notice += "<div class='alert green fade in'>
+            <button type='button' class='close' data-dismiss='alert'>x</button>
+             <strong>Sucesso!</strong> 
+             #{ msg }  
+          </div> "
+      else
+        notice += "<div class='alert red fade in'>
+            <button type='button' class='close' data-dismiss='alert'>x</button>
+             <strong>Erro!</strong> 
+             #{ msg }  
+          </div> "
+        end
+    end
+
+     html = <<-HTML
+              #{ notice }
+               HTML
+            html.html_safe
+  end  
+
   def layout_show (options)
+
+    notice = ""
+    flash.each do |name, msg|       
+      if name.to_s == "notice_success"
+        notice += "<div class='alert green fade in'>
+            <button type='button' class='close' data-dismiss='alert'>x</button>
+             <strong>Sucesso!</strong> 
+             #{ msg }  
+          </div> "
+      else
+        notice += "<div class='alert red fade in'>
+            <button type='button' class='close' data-dismiss='alert'>x</button>
+             <strong>Erro!</strong> 
+             #{ msg }  
+          </div> "
+        end
+    end
+
+
     html = <<-HTML
     
           <div class="container-fluid">
@@ -121,6 +164,7 @@ module ApplicationHelper
                   </div>
                   <div class="row-fluid">
                     <div class="span6">
+                        #{ notice }
                         #{ render 'details' }
                     </div>
                   </div>
