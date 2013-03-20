@@ -35,7 +35,7 @@ puts "Criando Usuario Administrador"
 	user = AdminInstituicao.create(:name => 'Administrador ', login: 'admin', :email => 'admin@gmail.com', :password => '12345678', :password_confirmation => '12345678')
 	user.grupo = admin
 	if user.save 
-	puts "Usuario administrador criado com sucesso! -> login: admin@gmail.com, senha: 1234"
+	puts "Usuario administrador criado com sucesso! -> login: admin@gmail.com, senha: 12345678"
 else
 	puts "*****nao foi possivel criar um usuario, por favor execute db:seed novamente" + user.errors.to_json
 end
