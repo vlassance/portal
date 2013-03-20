@@ -35,7 +35,7 @@ class AdminEmpresaController < ApplicationController
 
     respond_to do |format|
       if @admin_empresa.save
-        format.html { redirect_to @admin_empresa, notice: 'Admin empresa was successfully created.' }
+        format.html { redirect_success_show("Administrador adicionado com sucesso!",:admin_empresa, @admin_empresa.id)}
         format.json { render json: @admin_empresa, status: :created, location: @admin_empresa }
       else
         format.html { render action: "new" }
@@ -51,7 +51,7 @@ class AdminEmpresaController < ApplicationController
 
     respond_to do |format|
       if @admin_empresa.update_attributes(params[:admin_empresa])
-        format.html { redirect_to @admin_empresa, notice: 'Admin empresa was successfully updated.' }
+        format.html { redirect_success_show("Administrador alterado com sucesso!",:admin_empresa, @admin_empresa.id)}
         format.json { head :no_content }
       else
         format.html { render action: "edit" }

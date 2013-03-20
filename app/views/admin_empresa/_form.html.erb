@@ -1,4 +1,4 @@
-<%= form_for(@admin_empresa, :validate => true)  do |f| %>
+﻿<%= form_for(@admin_empresa, :validate => true)  do |f| %>
   <div class="vpadded">
    <div class="input full-width">
         <%= f.label :nome %>
@@ -37,6 +37,15 @@
         <%= f.label :cep %>
          <%= f.text_field :cep, :placeholder => "CEP" %>
     </div>
+      <div class="input full-width">
+        <label>Senha</label>
+         <%= f.password_field :password, :placeholder => "Senha" %>
+    </div>
+   <div class="input full-width">
+        <label>Confirmação de Senha</label>
+         <%= f.password_field :cep, :placeholder => "Confirmação de senha" %>
+    </div>
+
    <%= f.submit "Salvar", :class => "btn light-blue inverse" %>
 <% end %>   
 
