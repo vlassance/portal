@@ -10,7 +10,9 @@ class Lugar
   field :pais, type: String
   field :descricao, type: String
   field :site, type: String
-  
+  field :latitude, type: Float
+  field :longitude, type: Float
+
   #validations
   validates_presence_of :nome, :message => "digite um nome"
   validates_presence_of :endereco, :message => "digite um endereco"

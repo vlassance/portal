@@ -1,22 +1,22 @@
 Rails3MongoidDevise::Application.routes.draw do
 
+  devise_for :usuarios
+  devise_for :admin_instituicao
   resources :contatos_importantes
 
 
   resources :historico_estagios
 
 
+  resources :historico_estagios
   resources :alunos
-
   resources :eventos
   resources :coordenador_estagio
-
   resources :admin_instituicaos
   resources :vagas
   resources :admin_empresa
   resources :empresas
   resources :gestor
-
 
   get "gestor/new"
 
