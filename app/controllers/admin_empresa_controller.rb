@@ -32,6 +32,8 @@ class AdminEmpresaController < ApplicationController
   # POST /admin_empresa.json
   def create
     @admin_empresa = AdminEmpresa.new(params[:admin_empresa])
+    grupo_admin = Grupo.where(internal_id: GRUPO::ADMIN_EMPRESA).first
+    @admin_empresa.grupo = grupo_admin
 
     respond_to do |format|
       if @admin_empresa.save
