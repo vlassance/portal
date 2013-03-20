@@ -1,0 +1,2 @@
+class CoordenadorEstagio < Usuario
+end
