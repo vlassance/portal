@@ -14,8 +14,8 @@
     <% @eventos.each do |evento| %>
       <tr class="gradeX">
         <td><%=link_to evento.nome, evento%></td>
-        <td><%= evento.dataInicio %></td>
-        <td><%= evento.dataFim %></td>
+        <td><%= evento.dataInicio.strftime('%d/%m/%Y') %></td>
+        <td><%= evento.dataFim.strftime('%d/%m/%Y') %></td>
         <td><%= evento.horarioInicio %></td>
         <td><%= evento.horarioFim %></td>
         <td class="td-actions">

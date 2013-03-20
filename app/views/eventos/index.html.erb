@@ -19,16 +19,18 @@
 <script>
     /* initialize the calendar
      -----------------------------------------------------------------*/
- 
+    
     var eventos_array = [];
     eventos_array = [
     <% @eventos.each do |ev|%>
+    <% horarioDeInicio = Time.parse(ev.horarioInicio) %>
+    <% horarioDeTermino = Time.parse(ev.horarioFim) %>
     {title: '<%= ev.nome %>',
-    start: new Date(<%= ev.dataInicio.year %>, <%= ev.dataInicio.month - 1  %>, <%= ev.dataInicio.day %>),
-    end: new Date(<%= ev.dataFim.year %>, <%= ev.dataFim.month - 1 %>, <%= ev.dataFim.day %>, 0,12),
-    allDay: false} ,
+    start: new Date(<%= ev.dataInicio.year %>, <%= ev.dataInicio.month - 1  %>, <%= ev.dataInicio.day %> , <%= horarioDeInicio.hour %>, <%= horarioDeInicio.min%>),
+    end: new Date(<%= ev.dataFim.year %>, <%= ev.dataFim.month - 1 %>, <%= ev.dataFim.day %>, <%= horarioDeTermino.hour %>, <%= horarioDeTermino.min%>),
+    allDay: false},
     <% end %>
-    {}];
+    ];
 
     $('#calendario').fullCalendar({
         header: {
