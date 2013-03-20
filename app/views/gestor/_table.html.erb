@@ -10,7 +10,7 @@
     <tbody>
         <% @gestor.each do |gestor| %>
             <tr class="gradeX">
-                <td><%= gestor.nome %></td>
+                <td><%=link_to gestor.nome, gestor%></td>
                 <td><%= gestor.email %></td>
                 <td><%= gestor.id %></td>
                 <td class="td-actions">

@@ -2,6 +2,11 @@ Rails3MongoidDevise::Application.routes.draw do
 
   devise_for :usuarios
   devise_for :admin_instituicao
+  resources :contatos_importantes
+
+
+  resources :historico_estagios
+
 
   resources :historico_estagios
   resources :alunos
@@ -13,6 +18,19 @@ Rails3MongoidDevise::Application.routes.draw do
   resources :empresas
   resources :gestor
 
+  get "gestor/new"
+
+  get "gestor/create"
+
+  get "gestor/index"
+
+  get "gestor/destroy"
+
+  get "gestor/update"
+
+  get "gestor/edit"
+
+  get "meu_perfil/index"
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

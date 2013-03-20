@@ -12,7 +12,7 @@
     <tbody>
         <% @vagas.each do |vaga| %>
             <tr class="gradeX" >
-                <td><%= vaga.nome %></td>
+                <td><%=link_to vaga.nome, vaga%></td>
                 <td><%= vaga.nome %></td>
                 <td><%= vaga.id %></td>
                 <td><%= vaga.id %></td>
