@@ -4,7 +4,6 @@ class Grupo
   field :internal_id, :type => Integer
   field :nome, :type => String
   has_many :usuarios
-  #has_many :menus
   
   validates_uniqueness_of :nome,:case_sensitive => true, :message => "nome ja existente"
   validates_presence_of :nome, :message => "digite um nome"

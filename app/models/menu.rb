@@ -5,6 +5,7 @@ class Menu
   field :url, :type => String
   field :nome, :type => String
   field :icon, :type => String
-  
- # belongs_to :grupo
+  field :primary
+
+  has_and_belongs_to_many :grupos
 end
