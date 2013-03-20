@@ -38,7 +38,7 @@ Rails3MongoidDevise::Application.configure do
     domain: "railscasts.com",
     authentication: "plain",
     enable_starttls_auto: true,
-    user_name:  "caiolopesdev",
+    user_name:  "plebsestagios ",
     password:  "portal2013"
   }
 end
