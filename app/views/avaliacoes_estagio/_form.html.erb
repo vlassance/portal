@@ -13,24 +13,40 @@
 
 	<div class="field">
 		<%= f.label :aluno_id %>
-		<%= f.select :aluno_id, options_from_collection_for_select(Aluno.all, :id, :nome) %>
+		<% if @avaliacao.questionario? %>
+			<label><%= @avaliacao.aluno.nome %></label>
+		<% else %>
+			<%= f.select :aluno_id, options_from_collection_for_select(Aluno.all, :id, :nome) %>
+		<% end %>
 	</div>
 	<div class="field">
 		<%= f.label :empresa_id %>
-		<%= f.select :empresa_id, options_from_collection_for_select(Empresa.all, :id, :nome) %>
+		<% if @avaliacao.questionario? %>
+			<label><%= @avaliacao.empresa.nome %></label>
+		<% else %>
+			<%= f.select :empresa_id, options_from_collection_for_select(Empresa.all, :id, :nome) %>
+		<% end %>
 	</div>
 	<div class="field">
 		<%= f.label :questionario_id %>
-		<%= f.select :questionario_id, options_from_collection_for_select(Questionario.all, :id, :nome) %>
+		<% if @avaliacao.questionario? %>
+			<label><%= @avaliacao.questionario.nome %></label>
+		<% else %>
+			<%= f.select :questionario_id, options_from_collection_for_select(Questionario.all, :id, :nome) %>
+		<% end %>
 	</div>
 	<br />
 	<% if @avaliacao.respostas.any? %>
 		<label>Perguntas e Respostas</label>
 		<% @avaliacao.respostas.each do |r| %>
 			<label><%= r.pergunta.descricao %></label>
-			<br />
+			<input id="resposta_" name="<%= "resposta[#{r.id}]" %>" value="<%= r.descricao%>" size="100" type="text" />
 		<% end %>
 	<% end %>
+	<div class="field">
+		<%= f.label "Relatório #{"(última versão carregada em #{@avaliacao.relatorio.attachment_updated_at.to_date.strftime('%d/%m/%Y')})" if @avaliacao.relatorio}" %>
+		<%= f.file_field :relatorio %>
+	</div>
 	<div class="actions">
 		<%= f.submit "Salvar", :class => "btn light-blue inverse" %>
 	</div>

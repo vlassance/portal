@@ -18,7 +18,7 @@ class AvaliacoesEstagioController < ApplicationController
 	end
 
 	def create
-		@avaliacao = AvaliacaoEstagio.new(params[:avaliacao])
+		@avaliacao = AvaliacaoEstagio.new(params[:avaliacao_estagio])
 
 		@avaliacao.questionario.perguntas.each do |p|
 			r = Resposta.new
@@ -33,6 +33,31 @@ class AvaliacoesEstagioController < ApplicationController
 				format.json { render json: @avaliacao, status: :created, location: @avaliacao }
 			else
 				@avaliacao.respostas.each { |r| r.destroy }
+				format.json { render json: @avaliacao.errors, status: :unprocessable_entity }
+			end
+		end
+	end
+
+	def update
+		@avaliacao = AvaliacaoEstagio.find(params[:id])
+
+		params[:resposta].each do |key, value|
+			r = Resposta.find(key)
+			r.update_attributes descricao: value
+		end
+
+		if params[:avaliacao_estagio].present? && params[:avaliacao_estagio][:relatorio].present?
+			relatorio_seed = params[:avaliacao_estagio].delete(:relatorio)
+			relatorio = Relatorio.gerar(relatorio_seed)
+			params[:avaliacao_estagio][:relatorio] = relatorio
+		end
+
+		respond_to do |format|
+			if @avaliacao.update_attributes(params[:avaliacao_estagio])
+				format.html { redirect_to @avaliacao, notice: 'Avaliacao atualizada com sucesso!' }
+				format.json { head :no_content }
+			else
+				format.html { render action: "edit" }
 				format.json { render json: @avaliacao.errors, status: :unprocessable_entity }
 			end
 		end
