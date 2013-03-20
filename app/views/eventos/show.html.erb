@@ -27,8 +27,8 @@
               </div>
           <div class="input full-width">
              <label> Evento : <%= @evento.nome %> </label>
-             <label> Data de Início do Evento : <%= @evento.dataInicio %> </label>
-             <label> Data Final do Evento : <%= @evento.dataFim %> </label>
+             <label> Data de Início do Evento : <%= @evento.dataInicio.strftime('%d/%m/%Y')%> </label>
+             <label> Data Final do Evento : <%= @evento.dataFim.strftime('%d/%m/%Y') %> </label>
              <label> Horário de Início : <%= @evento.horarioInicio %> </label>
              <label> Horário de Término : <%= @evento.horarioFim %> </label>
              <label> Descrição do Evento : <%= @evento.descricao %> </label>
