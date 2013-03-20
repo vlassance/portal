@@ -11,6 +11,7 @@
 
 $( "#evento_dataInicio" ).datepicker({
              regional: "pt-BR",
+             dateFormat: 'dd-MM-yyyy',
       onClose: function ()
     {
         this.focus();
@@ -70,7 +71,7 @@ $( "#evento_dataInicio" ).datepicker({
   </div>
   <div class="input full-width">
     <%= f.label :"data de inicio" %>
-    <%= f.text_field :dataInicio%>
+    <%= f.text_field :dataInicio, :format => :default%>
   </div>
     <div class="input full-width">
     <%= f.label :"horario de inicio" %>

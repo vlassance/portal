@@ -6,5 +6,5 @@ class Menu
   field :nome, :type => String
   field :icon, :type => String
   
-  belongs_to :grupo
+ # belongs_to :grupo
 end

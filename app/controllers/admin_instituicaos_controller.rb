@@ -31,10 +31,12 @@ class AdminInstituicaosController < ApplicationController
   # POST /admin_instituicaos.json
   def create
     @admin_instituicao = AdminInstituicao.new(params[:admin_instituicao])
+    grupo_admin = Grupo.where(internal_id: Grupo::ADMIN_INSTITUICAO).first
+    @admin_instituicao.grupo = grupo_admin
 
     respond_to do |format|
       if @admin_instituicao.save
-        format.html { redirect_to @admin_instituicao, notice: 'Admin instituicao was successfully created.' }
+        format.html { redirect_success_show("Administrador adicionado com sucesso!",:admin_instituicaos, @admin_instituicao.id)}
         format.json { render json: @admin_instituicao, status: :created, location: @admin_instituicao }
       else
         format.html { render action: "new" }
@@ -50,7 +52,7 @@ class AdminInstituicaosController < ApplicationController
 
     respond_to do |format|
       if @admin_instituicao.update_attributes(params[:admin_instituicao])
-        format.html { redirect_to @admin_instituicao, notice: 'Admin instituicao was successfully updated.' }
+        format.html { redirect_success_show("Administrador alterado com sucesso!",:admin_instituicaos, @admin_instituicao.id)}
         format.json { head :no_content }
       else
         format.html { render action: "edit" }

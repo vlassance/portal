@@ -1,0 +1,27 @@
+// Place all the styles related to the contatosImportantes controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.contato {
+	margin: 5px;
+  	border-bottom-width: 1px;
+   	border-bottom-color: #aad7ea;
+    border-bottom-style: solid;
+}
+.contato-importante-img{
+	width: 100px;
+	height: 100px;
+}
+
+.contato-importante-dados{
+	margin-top: 10px;
+	color: #67a0be;
+	text-shadow: rgba(0, 0, 0, 0.5) 0 0 1px;
+	
+	p {
+		margin: 0px;
+	}
+	spam {
+		color: black;
+	}
+} 
