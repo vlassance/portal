@@ -43,6 +43,7 @@ class AlunosController < ApplicationController
     curriculo = Curriculo.gerar(curriculo_seed)
     params[:aluno][:curriculo] = curriculo
     @aluno = Aluno.new(params[:aluno])
+    @aluno.password = "PASSWORD"
     respond_to do |format|
       if @aluno.save
         format.html { redirect_to @aluno, notice: 'Aluno was successfully created.' }
