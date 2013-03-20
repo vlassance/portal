@@ -14,6 +14,9 @@ Rails3MongoidDevise::Application.routes.draw do
   resources :empresas
   resources :gestor
 
+  resources :questionarios
+
+  resources :avaliacoes_estagio
 
   get "gestor/new"
 

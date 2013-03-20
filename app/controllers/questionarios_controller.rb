@@ -23,6 +23,7 @@ class QuestionariosController < ApplicationController
 
 	def create
 		@questionario = Questionario.new(params[:questionario])
+		# FIXME: Porque não utilizar @questionario.perguntas direto?
 		perguntas = Array.new
 
 		params[:pergunta].each_value do |v|
@@ -31,6 +32,7 @@ class QuestionariosController < ApplicationController
 			perguntas << p
 		end
 
+		# Precisa disso ou @questionario.save já salva?
 		salvou_perguntas = true
 		perguntas.size.times do |i|
 			if !perguntas[i].save
@@ -54,7 +56,7 @@ class QuestionariosController < ApplicationController
 
 		respond_to do |format|
 			if salvou_questionario and salvou_perguntas
-				format.html { redirect_to @questionario, notice: 'Questionario was successfully created.' }
+				format.html { redirect_to @questionario, notice: 'Questionario criado com sucesso!' }
 				format.json { render json: @questionario, status: :created, location: @questionario }
 			else
 				format.html { render action: "new" }
@@ -72,6 +74,8 @@ class QuestionariosController < ApplicationController
 			end
 		end
 	end
+
+	# TODO: update
 
 	def show
 		@questionario = Questionario.find(params[:id])

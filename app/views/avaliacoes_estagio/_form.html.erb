@@ -1,0 +1,37 @@
+<%= form_for(@avaliacao, html: {multipart: true}) do |f| %>
+	<% if @avaliacao.errors.any? %>
+		<div id="error_explanation">
+			<h2><%= pluralize(@avaliacao.errors.count, "error") %> prohibited this avaliação from being saved:</h2>
+
+			<ul>
+				<% @avaliacao.errors.full_messages.each do |msg| %>
+					<li><%= msg %></li>
+				<% end %>
+			</ul>
+		</div>
+	<% end %>
+
+	<div class="field">
+		<%= f.label :aluno_id %>
+		<%= f.select :aluno_id, options_from_collection_for_select(Aluno.all, :id, :nome) %>
+	</div>
+	<div class="field">
+		<%= f.label :empresa_id %>
+		<%= f.select :empresa_id, options_from_collection_for_select(Empresa.all, :id, :nome) %>
+	</div>
+	<div class="field">
+		<%= f.label :questionario_id %>
+		<%= f.select :questionario_id, options_from_collection_for_select(Questionario.all, :id, :nome) %>
+	</div>
+	<br />
+	<% if @avaliacao.respostas.any? %>
+		<label>Perguntas e Respostas</label>
+		<% @avaliacao.respostas.each do |r| %>
+			<label><%= r.pergunta.descricao %></label>
+			<br />
+		<% end %>
+	<% end %>
+	<div class="actions">
+		<%= f.submit "Salvar", :class => "btn light-blue inverse" %>
+	</div>
+<% end %>
