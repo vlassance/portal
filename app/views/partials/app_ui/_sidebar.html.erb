@@ -35,55 +35,22 @@
       </ul>
     </li>
 
+
+    <% Menu.where(grupo_ids: current_usuario.grupo_id.to_s).asc(:nome).each do |menu|%>
+
+
     <!-- Components -->
-    <li class="<%= nav_active(primary: "aluno") %>">
-      <a href="/alunos" class="accordion-toggle" >
+    <li class="<%= nav_active(primary: menu.primary) %>">
+      <a href="<%= menu.url %>" class="accordion-toggle" >
           <span class="icon">
-            <i class="icon-persona"></i>
+            <i class="<%= menu.icon %>"></i>
           </span>
           <span class="text">
-            Alunos 
+            <%= menu.nome %> 
           </span>
       </a>
     </li>    
-    <li class="<%= nav_active(primary: "empresas") %>">
-      <a href="/empresas" class="accordion-toggle" >
-          <span class="icon">
-            <i class="icon-microformats"></i>
-          </span>
-          <span class="text">
-            Empresas 
-          </span>
-      </a>
-    </li>   
-    <li class="<%= nav_active(primary: "historico_estagios") %>">
-      <a href="/historico_estagios" class="accordion-toggle" >
-          <span class="icon">
-            <i class="icon-bar-chart"></i>
-          </span>
-          <span class="text">
-             Estagios 
-          </span>
-      </a>
-    </li> 
-    <li class="<%= nav_active(primary: "eventos") %>">
-      <a href="/eventos" class="accordion-toggle" >
-          <span class="icon">
-            <i class="icon-calendar"></i>
-          </span>
-          <span class="text">
-             Eventos 
-          </span>
-      </a>
-    </li>     
-     <li class="<%= nav_active(primary: "vagas") %>">
-      <a href="/vagas" class="accordion-toggle" >
-          <span class="icon">
-            <i class="icon-list"></i>
-          </span>
-          <span class="text">
-            Vagas 
-          </span>
-      </a>
-    </li>
+
+<% end %>
+
 </nav>

@@ -13,6 +13,7 @@ HistoricoEstagio.destroy_all
 Evento.destroy_all
 Vaga.destroy_all
 Empresa.destroy_all
+Menu.destroy_all
 HistoricoEstagio.create(modulo: "1", nota: 10)
 HistoricoEstagio.create(modulo: "2", nota: 9)
 HistoricoEstagio.create(modulo: "3", nota: 10)
@@ -78,3 +79,59 @@ puts "Criando Admin Empresa"
 else
 	puts "*****nao foi possivel criar um usuario, por favor execute db:seed novamente" + user.errors.to_json
 end
+
+
+puts "Criando Menus Basicos"
+
+  menu_empresas = Menu.create(:nome => 'Empresas', :url => '/empresas', :icon => "icon-suitcase", :primary => "empresas")
+  menu_empresas.grupos << aluno
+  menu_empresas.grupos << admin
+  menu_empresas.grupos << coordenador
+
+  if menu_empresas.save
+  	puts "Menu Empresas Criado"
+  else
+  	puts "*** Erro menu de empresas"
+  	menu_empresas.errors.each do |e|
+  		puts e.to_s
+  	end
+  end
+
+  menu_alunos = Menu.create(:nome => 'Alunos', :url => '/alunos', :icon => "icon-group", :primary => "alunos")
+  menu_alunos.grupos << admin
+  menu_alunos.grupos << coordenador
+
+ menu_historico = Menu.create(:nome => 'Estágios', :url => '/historico_estagios', :icon => "icon-bar-chart", :primary => "historico_estagios")
+ menu_historico.grupos << aluno
+
+  menu_eventos = Menu.create(:nome => 'Eventos', :url => '/eventos', :icon => "icon-calendar", :primary => "eventos")
+  menu_eventos.grupos << admin
+  menu_eventos.grupos << coordenador
+  menu_eventos.grupos << gestor
+  menu_eventos.grupos << admin_empresa
+  menu_eventos.grupos << aluno
+
+  menu_vagas = Menu.create(:nome => 'Vagas', :url => '/vagas', :icon => "icon-list-ul", :primary => "vagas")
+  menu_vagas.grupos << admin
+  menu_vagas.grupos << coordenador
+  menu_vagas.grupos << admin_empresa
+  menu_vagas.grupos << aluno
+
+  menu_contatos = Menu.create(:nome => 'Contatos', :url => '/contatos_importantes', :icon => "icon-comment-alt", :primary => "contatos_importantes")
+  menu_contatos.grupos << admin
+  menu_contatos.grupos << coordenador
+  menu_contatos.grupos << gestor
+  menu_contatos.grupos << admin_empresa
+  menu_contatos.grupos << aluno
+
+  menu_estagiarios = Menu.create(:nome => 'Estagiários', :url => '/alunos', :icon => "icon-group", :primary => "alunos")
+  menu_estagiarios.grupos << gestor
+  menu_estagiarios.grupos << admin_empresa
+
+  menu_estagio = Menu.create(:nome => 'Estágio Atual', :url => '/estagio', :icon => "icon-github-alt", :primary => "estagios")
+  menu_estagio.grupos << aluno
+
+  menu_gestores = Menu.create(:nome => 'Gestores', :url => '/gestor', :icon => "icon-group", :primary => "gestor")
+  menu_gestores.grupos << admin_empresa
+  puts "Menus criados"
+ 
