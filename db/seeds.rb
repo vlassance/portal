@@ -28,15 +28,15 @@ Grupo.destroy_all
 puts "Grupos removidos com sucesso"
 
 puts "Criando Grupos"
-	admin = Grupo.create(:name => 'Administrador Instituição', :internal_id => Grupo::ADMIN_INSTITUICAO.to_i)
-	coordenador = Grupo.create(:name => 'Coordenador Estágio', :internal_id => Grupo::COORDERNADOR.to_i)
-	admin_empresa = Grupo.create(:name => 'Administrador Empresa', :internal_id => Grupo::ADMIN_EMPRESA.to_i)
-	gestor = Grupo.create(:name => 'Gestor', :internal_id => Grupo::GESTOR.to_i)
-	aluno = Grupo.create(:name => 'Aluno', :internal_id => Grupo::ALUNO.to_i)
+	admin = Grupo.create(:nome => 'Administrador Instituição', :internal_id => Grupo::ADMIN_INSTITUICAO.to_i)
+	coordenador = Grupo.create(:nome => 'Coordenador Estágio', :internal_id => Grupo::COORDERNADOR.to_i)
+	admin_empresa = Grupo.create(:nome => 'Administrador Empresa', :internal_id => Grupo::ADMIN_EMPRESA.to_i)
+	gestor = Grupo.create(:nome => 'Gestor', :internal_id => Grupo::GESTOR.to_i)
+	aluno = Grupo.create(:nome => 'Aluno', :internal_id => Grupo::ALUNO.to_i)
 puts "Grupos criados com sucesso"	
 
 puts "Criando Usuario Administrador"
-	user = AdminInstituicao.create(:name => 'Administrador ', login: 'admin', :email => 'admin@gmail.com', :password => '12345678', :password_confirmation => '12345678')
+	user = AdminInstituicao.create(:nome => 'Administrador ', login: 'admin', :email => 'admin@gmail.com', :password => '12345678', :password_confirmation => '12345678')
 	user.grupo = admin
 	if user.save(validate: false)
 	puts "Usuario administrador criado com sucesso! -> login: admin@gmail.com, senha: 12345678"
@@ -45,7 +45,7 @@ else
 end
 
 puts "Criando Usuario Coordenador"
-	user = CoordenadorEstagio.create(:name => 'Coordenador ', login: 'coordenador', :email => 'coordenador@gmail.com', :password => '12345678', :password_confirmation => '12345678')
+	user = CoordenadorEstagio.create(:nome => 'Coordenador ', login: 'coordenador', :email => 'coordenador@gmail.com', :password => '12345678', :password_confirmation => '12345678')
 	user.grupo = coordenador
 	if user.save(validate: false)
 	puts "Usuario coordenador criado com sucesso! -> login: coordenador@gmail.com, senha: 12345678"
@@ -54,7 +54,7 @@ else
 end
 
 puts "Criando Usuario Aluno"
-	user = Aluno.create(:name => 'Aluno ', login: 'aluno', :email => 'aluno@gmail.com', :password => '12345678', :password_confirmation => '12345678')
+	user = Aluno.create(:nome => 'Aluno ', login: 'aluno', :email => 'aluno@gmail.com', :password => '12345678', :password_confirmation => '12345678')
 	user.grupo = aluno
 	if user.save(validate: false)
 	puts "Usuario aluno criado com sucesso! -> login: aluno@gmail.com, senha: 12345678"
@@ -63,7 +63,7 @@ else
 end
 
 puts "Criando Empresa"
-	empresa = Empresa.create(:name => 'Software Express')
+	empresa = Empresa.create(:nome => 'Software Express')
 	if empresa.save(validate: false)
 	puts "empresa criada com sucesso"
 else
@@ -71,7 +71,7 @@ else
 end
 
 puts "Criando Admin Empresa"
-	user = AdminEmpresa.create(:name => 'AdminEmpresa ', login: 'empresa', :email => 'empresa@gmail.com', :password => '12345678', :password_confirmation => '12345678')
+	user = AdminEmpresa.create(:nome => 'AdminEmpresa ', login: 'empresa', :email => 'empresa@gmail.com', :password => '12345678', :password_confirmation => '12345678')
 	user.grupo = admin_empresa
 	user.empresa = empresa
 	if user.save(validate: false)

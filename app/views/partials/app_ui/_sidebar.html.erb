@@ -12,9 +12,13 @@
   <!-- Profile -->
     <li class="profile">
       <a href="#profile-opts" class="accordion-toggle" data-toggle="collapse">
-         <img class="avatar user3">
+          <% if current_usuario.avatar.file? %>
+              <%= image_tag current_usuario.avatar.url(:medium), class: "avatar" %>
+          <% else %>
+            <img class="avatar user_empty">
+          <% end %>
           <span class="text" id="profile-text">
-            Jorge Risco <b class="caret"></b>
+            <%= current_usuario.nome %> <b class="caret"></b>
           </span>
       </a>
 

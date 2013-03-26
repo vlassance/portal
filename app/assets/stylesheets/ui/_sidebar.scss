@@ -23,8 +23,9 @@ nav.main-nav {
           display: block;
           background-size: 100%;
           &.user1 { background-image: image-url("users/user1.png"); }
-          &.user2 { background-image: image-url("users/user2.png"); }
+          &.risco { background-image: image-url("users/risco.png"); }
           &.user3 { background-image: image-url("users/user3.png"); }
+          &.user_empty { background-image: image-url("users/user_empty.png"); }
           &.user4 { background-image: image-url("users/user4.png"); }
           &.user5 { background-image: image-url("users/user5.png"); }
           &.user6 { background-image: image-url("users/user6.png"); }
