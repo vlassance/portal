@@ -1,4 +1,6 @@
 class CoordenadorEstagioController < ApplicationController
+
+  before_filter :check_user
   # GET /coordenador_estagios
   # GET /coordenador_estagios.json
   def index
@@ -82,4 +84,11 @@ class CoordenadorEstagioController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  protected    
+    def check_user
+      if !isAdmin? && !isCoordenador
+        render_404
+      end
+    end
 end

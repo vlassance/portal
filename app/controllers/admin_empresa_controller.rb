@@ -1,5 +1,5 @@
 ﻿class AdminEmpresaController < ApplicationController
-
+  before_filter :check_user
   # GET /admin_empresa/1
   # GET /admin_empresa/1.json
   def show
@@ -78,5 +78,12 @@
     end
   end
 
+
+  protected    
+    def check_user
+      if !isAdmin? and !isAdminEmpresa?
+        render_404
+      end
+    end
 
 end

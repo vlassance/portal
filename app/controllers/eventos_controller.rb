@@ -1,4 +1,6 @@
 class EventosController < ApplicationController
+
+  before_filter :check_user, :except => [:index, :show] 
   # GET /eventos
   # GET /eventos.json
   def index
@@ -85,4 +87,10 @@ class EventosController < ApplicationController
       format.json { head :no_content }
     end
   end
+  protected    
+    def check_user
+      if !isAdmin? && !isCoordenador && !isAdminEmpresa?
+        render_404
+      end
+    end
 end

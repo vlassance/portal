@@ -19,25 +19,32 @@ class ApplicationController < ActionController::Base
  end
 
  def isAdmin?
-   current_user.class == AdminInstituicao
+   current_usuario.class == AdminInstituicao
  end
 
  def isAdminEmpresa?
-   current_user.class == AdminEmpresa
+   current_usuario.class == AdminEmpresa
  end
 
  def isAluno?
-   current_user.class == Aluno
+   current_usuario.class == Aluno
  end
 
  def isGestor?
-   current_user.class == Gestor
+   current_usuario.class == Gestor
  end
 
  def isCoordenador?
-   current_user.class == Coordenador
+   current_usuario.class == Coordenador
  end
 
+def render_404
+  respond_to do |format|
+    format.html { render :file => "#{Rails.root}/public/404.html", :status => :not_found }
+    format.xml  { head :not_found }
+    format.any  { head :not_found }
+  end
+end
 
 
 end
