@@ -1,5 +1,4 @@
-class AdminEmpresaController < ApplicationController
-
+﻿class AdminEmpresaController < ApplicationController
 
   # GET /admin_empresa/1
   # GET /admin_empresa/1.json
@@ -78,4 +77,6 @@ class AdminEmpresaController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+
 end

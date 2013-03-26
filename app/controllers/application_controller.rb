@@ -15,7 +15,29 @@ class ApplicationController < ActionController::Base
   end
 
  def sendEmail (data, nome, descricao)
-    DatasMailer.datas("fnunes.joao@gmail.com",data, nome, descricao).deliver
+    DatasMailer.datas("raphael.sampaio@gmail.com",data, nome, descricao).deliver
  end
+
+ def isAdmin?
+   current_user.class == AdminInstituicao
+ end
+
+ def isAdminEmpresa?
+   current_user.class == AdminEmpresa
+ end
+
+ def isAluno?
+   current_user.class == Aluno
+ end
+
+ def isGestor?
+   current_user.class == Gestor
+ end
+
+ def isCoordenador?
+   current_user.class == Coordenador
+ end
+
+
 
 end
