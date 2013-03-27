@@ -1,4 +1,6 @@
 class EmpresasController < ApplicationController
+
+  before_filter :check_user, :except => [:show]
   # GET /empresas
   # GET /empresas.json
   def index
@@ -95,5 +97,11 @@ class EmpresasController < ApplicationController
     return lugar
   end
 
+protected    
+    def check_user
+      if !isAdmin? && !isCoordenador && !isAdminEmpresa?
+        render_404
+      end
+    end
 
 end

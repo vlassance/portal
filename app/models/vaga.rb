@@ -19,7 +19,6 @@ class Vaga
   validates_presence_of :conhecimentos, :message => "digite uns conhecimentos"
   validates_presence_of :area, :message => "digite uma area"
   validates_presence_of :numero_vagas, :message => "digite o numero de vagas"
-  validates_presence_of :email, :message => "digite um e-mail"
 
   belongs_to :empresa
 end
