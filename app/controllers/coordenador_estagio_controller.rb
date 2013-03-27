@@ -51,7 +51,7 @@ class CoordenadorEstagioController < ApplicationController
         format.html { redirect_success("Coordenador adicionado com sucesso!",:coordenador_estagio, :index)}
         format.json { render json: @coordenador_estagio, status: :created, location: @coordenador_estagio }
       else
-        format.html { redirect_error("Erro ao adicionar coordenador!",:coordenador_estagio, :index)}
+        format.html { redirect_error("Erro ao adicionar coordenador!" + @coordenador_estagio.errors.to_s,:coordenador_estagio, :index)}
         format.json { render json: @coordenador_estagio.errors, status: :unprocessable_entity }
       end
     end
@@ -87,7 +87,7 @@ class CoordenadorEstagioController < ApplicationController
 
   protected    
     def check_user
-      if !isAdmin? && !isCoordenador
+      if !current_usuario.isAdmin? && !current_usuario.isCoordenador
         render_404
       end
     end
