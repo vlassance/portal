@@ -1,5 +1,7 @@
 class AdminInstituicaosController < ApplicationController
  
+  before_filter :check_user
+  
   # GET /admin_instituicaos/1
   # GET /admin_instituicaos/1.json
   def show
@@ -72,4 +74,12 @@ class AdminInstituicaosController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  protected    
+    def check_user
+      if !isAdmin?
+        render_404
+      end
+    end
+
 end

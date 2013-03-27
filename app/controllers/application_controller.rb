@@ -15,7 +15,16 @@ class ApplicationController < ActionController::Base
   end
 
  def sendEmail (data, nome, descricao)
-    DatasMailer.datas("fnunes.joao@gmail.com",data, nome, descricao).deliver
+    DatasMailer.datas("raphael.sampaio@gmail.com",data, nome, descricao).deliver
  end
+
+def render_404
+  respond_to do |format|
+    format.html { render :file => "#{Rails.root}/public/404.html", :status => :not_found }
+    format.xml  { head :not_found }
+    format.any  { head :not_found }
+  end
+end
+
 
 end

@@ -1,6 +1,7 @@
 class GestorController < ApplicationController
   # GET /gestor
   # GET /gestor.json
+  before_filter :check_user
   def index
     @gestor = Gestor.all
 
@@ -84,4 +85,10 @@ class GestorController < ApplicationController
       format.json { head :no_content }
     end
   end
+  protected    
+    def check_user
+      if isAluno?
+        render_404
+      end
+    end
 end

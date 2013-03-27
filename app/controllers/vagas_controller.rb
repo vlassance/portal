@@ -1,6 +1,8 @@
 class VagasController < ApplicationController
   # GET /vagas
   # GET /vagas.json
+  before_filter :check_user, :except => [:show, :index]
+
   def index
     @vagas = Vaga.all
 
@@ -79,4 +81,10 @@ class VagasController < ApplicationController
       format.json { head :no_content }
     end
   end
+  protected    
+    def check_user
+      if !isAdmin? && !isCoordenador && !isAdminEmpresa?
+        render_404
+      end
+    end
 end

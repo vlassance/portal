@@ -1,4 +1,7 @@
 class AlunosController < ApplicationController
+
+  before_filter :check_user, :except => [:update, :show]
+
   # GET /alunos
   # GET /alunos.json
   def index
@@ -49,7 +52,7 @@ class AlunosController < ApplicationController
     @aluno.grupo = grupo_aluno
     respond_to do |format|
       if @aluno.save
-        format.html { redirect_to @aluno, notice: 'Aluno was successfully created.' }
+        format.html { redirect_success("Aluno adicionado com sucesso!",:alunos, :index)}
         format.json { render json: @aluno, status: :created, location: @aluno }
       else
         format.html { render action: "new" }
@@ -70,7 +73,7 @@ class AlunosController < ApplicationController
 
     respond_to do |format|
       if @aluno.update_attributes(params[:aluno])
-        format.html { redirect_to @aluno, notice: 'Aluno was successfully updated.' }
+        format.html { redirect_success_show("Aluno alterado com sucesso!",:alunos, @aluno.id)}
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
@@ -90,4 +93,12 @@ class AlunosController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+protected    
+    def check_user
+      if !isAdmin? && !isCoordenador
+        render_404
+      end
+    end
+
 end

@@ -88,21 +88,12 @@ puts "Criando Menus Basicos"
   menu_empresas.grupos << admin
   menu_empresas.grupos << coordenador
 
-  if menu_empresas.save
-  	puts "Menu Empresas Criado"
-  else
-  	puts "*** Erro menu de empresas"
-  	menu_empresas.errors.each do |e|
-  		puts e.to_s
-  	end
-  end
-
   menu_alunos = Menu.create(:nome => 'Alunos', :url => '/alunos', :icon => "icon-group", :primary => "alunos")
   menu_alunos.grupos << admin
   menu_alunos.grupos << coordenador
 
- menu_historico = Menu.create(:nome => 'Estágios', :url => '/historico_estagios', :icon => "icon-bar-chart", :primary => "historico_estagios")
- menu_historico.grupos << aluno
+  menu_historico = Menu.create(:nome => 'Estágios', :url => '/historico_estagios', :icon => "icon-bar-chart", :primary => "historico")
+  menu_historico.grupos << aluno
 
   menu_eventos = Menu.create(:nome => 'Eventos', :url => '/eventos', :icon => "icon-calendar", :primary => "eventos")
   menu_eventos.grupos << admin
