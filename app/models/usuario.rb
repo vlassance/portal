@@ -87,4 +87,24 @@ class Usuario
 
 	belongs_to :grupo
 
+  def isAdmin?
+    self.class == AdminInstituicao
+  end
+
+  def isAdminEmpresa?
+    self.class == AdminEmpresa
+  end
+
+  def isAluno?
+    self.class == Aluno
+  end
+
+  def isGestor?
+    self.class == Gestor
+  end
+
+  def isCoordenador?
+    self.class == CoordenadorEstagio
+  end
+
 end
