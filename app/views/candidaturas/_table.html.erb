@@ -1,0 +1,38 @@
+<table class="table table-striped data-table">
+	<thead>
+		<tr>
+			<% if !current_usuario.isAdminEmpresa? %>
+				<th>Empresa</th>
+			<% end %>
+			<% if !current_usuario.isAluno? %>
+				<th>Aluno</th>
+			<% end %>
+			<th>Aceita</th>
+		</tr>
+	</thead>
+	<tbody>
+		<% @candidaturas.each do |candidatura| %>
+			<tr class="gradeX">
+				<% if !current_usuario.isAdminEmpresa? %>
+					<td><%= candidatura.vaga.empresa.nome %></td>
+				<% end %>
+				<% if !current_usuario.isAluno? %>
+					<td><%= candidatura.aluno.nome %></td>
+				<% end %>
+				<td><%= candidatura.aceita ? "Sim" : "Não" %></td>
+				<td class="td-actions">
+					<div class="btn-group">
+						<a class="btn medium-blue" href="#"><i class="icon-leaf"></i> Opções</a>
+						<a class="btn medium-blue dropdown-toggle" data-toggle="dropdown" href="#"><span class="icon-caret-down"></span></a>
+						<ul class="dropdown-menu">
+							<li><a href="/questionarios/<%= candidatura.id %>"><i class="icon-eye-open"></i> Exibir</a></li>
+							<li><a href="/questionarios/<%= candidatura.id %>/edit"><i class="icon-pencil"></i> Editar</a></li>
+							<li><a href="/questionarios/<%= candidatura.id %>" data-confirm="<%= "Deseja remover o Questionário?" %>" data-method="delete" rel="nofollow"><i class="icon-trash"></i> Remover</a></li>
+						</ul>
+					</div>
+
+				</td>
+			</tr>
+		<% end %>
+	</tbody>
+</table>

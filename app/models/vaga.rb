@@ -22,4 +22,5 @@ class Vaga
   validates_presence_of :numero_vagas, :message => "digite o numero de vagas"
 
   belongs_to :empresa
+  belongs_to :candidaturas
 end
