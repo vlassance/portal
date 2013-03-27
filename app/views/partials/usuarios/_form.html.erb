@@ -35,7 +35,28 @@
 	<%= f.label :cep %>
 	<%= f.text_field :cep, :placeholder => "CEP" %>
 </div>
+
+ <div class="input full-width">
+	<%= f.label :password %>
+	<%= f.password_field :password, :placeholder => "Senha" %>
+</div>
+ <div class="input full-width">
+	<%= f.label :password_confirmation %>
+	<%= f.password_field :password_confirmation, :placeholder => "Digite denovo a Senha" %>
+</div>
+
+<% if current_usuario.isAluno? %>
+  <div class="field">
+      <%= f.label "Currículo #{"(última versão carregada em #{@aluno.curriculo.attachment_updated_at.to_date.strftime('%d/%m/%Y')})" if @aluno.curriculo}" %>
+      <%= f.file_field :curriculo %>
+  </div>
+<% end %>
+
 <div class="input full-width">
 	<%= f.label :avatar %>
 	<%= f.file_field :avatar %>
 </div>
+
+ <div class="actions">
+    <%= f.submit "Salvar", :class => "btn light-blue inverse" %>
+ </div>

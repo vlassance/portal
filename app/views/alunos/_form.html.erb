@@ -1,11 +1,5 @@
 <%= form_for(@aluno, validate: true, html: { multipart: true }) do |f| %>
   <%= render partial: "partials/usuarios/form", locals: { f: f } %>
-  <div class="field">
-      <%= f.label "Currículo #{"(última versão carregada em #{@aluno.curriculo.attachment_updated_at.to_date.strftime('%d/%m/%Y')})" if @aluno.curriculo}" %>
-      <%= f.file_field :curriculo %>
-  </div>
-  <div class="actions">
-    <%= f.submit "Salvar", :class => "btn light-blue inverse" %>
-  </div>
+
 <% end %>
 
