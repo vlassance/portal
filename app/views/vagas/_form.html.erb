@@ -1,4 +1,5 @@
 <%= form_for(@vaga, :validate => true)  do |f| %>
+
   <div class="vpadded">
      <div class="input full-width">
          <%= current_usuario.empresa.nome %>
@@ -16,6 +17,10 @@
         <%= f.label :descricao %>
          <%= f.text_area :descricao, :placeholder => "Conhecimentos" %>
     </div>  
+     <div class="input full-width">
+        <%= f.label :requisitos %>
+         <%= f.text_area :requisitos, :placeholder => "Requisistos" %>
+    </div>  
    <div class="input full-width">
         <%= f.label :beneficios %>
          <%= f.text_area :beneficios, :placeholder => "Línguas" %>
@@ -26,7 +31,11 @@
     </div>   
   <div class="input full-width">
         <%= f.label :contatos %>
-         <%= f.text_area :contatos, :placeholder => "Descriçao das atividades da empresa" %>
+         <%= f.text_area :contatos, :placeholder => "Contatos" %>
+    </div>
+      <div class="input full-width">
+        <%= f.label :numero_vagas %>
+         <%= f.number_field :numero_vagas, :placeholder => "Número de Vagas" %>
     </div>
    <%= f.submit "Salvar", :class => "btn light-blue inverse" %>
   <% end %>   

@@ -49,10 +49,10 @@ class VagasController < ApplicationController
     @vaga.empresa = current_usuario.empresa
     respond_to do |format|
       if @vaga.save
-        format.html { redirect_success("Vaga criada com sucesso !",:vagas, :index)}
+        format.html { redirect_success("Vaga criada com sucesso!",:vagas, :index)}
         format.json { render json: @vaga, status: :created, location: @vaga }
       else
-        format.html { redirect_error("Erro ao adicionar a vaga!",:vagas, :index)}
+        format.html { redirect_error("Erro ao adicionar a vaga! #{@vaga.errors.full_messages}",:vagas, :index)}
         format.json { render json: @vaga.errors, status: :unprocessable_entity }
       end
     end

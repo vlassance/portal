@@ -12,7 +12,6 @@
         <% @vagas.each do |vaga| %>
             <tr class="gradeX" >
                 <td><%=link_to vaga.nome, vaga%></td>
-                <td><%= vaga.nome %></td>
                 <td><%= vaga.empresa.nome %></td>
                 <td><%= vaga.area %></td>
                 <td class="td-actions">
