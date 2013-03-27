@@ -80,6 +80,17 @@ else
 	puts "*****nao foi possivel criar um usuario, por favor execute db:seed novamente" + user.errors.to_json
 end
 
+puts "Criando Gestor"
+  user = Gestor.create(:nome => 'Gestor ', login: 'empresa', :email => 'gestor@gmail.com', :password => '12345678', :password_confirmation => '12345678')
+  user.grupo = gestor
+  user.empresa = empresa
+  if user.save(validate: false)
+  puts "Usuario gestor empresa criado com sucesso! -> login: gestor@gmail.com, senha: 12345678"
+else
+  puts "*****nao foi possivel criar um usuario, por favor execute db:seed novamente" + user.errors.to_json
+end
+
+
 
 puts "Criando Menus Basicos"
 

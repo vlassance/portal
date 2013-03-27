@@ -11,9 +11,11 @@
               <a class="dropdown-toggle" data-toggle="dropdown">
                 <i class="icon-cog"></i>
               </a>
-              <ul class="dropdown-menu dropdown-left">
-                <li><a href="/empresas/<%= @empresa.id %>/edit">Editar</a></li>
-              </ul>
+              <% if current_usuario.isAdmin or current_usuario.isAdminEmpresa? %>
+                <ul class="dropdown-menu dropdown-left">
+                  <li><a href="/empresas/<%= @empresa.id %>/edit">Editar</a></li>
+                </ul>
+              <% end %>
             </div>
           </div>
         </div>
@@ -62,8 +64,7 @@
                 <label> CEP : <%= @empresa.cep %> </label>
                   <%=image_tag "http://maps.google.com/maps/api/staticmap?size=450x300&sensor=false&zoom=16&markers=0%2C0", :alt => "Mapa" %>
 
-          </div>
-
+            </div>
               </div>
 
             </div>

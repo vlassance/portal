@@ -99,7 +99,7 @@ class EmpresasController < ApplicationController
 
 protected    
     def check_user
-      if !current_usuario.isAdmin? && !current_usuario.isCoordenador && !current_usuario.isAdminEmpresa?
+      if !current_usuario.isAdmin? && !current_usuario.isCoordenador? && !current_usuario.isAdminEmpresa?
         render_404
       end
     end
