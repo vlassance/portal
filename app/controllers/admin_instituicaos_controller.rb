@@ -27,6 +27,7 @@ class AdminInstituicaosController < ApplicationController
   # GET /admin_instituicaos/1/edit
   def edit
     @admin_instituicao = AdminInstituicao.find(params[:id])
+    @edit = true
   end
 
   # POST /admin_instituicaos

@@ -15,9 +15,13 @@
 	<%= f.text_field :telefone, :placeholder => "Telefone" %>
 </div>  
 <div class="input full-width">
-	<%= f.label :cpf %>
+	<%= f.label :CPF %>
 	<%= f.text_field :cpf, :placeholder => "CPF" %>
-</div>   
+</div>
+<div class="input full-width">
+	<%= f.label :endereco %>
+	<%= f.text_field :endereco, :placeholder => "Endereço" %>
+</div>
 <div class="input full-width">
 	<%= f.label :cidade %>
 	<%= f.text_field :cidade, :placeholder => "cidade" %>
@@ -35,7 +39,30 @@
 	<%= f.label :cep %>
 	<%= f.text_field :cep, :placeholder => "CEP" %>
 </div>
+
+<% if !@edit %>
+ <div class="input full-width">
+	<%= f.label :password %>
+	<%= f.password_field :password, :placeholder => "Senha" %>
+</div>
+ <div class="input full-width">
+	<%= f.label :password_confirmation %>
+	<%= f.password_field :password_confirmation, :placeholder => "Digite de novo a Senha" %>
+</div>
+<% end %>
+
+<% if !@aluno.nil? %>
+  <div class="field">
+      <%= f.label "Currículo #{"(última versão carregada em #{@aluno.curriculo.attachment_updated_at.to_date.strftime('%d/%m/%Y')})" if @aluno.curriculo}" %>
+      <%= f.file_field :curriculo %>
+  </div>
+<% end %>
+
 <div class="input full-width">
 	<%= f.label :avatar %>
 	<%= f.file_field :avatar %>
 </div>
+
+ <div class="actions">
+    <%= f.submit "Salvar", :class => "btn light-blue inverse" %>
+ </div>
