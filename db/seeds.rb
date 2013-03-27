@@ -92,7 +92,7 @@ puts "Criando Menus Basicos"
   menu_alunos.grupos << admin
   menu_alunos.grupos << coordenador
 
-  menu_historico = Menu.create(:nome => 'Estágios', :url => '/historico_estagios', :icon => "icon-bar-chart", :primary => "historico_estagios")
+  menu_historico = Menu.create(:nome => 'Estágios', :url => '/historico_estagios', :icon => "icon-bar-chart", :primary => "historico")
   menu_historico.grupos << aluno
 
   menu_eventos = Menu.create(:nome => 'Eventos', :url => '/eventos', :icon => "icon-calendar", :primary => "eventos")

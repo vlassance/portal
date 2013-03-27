@@ -62,7 +62,7 @@ $( "#evento_dataInicio" ).datepicker({
  
 </script>
 
-<%= form_for(@evento) do |f| %>
+<%= form_for(@evento, validate: true) do |f| %>
   <div class="vpadded">
 
   <div class="input full-width">
