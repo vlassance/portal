@@ -18,26 +18,6 @@ class ApplicationController < ActionController::Base
     DatasMailer.datas("raphael.sampaio@gmail.com",data, nome, descricao).deliver
  end
 
- def isAdmin?
-   current_usuario.class == AdminInstituicao
- end
-
- def isAdminEmpresa?
-   current_usuario.class == AdminEmpresa
- end
-
- def isAluno?
-   current_usuario.class == Aluno
- end
-
- def isGestor?
-   current_usuario.class == Gestor
- end
-
- def isCoordenador?
-   current_usuario.class == Coordenador
- end
-
 def render_404
   respond_to do |format|
     format.html { render :file => "#{Rails.root}/public/404.html", :status => :not_found }
