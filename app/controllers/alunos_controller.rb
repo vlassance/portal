@@ -37,6 +37,7 @@ class AlunosController < ApplicationController
   # GET /alunos/1/edit
   def edit
     @aluno = Aluno.find(params[:id])
+    @edit = true
   end
 
   # POST /alunos
@@ -55,6 +56,7 @@ class AlunosController < ApplicationController
         format.html { redirect_success("Aluno adicionado com sucesso!",:alunos, :index)}
         format.json { render json: @aluno, status: :created, location: @aluno }
       else
+        puts "--------- #{@aluno.errors.full_messages}"
         format.html { render action: "new" }
         format.json { render json: @aluno.errors, status: :unprocessable_entity }
       end
@@ -96,7 +98,7 @@ class AlunosController < ApplicationController
 
 protected    
     def check_user
-      if !isAdmin? && !isCoordenador
+      if !current_usuario.isAdmin? && !current_usuario.isCoordenador
         render_404
       end
     end
