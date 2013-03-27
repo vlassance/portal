@@ -1,4 +1,4 @@
-<%= layout_index({title: "Eventos", button_path: new_evento_path, button_title: "Novo Evento", can_create: (!isAluno? && !isGestor?) }) %>
+<%= layout_index({title: "Eventos", button_path: new_evento_path, button_title: "Novo Evento", can_create: (!current_usuario.isAluno? && !current_usuario.isGestor?) }) %>
 <div class="container-fluid">
 	<div class="row-fluid">
 		<div class="span12">

@@ -87,7 +87,7 @@ class CoordenadorEstagioController < ApplicationController
 
   protected    
     def check_user
-      if !isAdmin? && !isCoordenador
+      if !current_usuario.isAdmin? && !current_usuario.isCoordenador
         render_404
       end
     end

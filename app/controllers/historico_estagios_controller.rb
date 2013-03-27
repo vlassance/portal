@@ -11,7 +11,7 @@ class HistoricoEstagiosController < ApplicationController
   end
   protected    
     def check_user
-      if !isAluno?
+      if !current_usuario.isAluno?
         render_404
       end
     end
