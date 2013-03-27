@@ -77,7 +77,7 @@ class AdminInstituicaosController < ApplicationController
 
   protected    
     def check_user
-      if !isAdmin?
+      if !current_usuario.isAdmin?
         render_404
       end
     end

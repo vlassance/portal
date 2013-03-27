@@ -11,9 +11,11 @@
               <a class="dropdown-toggle" data-toggle="dropdown">
                 <i class="icon-cog"></i>
               </a>
-              <ul class="dropdown-menu dropdown-left">
-                <li><a href="/empresas/<%= @empresa.id %>/edit">Editar</a></li>
-              </ul>
+              <% if isAdmin or isAdminEmpresa? %>
+                <ul class="dropdown-menu dropdown-left">
+                  <li><a href="/empresas/<%= @empresa.id %>/edit">Editar</a></li>
+                </ul>
+              <% end %>
             </div>
           </div>
         </div>
