@@ -1,30 +1,37 @@
 <%= form_for(@vaga, :validate => true)  do |f| %>
-  <div class="vpadded">
-   <div class="input full-width">
-        <%= f.label :nome %>
-         <%= f.text_field :nome, :placeholder => "Nome" %>
-    </div>
-   <div class="input full-width">
-        <%= f.label :area %>
-         <%= f.text_field :area, :placeholder => "Área" %>
-    </div>
-   <div class="input full-width">
-        <%= f.label :conhecimentos %>
-         <%= f.text_field :conhecimentos, :placeholder => "Conhecimentos" %>
-    </div>  
-   <div class="input full-width">
-        <%= f.label :linguas %>
-         <%= f.text_field :linguas, :placeholder => "Línguas" %>
-    </div>  
-     <div class="input full-width">
-        <%= f.label :salario %>
-         <%= f.text_field :salario, :placeholder => "Salário" %>
-    </div>   
-  <div class="input full-width">
-        <%= f.label :descricao %>
-         <%= f.text_area :descricao, :placeholder => "Descriçao das atividades da empresa" %>
-    </div>
-   <%= f.submit "Salvar", :class => "btn light-blue inverse" %>
-  <% end %>   
-
-
+	<div class="vpadded">
+		<div class="input full-width">
+			<%= f.label :nome %>
+			<%= f.text_field :nome, :placeholder => "Nome" %>
+		</div>
+		<div class="input full-width">
+			<%= f.label :area, "Área" %>
+			<%= f.text_field :area, :placeholder => "Área" %>
+		</div>
+		<div class="input full-width">
+			<%= f.label :conhecimentos %>
+			<%= f.text_field :conhecimentos, :placeholder => "Conhecimentos" %>
+		</div>  
+		<div class="input full-width">
+			<%= f.label :linguas, "Línguas" %>
+			<%= f.text_field :linguas, :placeholder => "Línguas" %>
+		</div>  
+		<div class="input full-width">
+			<%= f.label :numero_vagas, "Número de vagas" %>
+			<%= f.text_field :numero_vagas, :placeholder => "Número de vagas" %>
+		</div>
+		<div class="input full-width">
+			<%= f.label :salario, "Salário" %>
+			<%= f.text_field :salario, :placeholder => "Salário" %>
+		</div>
+		<div class="input full-width">
+			<%= f.label :email, "E-mail" %>
+			<%= f.text_field :email, :placeholder => "E-mail" %>
+		</div>
+		<div class="input full-width">
+			<%= f.label :descricao, "Descrição das atividades da empresa" %>
+			<%= f.text_area :descricao, :placeholder => "Descrição das atividades da empresa" %>
+		</div>
+		<%= f.submit "Salvar", :class => "btn light-blue inverse" %>
+	</div>
+<% end %>   

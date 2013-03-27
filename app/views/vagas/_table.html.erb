@@ -3,7 +3,7 @@
     <thead>
         <tr>
             <th>Nome</th>
-            <th>Empresa</th>
+            <th>Área</th>
             <th>Número de Vagas</th>
             <th>Salário</th>
             <th>Opt</th>
@@ -13,9 +13,9 @@
         <% @vagas.each do |vaga| %>
             <tr class="gradeX" >
                 <td><%=link_to vaga.nome, vaga%></td>
-                <td><%= vaga.nome %></td>
-                <td><%= vaga.id %></td>
-                <td><%= vaga.id %></td>
+                <td><%= vaga.area %></td>
+                <td><%= vaga.numero_vagas %></td>
+                <td><%= vaga.salario %></td>
                 <td class="td-actions">
                     <div class="btn-group">
                         <a class="btn medium-blue" href="#"><i class="icon-leaf"></i> Opções</a>
