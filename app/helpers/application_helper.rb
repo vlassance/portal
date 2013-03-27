@@ -18,7 +18,7 @@ module ApplicationHelper
           </div> "
         end
     end
-    canAdd = true
+    canAdd = options[:can_create]
     link_new_tag = !canAdd ? nil : ( link_to options[:button_title].to_s, options[:button_path].to_s, :class => "btn light-blue inverse" )  
     html = <<-HTML
           <div class="container-fluid">
@@ -56,8 +56,6 @@ module ApplicationHelper
                           <i class="icon-cog"></i>
                         </a>
                         <ul class="dropdown-menu dropdown-left">
-                          <li><a href="#">Salvar</a></li>
-                          <li><a href="#">Cancelar</a></li>
                         </ul>
                       </div>
                     </div>
@@ -156,8 +154,6 @@ module ApplicationHelper
                           <i class="icon-cog"></i>
                         </a>
                         <ul class="dropdown-menu dropdown-left">
-                          <li><a href="#">Salvar</a></li>
-                          <li><a href="#">Cancelar</a></li>
                         </ul>
                       </div>
                     </div>

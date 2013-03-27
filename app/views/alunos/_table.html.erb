@@ -15,8 +15,10 @@
     					<a class="btn medium-blue dropdown-toggle" data-toggle="dropdown" href="#"><span class="icon-caret-down"></span></a>
     					<ul class="dropdown-menu">
       						<li><a href="/alunos/<%= aluno.id %>"><i class="icon-eye-open"></i> Exibir</a></li>
-            				<li><a href="/alunos/<%= aluno.id %>/edit"><i class="icon-pencil"></i> Editar</a></li>
-      						<li><a href="/alunos/<%= aluno.id %>" data-confirm="<%= "Deseja remover o Aluno?" %>" data-method="delete" rel="nofollow"><i class="icon-trash"></i> Remover</a></li>
+      						<% if isAdmin? %>
+	            				<li><a href="/alunos/<%= aluno.id %>/edit"><i class="icon-pencil"></i> Editar</a></li>
+	      						<li><a href="/alunos/<%= aluno.id %>" data-confirm="<%= "Deseja remover o Aluno?" %>" data-method="delete" rel="nofollow"><i class="icon-trash"></i> Remover</a></li>
+      						<% end %>
     					</ul>
   					</div>
 

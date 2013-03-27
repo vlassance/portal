@@ -81,7 +81,7 @@
 
   protected    
     def check_user
-      if !isAdmin? and !isAdminEmpresa?
+      if !isAdmin?
         render_404
       end
     end
