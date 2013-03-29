@@ -5,14 +5,6 @@ class EmpresasController < ApplicationController
   # GET /empresas.json
   def index
     @empresas = Empresa.all
-  puts "Criando Empresa"
-    empresa = Empresa.create(:nome => 'Software Express' + Empresa.all.count.to_s)
-    if empresa.save(validate: false)
-      puts "empresa criada com sucesso"
-    else
-      puts "*****nao foi possivel criar uma empresa, por favor execute db:seed novamente" + empresa.errors.to_json
-    end
-
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @empresas }
@@ -23,7 +15,7 @@ class EmpresasController < ApplicationController
   # GET /empresas/1.json
   def show
     @empresa = Empresa.find(params[:id])
-
+    @vagas = @empresa.vagas
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @empresa }

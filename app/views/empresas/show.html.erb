@@ -11,7 +11,7 @@
               <a class="dropdown-toggle" data-toggle="dropdown">
                 <i class="icon-cog"></i>
               </a>
-              <% if current_usuario.isAdmin or current_usuario.isAdminEmpresa? %>
+              <% if current_usuario.isAdmin? or current_usuario.isAdminEmpresa? %>
                 <ul class="dropdown-menu dropdown-left">
                   <li><a href="/empresas/<%= @empresa.id %>/edit">Editar</a></li>
                 </ul>
@@ -38,13 +38,30 @@
                 Vagas em Aberto
               </div>
 
+<table class="table table-striped data-table">
+    <thead>
+        <tr>
+            <th>Nome</th>
+            <th>Área</th>
+        </tr>
+    </thead>
+    <tbody>
+        <% @vagas.each do |vaga| %>
+            <tr class="gradeX" >
+                <td><%=link_to vaga.nome, vaga%></td>
+                <td><%= vaga.area %></td>
+            </tr>
+        <% end %>
+    </tbody>
+</table>
             </div>
           </div>
 
           <div class="span6">
             <div class="padded">
-              <%= image_tag @empresa.logo.url(:medium) %>
-
+              <% if @empresa.logo.file? %>
+                  <%= image_tag @empresa.logo.url(:medium) %>
+                <% end %>
               <div class="section-title">
                 Atividades
               </div>
