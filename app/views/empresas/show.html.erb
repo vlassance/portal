@@ -37,23 +37,22 @@
               <div class="section-title">
                 Vagas em Aberto
               </div>
-
-<table class="table table-striped data-table">
-    <thead>
-        <tr>
-            <th>Nome</th>
-            <th>Área</th>
-        </tr>
-    </thead>
-    <tbody>
-        <% @vagas.each do |vaga| %>
-            <tr class="gradeX" >
-                <td><%=link_to vaga.nome, vaga%></td>
-                <td><%= vaga.area %></td>
-            </tr>
-        <% end %>
-    </tbody>
-</table>
+                <table class="table table-striped data-table">
+                    <thead>
+                        <tr>
+                            <th>Nome</th>
+                            <th>Área</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% @vagas.each do |vaga| %>
+                            <tr class="gradeX" >
+                                <td><%=link_to vaga.nome, vaga%></td>
+                                <td><%= vaga.area %></td>
+                            </tr>
+                        <% end %>
+                    </tbody>
+                </table>
             </div>
           </div>
 
