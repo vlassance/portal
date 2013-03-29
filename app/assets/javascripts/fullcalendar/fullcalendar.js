@@ -46,33 +46,33 @@ var defaults = {
 	// time formats
 	titleFormat: {
 		month: 'MMMM yyyy',
-		week: "MMM d[ yyyy]{ '&#8212;'[ MMM] d yyyy}",
-		day: 'dddd, MMM d, yyyy'
+		week: "d [ MMM] [ yyyy]{ '&#8212;' d  MMM  yyyy}",
+		day: 'dddd, d MMM, yyyy'
 	},
 	columnFormat: {
 		month: 'ddd',
-		week: 'ddd M/d',
-		day: 'dddd M/d'
+		week: 'ddd d/M',
+		day: 'dddd d/M'
 	},
 	timeFormat: { // for event elements
-		'': 'h(:mm)t' // default
+		'': 'h:mm' // default
 	},
 
 	// locale
 	isRTL: false,
 	firstDay: 0,
-	monthNames: ['January','February','March','April','May','June','July','August','September','October','November','December'],
-	monthNamesShort: ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'],
-	dayNames: ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'],
-	dayNamesShort: ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'],
+	monthNames: ['Janeiro','Fevereiro','Março','Abril','Maio','Junho','Julho','Agosto','Setembro','Outubro','Novembro','Dezembro'],
+	monthNamesShort: ['Jan','Fev','Mar','Abr','Mai','Jun','Jul','Ago','Set','Out','Nov','Dez'],
+	dayNames: ['Domingo','Segunda','Terça','Quarta','Quinta','Sexta','Sábado'],
+	dayNamesShort: ['Dom','Seg','Ter','Qua','Qui','Sex','Sab'],
 	buttonText: {
 		prev: '&nbsp;&#9668;&nbsp;',
 		next: '&nbsp;&#9658;&nbsp;',
 		prevYear: '&nbsp;&lt;&lt;&nbsp;',
 		nextYear: '&nbsp;&gt;&gt;&nbsp;',
-		month: 'month',
-		week: 'week',
-		day: 'day'
+		month: 'mês',
+		week: 'semana',
+		day: 'dia'
 	},
 
 	// jquery-ui theming
@@ -1555,7 +1555,7 @@ var dateFormatters = {
 	ss	: function(d)	{ return zeroPad(d.getSeconds()) },
 	m	: function(d)	{ return d.getMinutes() },
 	mm	: function(d)	{ return zeroPad(d.getMinutes()) },
-	h	: function(d)	{ return d.getHours() % 12 || 12 },
+	h	: function(d)	{ return d.getHours() % 24 || 0 },
 	hh	: function(d)	{ return zeroPad(d.getHours() % 12 || 12) },
 	H	: function(d)	{ return d.getHours() },
 	HH	: function(d)	{ return zeroPad(d.getHours()) },
@@ -1573,7 +1573,7 @@ var dateFormatters = {
 	tt	: function(d)	{ return d.getHours() < 12 ? 'am' : 'pm' },
 	T	: function(d)	{ return d.getHours() < 12 ? 'A' : 'P' },
 	TT	: function(d)	{ return d.getHours() < 12 ? 'AM' : 'PM' },
-	u	: function(d)	{ return formatDate(d, "yyyy-MM-dd'T'HH:mm:ss'Z'") },
+	u	: function(d)	{ return formatDate(d, "dd-MM-yyyy'T'HH:mm:ss'Z'") },
 	S	: function(d)	{
 		var date = d.getDate();
 		if (date > 10 && date < 20) {
@@ -2797,11 +2797,11 @@ function AgendaDayView(element, calendar) {
 
 setDefaults({
 	allDaySlot: true,
-	allDayText: 'all-day',
+	allDayText: 'dia inteiro',
 	firstHour: 6,
 	slotMinutes: 30,
 	defaultEventMinutes: 120,
-	axisFormat: 'h(:mm)tt',
+	axisFormat: 'h:mm',
 	timeFormat: {
 		agenda: 'h:mm{ - h:mm}'
 	},

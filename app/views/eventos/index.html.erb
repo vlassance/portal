@@ -1,0 +1,45 @@
+<%= layout_index({title: "Eventos", button_path: new_evento_path, button_title: "Novo Evento", can_create: (!current_usuario.isAluno? && !current_usuario.isGestor?) }) %>
+<div class="container-fluid">
+	<div class="row-fluid">
+		<div class="span12">
+<div class="box bordered">
+  <div class="box-header" >
+    <i class="icon-calendar"></i> <span id="calendar-title">Calendário</span>
+  </div>
+
+  <div class="row-fluid">
+    <div class="span12">
+      <div id='calendario' class="calendar"></div>
+  </div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<script>
+    /* initialize the calendar
+     -----------------------------------------------------------------*/
+    
+    var eventos_array = [];
+    eventos_array = [
+    <% @eventos.each do |ev|%>
+    <% horarioDeInicio = Time.parse(ev.horarioInicio) %>
+    <% horarioDeTermino = Time.parse(ev.horarioFim) %>
+    {title: '<%= ev.nome %>',
+    start: new Date(<%= ev.dataInicio.year %>, <%= ev.dataInicio.month - 1  %>, <%= ev.dataInicio.day %> , <%= horarioDeInicio.hour %>, <%= horarioDeInicio.min%>),
+    end: new Date(<%= ev.dataFim.year %>, <%= ev.dataFim.month - 1 %>, <%= ev.dataFim.day %>, <%= horarioDeTermino.hour %>, <%= horarioDeTermino.min%>),
+    allDay: false},
+    <% end %>
+    ];
+
+    $('#calendario').fullCalendar({
+        header: {
+            left: 'prev,next today',
+            center: 'title',
+            right: 'month,agendaWeek,agendaDay'
+        },
+        editable: false,
+        events: eventos_array,
+        droppable: false // this allows things to be dropped onto the calendar !!!
+    }); 
+</script>

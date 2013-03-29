@@ -1,0 +1,47 @@
+<%= form_for(@questionario, html: {multipart: true}) do |f| %>
+	<% if @questionario.errors.any? %>
+		<div id="error_explanation">
+			<h2><%= pluralize(@questionario.errors.count, "error") %> prohibited this questionário from being saved:</h2>
+
+			<ul>
+				<% @questionario.errors.full_messages.each do |msg| %>
+					<li><%= msg %></li>
+				<% end %>
+			</ul>
+		</div>
+	<% end %>
+
+	<div id="fields">
+		<div class="field">
+			<%= f.label :nome %>
+			<%= f.text_field :nome %>
+		</div>
+		<div class="field">
+			<%= f.label :descricao %>
+			<%= f.text_field :descricao %>
+		</div>
+		<!-- TODO: Criar dropdownlist com valores 'aluno' e 'empresa' -->
+		<div class="field">
+			<%= f.label :tipo %>
+			<%= f.select :tipo, options_for_select([["Aluno", "aluno"], ["Empresa", "empresa"]]) %>
+		</div>
+		<label>Perguntas</label>
+		<% if @questionario.perguntas.empty? %>
+			<div class="field" num="0">
+				<input id="pergunta_p0" name="pergunta[p0]" size="100" type="text">
+			<%= link_to_function 'Remover pergunta', '$(this).parent().remove()' %>
+			</div>
+		<% else %>
+			<% @questionario.perguntas.size.times do |i| %>
+				<div class="field" num="<%= i %>">
+					<input id="pergunta_p<%= i %>" name="pergunta[p<%= i %>]" value="<%= @questionario.perguntas[i].descricao %>" size="100" type="text" />
+					<%= link_to_function 'Remover pergunta', '$(this).parent().remove()' %>
+				</div>
+			<% end %>
+		<% end %>
+	</div>
+	<%= link_to_function 'Adicionar pergunta', 'p = $("[num]").last().clone(); n = parseInt(p.attr("num")); p.attr("num", ++n).appendTo($("#fields")).find(":input").attr("id", "pergunta_p" + n).attr("name", "pergunta[p" + n + "]").val("")' %>
+	<div class="actions">
+		<%= f.submit "Salvar", :class => "btn light-blue inverse" %>
+	</div>
+<% end %>

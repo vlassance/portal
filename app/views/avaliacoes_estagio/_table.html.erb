@@ -1,0 +1,32 @@
+<table class="table table-striped data-table">
+	<thead>
+		<tr>
+			<th>Aluno</th>
+			<th>Empresa</th>
+			<th>Relatorio</th>
+			<th>Nota</th>
+		</tr>
+	</thead>
+	<tbody>
+		<% @avaliacoes.each do |avaliacao| %>
+			<tr class="gradeX">
+				<td><%= avaliacao.aluno.nome %></td>
+				<td><%= avaliacao.empresa.nome %></td>
+				<td><%= avaliacao.relatorio %></td>
+				<td><%= avaliacao.nota %></td>
+				<td class="td-actions">
+					<div class="btn-group">
+						<a class="btn medium-blue" href="#"><i class="icon-leaf"></i> Opções</a>
+						<a class="btn medium-blue dropdown-toggle" data-toggle="dropdown" href="#"><span class="icon-caret-down"></span></a>
+						<ul class="dropdown-menu">
+							<li><a href="/avaliacoes_estagio/<%= avaliacao.id %>"><i class="icon-eye-open"></i> Exibir</a></li>
+							<li><a href="/avaliacoes_estagio/<%= avaliacao.id %>/edit"><i class="icon-pencil"></i> Editar</a></li>
+							<!-- <li><a href="/avaliacoes_estagio/<%= avaliacao.id %>" data-confirm="<%= "Deseja remover a avaliação?" %>" data-method="delete" rel="nofollow"><i class="icon-trash"></i> Remover</a></li> -->
+						</ul>
+					</div>
+
+				</td>
+			</tr>
+		<% end %>
+	</tbody>
+</table>

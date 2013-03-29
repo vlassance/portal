@@ -1,0 +1,56 @@
+<div class="container-fluid">
+
+  <div class="row-fluid">
+    <div class="span12">
+
+      <div class="box bordered">
+        <div class="box-header">
+          <i class="icon-th-list"></i> Detalhes do Gestor 
+          <div class="pull-right">
+            <div class="btn-group">
+              <a class="dropdown-toggle" data-toggle="dropdown">
+                <i class="icon-cog"></i>
+              </a>
+              <ul class="dropdown-menu dropdown-left">
+                <li><a href="/gestor/<%= @gestor.id %>/edit">Editar</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="row-fluid">
+
+          <div class="span6">
+            <div class="padded">
+              <div class="section-title">
+                Dados Básicos
+              </div>
+          <div class="input full-width">
+             <label> Nome : <%= @gestor.nome %> </label>
+             <label> CPF : <%= @gestor.cpf %> </label>
+             <label> Cidade : <%= @gestor.cidade %> </label>
+             <label> Estado : <%= @gestor.estado %> </label>
+             <label> Pais : <%= @gestor.pais %> </label>
+          </div>
+          <br/>
+        </div>
+      </div>
+
+      <div class="span6">
+        <div class="padded">
+            <div class="section-title">
+              Contato
+              </div>
+              <div class="input full-width">
+             <label> Telefone : <%= @gestor.telefone %> </label>
+              <label> Celular : <%= @gestor.celular %> </label>
+              <label> E-mail : <%= @gestor.email %> </label>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+

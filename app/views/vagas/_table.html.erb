@@ -1,0 +1,33 @@
+﻿
+<table class="table table-striped data-table">
+    <thead>
+        <tr>
+            <th>Nome</th>
+            <th>Empresa</th>
+            <th>Área</th>
+            <th>Opções</th>
+        </tr>
+    </thead>
+    <tbody>
+        <% @vagas.each do |vaga| %>
+            <tr class="gradeX" >
+                <td><%=link_to vaga.nome, vaga%></td>
+                <td><%= vaga.empresa.nome %></td>
+                <td><%= vaga.area %></td>
+                <td class="td-actions">
+                    <div class="btn-group">
+                        <a class="btn medium-blue" href="#"><i class="icon-leaf"></i> Opções</a>
+                        <a class="btn medium-blue dropdown-toggle" data-toggle="dropdown" href="#"><span class="icon-caret-down"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="/vagas/<%= vaga.id %>"><i class="icon-eye-open"></i> Exibir</a></li>
+                            <% if current_usuario.isAdmin? or current_usuario.isAdminEmpresa? or current_usuario.isCoordenador? %>
+                                <li><a href="/vagas/<%= vaga.id %>/edit"><i class="icon-pencil"></i> Editar</a></li>
+                                <li><a href="/vagas/<%= vaga.id %>" data-confirm="<%= "Deseja remover a Vaga?" %>" data-method="delete" rel="nofollow"><i class="icon-trash"></i> Remover</a></li>
+                            <% end %>
+                        </ul>
+                    </div>
+                </td>            
+            </tr>
+        <% end %>
+    </tbody>
+</table>

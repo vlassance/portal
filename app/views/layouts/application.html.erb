@@ -8,7 +8,7 @@
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,800">
   <%= javascript_include_tag "application.js" %>
-
+  <%= csrf_meta_tag %>
   <meta name="viewport" content="width=device-width, maximum-scale=1, initial-scale=1, user-scalable=0">
   <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
   <!-- there's an IE separated stylesheet with the following resets for IE -->
@@ -29,23 +29,9 @@
   <%= render "partials/app_ui/breadcrumbs" %>
   <%= yield %>
   <%= render "partials/app_ui/footer" %>
+  <%= debug(params) if Rails.env.development? %>
 </section>
 
-
-<!-- Modal dialog used for the image gallery -->
-<div id="modal-gallery" class="modal modal-gallery hide fade" tabindex="-1">
-  <div class="modal-header">
-    <a class="close" data-dismiss="modal">&times;</a>
-    <h3 class="modal-title"></h3>
-  </div>
-  <div class="modal-body"><div class="modal-image"></div></div>
-  <div class="modal-footer">
-    <a class="btn modal-download light-blue inverse" target="_blank"><i class="icon-download"></i> Download</a>
-    <a class="btn modal-play modal-slideshow" data-slideshow="5000"><i class="icon-play icon-white"></i> Slideshow</a>
-    <a class="btn modal-prev medium-blue"><i class="icon-arrow-left icon-white"></i> Previous</a>
-    <a class="btn modal-next medium-blue">Next <i class="icon-arrow-right icon-white"></i></a>
-  </div>
-</div>
 
 </body>
 </html>

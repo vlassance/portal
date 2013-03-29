@@ -1,4 +1,33 @@
 Rails3MongoidDevise::Application.routes.draw do
+
+  resources :coordenador_estagio
+
+  devise_for :usuarios
+  devise_for :admin_instituicao
+
+  resources :contatos_importantes
+  resources :historico_estagios
+  resources :alunos
+  resources :coordenador_estagios
+  resources :eventos
+  resources :admin_instituicaos
+  resources :vagas
+  resources :admin_empresa
+  resources :empresas
+  resources :gestor
+
+  resources :questionarios
+
+  resources :avaliacoes_estagio
+
+  get "gestor/new"
+  get "gestor/create"
+  get "gestor/index"
+  get "gestor/destroy"
+  get "gestor/update"
+  get "gestor/edit"
+  get "meu_perfil/index"
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
@@ -54,5 +83,5 @@ Rails3MongoidDevise::Application.routes.draw do
 
   # This is a legacy wild controller route that's not recommended for RESTful applications.
   # Note: This route will make all actions in every controller accessible via GET requests.
-  # match ':controller(/:action(/:id))(.:format)'
+  match ':controller(/:action(/:id))(.:format)'
 end

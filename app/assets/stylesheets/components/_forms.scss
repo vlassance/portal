@@ -90,7 +90,7 @@ textarea { min-height: 80px; }
   }
 }
 
-.input {
+.input .field_with_errors {
   position: relative;
 
   .input-error {
@@ -102,6 +102,17 @@ textarea { min-height: 80px; }
     color: $red;
     i { font-size: 16px; }
   }
+
+  input {
+    &.warning, &.warning:focus { border-color: $orange; @include box-shadow(none);}
+    &.error, &.error:focus { border-color: $red; @include box-shadow(none); }
+    &.success, &.success:focus { border-color: $green; @include box-shadow(none);}
+  }
+}
+
+
+.input  {
+  position: relative;
 
   .input-warning {
     position: absolute;

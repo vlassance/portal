@@ -1,0 +1,62 @@
+<div class="container-fluid">
+
+	<div class="row-fluid">
+		<div class="span12">
+
+			<div class="box bordered">
+				<div class="box-header">
+					<i class="icon-th-list"></i> Detalhes da Avaliação de <%= @avaliacao.aluno.nome %>
+					<div class="pull-right">
+						<div class="btn-group">
+							<a class="dropdown-toggle" data-toggle="dropdown">
+								<i class="icon-cog"></i>
+							</a>
+							<ul class="dropdown-menu dropdown-left">
+								<li><a href="<%= "#{avaliacoes_estagio_path}/#{@avaliacao.id}/edit" %>">Editar</a></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+
+				<div class="row-fluid">
+
+					<div class="span6">
+						<div class="padded">
+							<div class="section-title">
+								Dados Básicos
+							</div>
+							<div class="input full-width">
+								<label> Aluno: <%= @avaliacao.aluno.nome %> </label>
+							</div>
+							<br/>
+							<div class="input full-width">
+								<label> Empresa: <%= @avaliacao.empresa.nome %> </label>
+							</div>
+							<br/>
+							<div class="input full-width">
+								<label> Relatório: <%= link_to "Relatorio", @avaliacao.relatorio.attachment.url if @avaliacao.relatorio %> </label>
+							</div>
+							<br/>
+							<div class="input full-width">
+								<label> Nota: <%= @avaliacao.nota %> </label>
+							</div>
+							<br/>
+							<% if @avaliacao.respostas.any? %>
+								<label>Perguntas</label>
+								<br/>
+								<% @avaliacao.respostas.each do |r| %>
+									<div class="input full-width">
+										<label> <%= r.pergunta.descricao %> </label>
+										<label> <%= r.descricao %> </label>
+									</div>
+									<br/>
+								<% end %>
+							<% end %>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+

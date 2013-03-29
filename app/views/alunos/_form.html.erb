@@ -1,0 +1,5 @@
+<%= form_for(@aluno, validate: true, html: { multipart: true }) do |f| %>
+  <%= render partial: "partials/usuarios/form", locals: { f: f } %>
+
+<% end %>
+

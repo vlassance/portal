@@ -1,5 +1,6 @@
 //= require jquery182
 //= require jquery-ui
+//= require jquery_ujs
 //= require bootstrap
 //= require chosen.jquery
 //= require jquery.uniform
@@ -9,10 +10,6 @@
 
 //= require jquery.gritter
 //= require notifications
-
-//= require maps/jquery-jvectormap
-//= require maps/world-map
-//= require maps/map-init
 
 //= require faq
 //= require docs
@@ -43,3 +40,4 @@
 //= require justgage/justgage
 //= require gauges
 //= require ie-hacks
+//= require rails.validations
