@@ -16,6 +16,11 @@ class EmpresasController < ApplicationController
   def show
     @empresa = Empresa.find(params[:id])
     @vagas = @empresa.vagas
+    @funcionarios = nil
+    if current_usuario.isCoordenador? or current_usuario.isAdmin?
+      @funcionarios = @empresa.gestor
+      @funcionarios << @empresa.admin_empresa
+    end
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @empresa }
