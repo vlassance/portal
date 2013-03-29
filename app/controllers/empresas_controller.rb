@@ -5,6 +5,13 @@ class EmpresasController < ApplicationController
   # GET /empresas.json
   def index
     @empresas = Empresa.all
+  puts "Criando Empresa"
+    empresa = Empresa.create(:nome => 'Software Express' + Empresa.all.count.to_s)
+    if empresa.save(validate: false)
+      puts "empresa criada com sucesso"
+    else
+      puts "*****nao foi possivel criar uma empresa, por favor execute db:seed novamente" + empresa.errors.to_json
+    end
 
     respond_to do |format|
       format.html # index.html.erb
@@ -81,7 +88,7 @@ class EmpresasController < ApplicationController
     @empresa.destroy
 
     respond_to do |format|
-      format.html { redirect_to empresas_url }
+        format.html { redirect_success("Empresa removida com sucesso!",:empresas, :index)}
       format.json { head :no_content }
     end
   end
