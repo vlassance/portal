@@ -5,7 +5,6 @@ class EmpresasController < ApplicationController
   # GET /empresas.json
   def index
     @empresas = Empresa.all
-
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @empresas }
@@ -16,7 +15,12 @@ class EmpresasController < ApplicationController
   # GET /empresas/1.json
   def show
     @empresa = Empresa.find(params[:id])
-
+    @vagas = @empresa.vagas
+    @funcionarios = nil
+    if current_usuario.isCoordenador? or current_usuario.isAdmin?
+      @funcionarios = @empresa.gestor
+      @funcionarios << @empresa.admin_empresa
+    end
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @empresa }
@@ -81,7 +85,7 @@ class EmpresasController < ApplicationController
     @empresa.destroy
 
     respond_to do |format|
-      format.html { redirect_to empresas_url }
+        format.html { redirect_success("Empresa removida com sucesso!",:empresas, :index)}
       format.json { head :no_content }
     end
   end

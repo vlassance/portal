@@ -23,12 +23,19 @@
       </a>
 
       <ul id="profile-opts" class="collapse secondary">
-        <li class="<%= nav_active(secondary: "profile-settings") %>">
+        <li class="<%= nav_active(secondary: "alterarSenha") %>">
           <a href="#">
             Alterar Senha
           </a>
         </li>
-        <li class="<%= nav_active(secondary: "change-pass") %>">
+        <% if current_usuario.isAdminEmpresa? %>
+          <li class="<%= nav_active(secondary: "editarEmpresa") %>">
+            <a href="/empresas/<%= current_usuario.empresa.id %>/edit">
+              Alterar Empresa
+            </a>
+          </li>
+        <% end %>
+        <li class="<%= nav_active(secondary: "meu_perfil") %>">
           <a href="/meu_perfil">
             Meu Perfil
           </a>

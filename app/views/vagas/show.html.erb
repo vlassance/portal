@@ -41,8 +41,9 @@
 
           <div class="span6">
             <div class="padded">
-              <%= image_tag @vaga.empresa.logo.url(:medium) %>
-
+              <% if @vaga.empresa.logo.file? %>
+                <%= image_tag @vaga.empresa.logo.url(:medium) %>
+              <% end %>
               <div class="section-title">
                 Benefícios
               </div>

@@ -46,6 +46,11 @@ class Usuario
   field :pais, :type => String
   field :cep, :type => String
   field :endereco, :type => String
+
+
+  belongs_to :grupo
+
+
   #validations
 
   validate :check_avatar
@@ -61,14 +66,14 @@ class Usuario
   validates_presence_of :telefone, :message => "digite um telefone"
   validates_confirmation_of :password
 
-  # validates_uniqueness_of :email,:case_sensitive => true, :message => "e-mail ja cadastrado"
-  # validates_uniqueness_of :cpf,:case_sensitive => true, :message => "cpf ja cadastrado"
+  validates_uniqueness_of :email,:case_sensitive => true, :message => "e-mail ja cadastrado"
+  validates_uniqueness_of :cpf,:case_sensitive => true, :message => "cpf ja cadastrado"
 
-  # validates_format_of :email, :with => /^([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})$/i , :message => "e-mail invalido" 
-  # validates_format_of :telefone, :with => /\A([1-9]{2})([- ]{0,1})(\d{3}|\d{4})([- ]{0,1})(\d{4})\Z/, :message => "telefone invalido DDD+numero"
-  # validates_format_of :celular, :with => /\A([1-9]{2})([- ]{0,1})(\d{4}|\d{5})([- ]{0,1})(\d{4})\Z/, :message => "celular invalido DDD+numero"
-  # validates_format_of :cep, :with => /\A(\d{5})([-]{0,1})(\d{3})\Z/, :message => "CEP invalido"
-  # validates_format_of :cpf, :with => /^\d{10,11}$|\d{3}\.\d{3}\.\d{3}-\d{2}$/, :message => "CPF invalido"
+  validates_format_of :email, :with => /^([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})$/i , :message => "e-mail invalido" 
+  validates_format_of :telefone, :with => /\A([1-9]{2})([- ]{0,1})(\d{3}|\d{4})([- ]{0,1})(\d{4})\Z/, :message => "telefone invalido DDD+numero"
+  validates_format_of :celular, :with => /\A([1-9]{2})([- ]{0,1})(\d{4}|\d{5})([- ]{0,1})(\d{4})\Z/, :message => "celular invalido DDD+numero"
+  validates_format_of :cep, :with => /\A(\d{5})([-]{0,1})(\d{3})\Z/, :message => "CEP invalido"
+  validates_format_of :cpf, :with => /^\d{10,11}$|\d{3}\.\d{3}\.\d{3}-\d{2}$/, :message => "CPF invalido"
 
   def check_avatar
     if self.avatar.present?
@@ -78,15 +83,6 @@ class Usuario
       end
     end
   end  
-
-	# validates_format_of :email, :with => /^([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})$/i , :message => "e-mail invalido" 
-	# validates_format_of :telefone, :with => /\A([1-9]{2})([- ]{0,1})(\d{3}|\d{4})([- ]{0,1})(\d{4})\Z/, :message => "telefone invalido DDD+numero"
-	# validates_format_of :celular, :with => /\A([1-9]{2})([- ]{0,1})(\d{4}|\d{5})([- ]{0,1})(\d{4})\Z/, :message => "celular invalido DDD+numero"
-	# validates_format_of :cep, :with => /\A(\d{5})([-]{0,1})(\d{3})\Z/, :message => "CEP invalido"
-	# validates_format_of :cpf, :with => /^\d{10,11}$|\d{3}\.\d{3}\.\d{3}-\d{2}$/, :message => "CPF invalido"  
-
-
-	belongs_to :grupo
 
   def isAdmin?
     self.class == AdminInstituicao

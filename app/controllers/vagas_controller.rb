@@ -81,7 +81,7 @@ class VagasController < ApplicationController
     @vaga.destroy
 
     respond_to do |format|
-      format.html { redirect_to vagas_url }
+        format.html { redirect_success("Vaga removida com sucesso!",:vagas, :index)}
       format.json { head :no_content }
     end
   end
