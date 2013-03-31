@@ -4,13 +4,13 @@ module ApplicationHelper
   def layout_index (options)
     notice = ""
     flash.each do |name, msg|       
-      if name.to_s == "notice_success"
+      if name.to_s == "notice_success" and msg.length > 0
         notice += "<div class='alert green fade in'>
             <button type='button' class='close' data-dismiss='alert'>x</button>
              <strong>Sucesso!</strong> 
              #{ msg }  
           </div> "
-      else
+      elsif msg.length > 0
         notice += "<div class='alert red fade in'>
             <button type='button' class='close' data-dismiss='alert'>x</button>
              <strong>Erro!</strong> 
@@ -99,13 +99,13 @@ module ApplicationHelper
   def notice_helper
     notice = ""
     flash.each do |name, msg|       
-      if name.to_s == "notice_success"
+      if name.to_s == "notice_success" and msg.length > 0
         notice += "<div class='alert green fade in'>
             <button type='button' class='close' data-dismiss='alert'>x</button>
              <strong>Sucesso!</strong> 
              #{ msg }  
           </div> "
-      else
+      elsif msg.length > 0
         notice += "<div class='alert red fade in'>
             <button type='button' class='close' data-dismiss='alert'>x</button>
              <strong>Erro!</strong> 
