@@ -4,7 +4,7 @@ module ApplicationHelper
   def layout_index (options)
     notice = ""
     flash.each do |name, msg|       
-      if name.to_s == "notice_success" and if msg.length > 0
+      if name.to_s == "notice_success" and msg.length > 0
         notice += "<div class='alert green fade in'>
             <button type='button' class='close' data-dismiss='alert'>x</button>
              <strong>Sucesso!</strong> 

@@ -154,6 +154,7 @@ GEM
       rack
     rack-test (0.6.2)
       rack (>= 1.0)
+    railroady (1.1.0)
     rails (3.2.11)
       actionmailer (= 3.2.11)
       actionpack (= 3.2.11)
@@ -244,6 +245,7 @@ DEPENDENCIES
   mongoid-rspec (>= 1.6.0)
   puma (>= 1.6.3)
   quiet_assets (>= 1.0.1)
+  railroady
   rails (= 3.2.11)
   rspec-rails (>= 2.12.2)
   sass-rails (~> 3.2.3)
