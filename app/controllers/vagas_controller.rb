@@ -4,7 +4,12 @@ class VagasController < ApplicationController
 	before_filter :check_user, :except => [:show, :index, :candidatura]
 
 	def index
-		@vagas = Vaga.all
+		@vagas = nil
+		if current_usuario.isAdminEmpresa? or current_usuario.isGestor?
+			@vagas = current_usuario.empresa.vagas
+		else
+			@vagas = Vaga.all
+		end
 
 		respond_to do |format|
 			format.html # index.html.erb
@@ -43,6 +48,7 @@ class VagasController < ApplicationController
 	def create
 		@vaga = Vaga.new(params[:vaga])
 
+		@vaga.empresa = current_usuario.empresa
 		respond_to do |format|
 			if @vaga.save
 				format.html { redirect_success("Vaga criada com sucesso!",:vagas, :index)}
@@ -77,7 +83,7 @@ class VagasController < ApplicationController
 		@vaga.destroy
 
 		respond_to do |format|
-			format.html { redirect_to vagas_url }
+			format.html { redirect_success("Vaga removida com sucesso!",:vagas, :index)}
 			format.json { head :no_content }
 		end
 	end

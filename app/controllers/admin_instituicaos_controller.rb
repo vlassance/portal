@@ -27,6 +27,7 @@ class AdminInstituicaosController < ApplicationController
   # GET /admin_instituicaos/1/edit
   def edit
     @admin_instituicao = AdminInstituicao.find(params[:id])
+    @edit = true
   end
 
   # POST /admin_instituicaos
@@ -77,7 +78,7 @@ class AdminInstituicaosController < ApplicationController
 
   protected    
     def check_user
-      if !isAdmin?
+      if !current_usuario.isAdmin?
         render_404
       end
     end

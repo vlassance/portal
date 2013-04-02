@@ -1,4 +1,4 @@
-<%= form_for(@coordenador_estagio) do |f| %>
+<%= form_for(@coordenador_estagio, validate: true, html: { multipart: true }) do |f| %>
   <%= render partial: "partials/usuarios/form", locals: { f: f } %>  
 <% end %>   
 

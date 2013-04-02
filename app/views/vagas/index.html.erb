@@ -1,2 +1,2 @@
-<%= layout_index({title: "Vagas", button_path: new_vaga_path, button_title: "Nova Vaga" }) %>
+<%= layout_index({title: "Vagas", button_path: new_vaga_path, button_title: "Nova Vaga", can_create: (current_usuario.isAdminEmpresa? or current_usuario.isAdmin?) }) %>
 
