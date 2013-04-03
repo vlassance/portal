@@ -40,6 +40,17 @@
 	<%= f.text_field :cep, :placeholder => "CEP" %>
 </div>
 
+<% if !@aluno.nil? %>
+<div class="input full-width">
+	<%= f.label "Perfil do Facebook" %>
+	<%= f.text_field :facebook_id, :placeholder => "Facebook" %>
+</div>
+<div class="input full-width">
+	<%= f.label "Perfil do Linkedin" %>
+	<%= f.text_field :linkedin_id, :placeholder => "Linkedin" %>
+</div>
+<% end %>
+
 <% if !@edit %>
  <div class="input full-width">
 	<%= f.label :password %>

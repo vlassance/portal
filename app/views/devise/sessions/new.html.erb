@@ -1,4 +1,5 @@
 <div class="login-container center">
+  <%= notice_helper %>
   <div class="title text-transparent">Entrar</div>
 <%= form_for(resource, :as => resource_name, :url => session_path(resource_name),:html => {:class => "login-form"})  do |f| %>
     <ul class="fields-list">
