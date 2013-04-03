@@ -14,9 +14,11 @@ Rails3MongoidDevise::Application.routes.draw do
 	resources :eventos
 	resources :admin_instituicaos
 
-	resources :vagas do
+	resources :vagas
+	resources :candidaturas do
 		member do
-			get :candidatura
+			get :candidatarse
+			get :desistir
 		end
 	end
 

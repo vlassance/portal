@@ -88,21 +88,6 @@ class VagasController < ApplicationController
 		end
 	end
 
-	def candidatura
-		if !current_usuario.isAluno?
-			render_404
-		end
-		vaga = Vaga.find(params[:id])
-
-		candidatura = Candidatura.new
-		candidatura.aluno = current_usuario
-		candidatura.vaga = vaga
-		candidatura.aceita = false
-		if candidatura.save
-			redirect_to candidaturas_url
-		end
-	end
-
 	protected    
 	def check_user
 		if !current_usuario.isAdmin? && !current_usuario.isCoordenador? && !current_usuario.isAdminEmpresa?

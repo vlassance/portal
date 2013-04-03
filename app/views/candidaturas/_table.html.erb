@@ -25,9 +25,7 @@
 						<a class="btn medium-blue" href="#"><i class="icon-leaf"></i> Opções</a>
 						<a class="btn medium-blue dropdown-toggle" data-toggle="dropdown" href="#"><span class="icon-caret-down"></span></a>
 						<ul class="dropdown-menu">
-							<li><a href="/questionarios/<%= candidatura.id %>"><i class="icon-eye-open"></i> Exibir</a></li>
-							<li><a href="/questionarios/<%= candidatura.id %>/edit"><i class="icon-pencil"></i> Editar</a></li>
-							<li><a href="/questionarios/<%= candidatura.id %>" data-confirm="<%= "Deseja remover o Questionário?" %>" data-method="delete" rel="nofollow"><i class="icon-trash"></i> Remover</a></li>
+							<li><a href="/candidaturas/<%= candidatura.id %>/desistir"><i class="icon-trash"></i> Desistir</a></li>
 						</ul>
 					</div>
 
