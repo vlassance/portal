@@ -48,6 +48,7 @@ class Usuario
   field :endereco, :type => String
 
 
+  attr_accessible :sign_in_count, :last_sign_in_at
   belongs_to :grupo
 
 
