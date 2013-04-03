@@ -5,15 +5,24 @@
             <th>Nome</th>
             <th>Empresa</th>
             <th>Área</th>
+            <th>Data de expiração</th>
             <th>Opções</th>
         </tr>
     </thead>
     <tbody>
         <% @vagas.each do |vaga| %>
+        <% a = Date.today
+            b = Date.today.day - 1 
+            c = Date.new(a.year, a.month, b) %>
+
+
+
+        <% if vaga.data_expiracao > c %>
             <tr class="gradeX" >
                 <td><%=link_to vaga.nome, vaga%></td>
-                <td><%= vaga.empresa.nome %></td>
+                <td><%= vaga.empresa.nome if !vaga.empresa.nil?%></td>
                 <td><%= vaga.area %></td>
+                <td><%= vaga.data_expiracao.strftime('%d/%m/%Y') %></td>
                 <td class="td-actions">
                     <div class="btn-group">
                         <a class="btn medium-blue" href="#"><i class="icon-leaf"></i> Opções</a>
@@ -28,6 +37,7 @@
                     </div>
                 </td>            
             </tr>
+            <% end %>
         <% end %>
     </tbody>
 </table>
