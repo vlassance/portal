@@ -17,7 +17,7 @@ Rails3MongoidDevise::Application.routes.draw do
 	resources :vagas
 	resources :candidaturas do
 		member do
-			get :candidatarse
+			get :aceitar
 			get :desistir
 		end
 	end

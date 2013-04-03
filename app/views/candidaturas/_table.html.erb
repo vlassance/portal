@@ -1,6 +1,7 @@
 <table class="table table-striped data-table">
 	<thead>
 		<tr>
+			<th>Vaga</th>
 			<% if !current_usuario.isAdminEmpresa? %>
 				<th>Empresa</th>
 			<% end %>
@@ -8,11 +9,13 @@
 				<th>Aluno</th>
 			<% end %>
 			<th>Aceita</th>
+			<th>Validada</th>
 		</tr>
 	</thead>
 	<tbody>
 		<% @candidaturas.each do |candidatura| %>
 			<tr class="gradeX">
+				<td><%=link_to candidatura.vaga.nome, candidatura.vaga%></td>
 				<% if !current_usuario.isAdminEmpresa? %>
 					<td><%= candidatura.vaga.empresa.nome %></td>
 				<% end %>
@@ -20,12 +23,33 @@
 					<td><%= candidatura.aluno.nome %></td>
 				<% end %>
 				<td><%= candidatura.aceita ? "Sim" : "Não" %></td>
+				<td><%= candidatura.validada ? "Sim" : "Não" %></td>
 				<td class="td-actions">
 					<div class="btn-group">
 						<a class="btn medium-blue" href="#"><i class="icon-leaf"></i> Opções</a>
 						<a class="btn medium-blue dropdown-toggle" data-toggle="dropdown" href="#"><span class="icon-caret-down"></span></a>
 						<ul class="dropdown-menu">
-							<li><a href="/candidaturas/<%= candidatura.id %>/desistir"><i class="icon-trash"></i> Desistir</a></li>
+							<% if current_usuario.isAdmin? %>
+								<% if candidatura.validada %>
+									<li><a href="/candidaturas/<%= candidatura.id %>/desistir"><i class="icon-trash"></i> Desistir</a></li>
+								<% else %>
+									<li><a href="/candidaturas/<%= candidatura.id %>/aceitar"><i class="icon-ok"></i> Validar</a></li>
+								<% end %>
+							<% end %>
+							<% if current_usuario.isAdminEmpresa? %>
+								<% if candidatura.aceita %>
+									<li><a href="/candidaturas/<%= candidatura.id %>/desistir"><i class="icon-trash"></i> Desistir</a></li>
+								<% else %>
+									<li><a href="/candidaturas/<%= candidatura.id %>/aceitar"><i class="icon-ok"></i> Aceitar</a></li>
+								<% end %>
+							<% end %>
+							<% if current_usuario.isAluno? %>
+								<% if candidatura.aceita and candidatura.validada %>
+									<li><a href="/candidaturas/<%= candidatura.id %>/confirmar"><i class="icon-trash"></i> Confirmar</a></li>
+								<% else %>
+									<li><a href="/candidaturas/<%= candidatura.id %>/desistir"><i class="icon-trash"></i> Desistir</a></li>
+								<% end %>
+							<% end %>
 						</ul>
 					</div>
 
