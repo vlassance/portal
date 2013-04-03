@@ -1,0 +1,29 @@
+<h1>Listing modulos</h1>
+
+<table>
+  <tr>
+    <th>Nome</th>
+    <th>Ano</th>
+    <th>Datainicio</th>
+    <th>Datafim</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @modulos.each do |modulo| %>
+  <tr>
+    <td><%= modulo.nome %></td>
+    <td><%= modulo.ano %></td>
+    <td><%= modulo.dataInicio %></td>
+    <td><%= modulo.dataFim %></td>
+    <td><%= link_to 'Show', modulo %></td>
+    <td><%= link_to 'Edit', edit_modulo_path(modulo) %></td>
+    <td><%= link_to 'Destroy', modulo, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Modulo', new_modulo_path %>
