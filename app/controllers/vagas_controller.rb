@@ -46,7 +46,7 @@ class VagasController < ApplicationController
   # POST /vagas.json
   def create
     @vaga = Vaga.new(params[:vaga])
-    @vaga.empresa = current_usuario.empresa
+    @vaga.empresa = current_usuario.isAdminEmpresa? ? current_usuario.empresa : nil
     respond_to do |format|
       if @vaga.save
         format.html { redirect_success("Vaga criada com sucesso!",:vagas, :index)}
