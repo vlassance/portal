@@ -1,28 +1,7 @@
 class DataImportantesController < ApplicationController
-  # GET /data_importantes
-  # GET /data_importantes.json
-  def index
-    @data_importantes = DataImportante.all
 
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @data_importantes }
-    end
-  end
+  before_filter :check_user
 
-  # GET /data_importantes/1
-  # GET /data_importantes/1.json
-  def show
-    @data_importante = DataImportante.find(params[:id])
-
-    respond_to do |format|
-      format.html # show.html.erb
-      format.json { render json: @data_importante }
-    end
-  end
-
-  # GET /data_importantes/new
-  # GET /data_importantes/new.json
   def new
     @data_importante = DataImportante.new
 
@@ -80,4 +59,10 @@ class DataImportantesController < ApplicationController
       format.json { head :no_content }
     end
   end
+  protected    
+    def check_user
+      if !current_usuario.isAdmin? && !current_usuario.isCoordenador?
+        render_404
+      end
+    end
 end

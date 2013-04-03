@@ -1,6 +1,7 @@
 class ModulosController < ApplicationController
-  # GET /modulos
-  # GET /modulos.json
+
+  before_filter :check_user
+  
   def index
     @modulos = Modulo.all
 
@@ -80,4 +81,11 @@ class ModulosController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  protected    
+    def check_user
+      if !current_usuario.isAdmin? && !current_usuario.isCoordenador?
+        render_404
+      end
+    end
 end
