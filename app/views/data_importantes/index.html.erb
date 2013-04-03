@@ -1,0 +1,27 @@
+<h1>Listing data_importantes</h1>
+
+<table>
+  <tr>
+    <th>Descricao</th>
+    <th>Data</th>
+    <th>Comentario</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @data_importantes.each do |data_importante| %>
+  <tr>
+    <td><%= data_importante.descricao %></td>
+    <td><%= data_importante.data %></td>
+    <td><%= data_importante.comentario %></td>
+    <td><%= link_to 'Show', data_importante %></td>
+    <td><%= link_to 'Edit', edit_data_importante_path(data_importante) %></td>
+    <td><%= link_to 'Destroy', data_importante, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Data importante', new_data_importante_path %>

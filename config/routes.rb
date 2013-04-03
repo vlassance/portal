@@ -1,5 +1,9 @@
 Rails3MongoidDevise::Application.routes.draw do
 
+	resources :data_importantes
+
+	resources :modulos
+
 	resources :candidaturas
 
 	resources :coordenador_estagio

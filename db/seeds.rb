@@ -9,6 +9,7 @@
 #Menu.create(:nome => 'Home', :url => '/home')
 #Menu.create(:nome => 'Usuarios', :url => '/users')
 #Menu.create(:nome => 'Grupos de Acesso', :url => '/grupos')
+puts"**inicio dos seeds"
 HistoricoEstagio.destroy_all
 Evento.destroy_all
 Vaga.destroy_all
@@ -102,6 +103,10 @@ puts "Criando Menus Basicos"
   menu_alunos = Menu.create(:nome => 'Alunos', :url => '/alunos', :icon => "icon-group", :primary => "alunos")
   menu_alunos.grupos << admin
   menu_alunos.grupos << coordenador
+
+  menu_modulos = Menu.create(:nome => 'Módulos', :url => '/modulos', :icon => "icon-sitemap", :primary => "modulos")
+  menu_modulos.grupos << admin
+  menu_modulos.grupos << coordenador
 
   menu_historico = Menu.create(:nome => 'Estágios', :url => '/historico_estagios', :icon => "icon-bar-chart", :primary => "historico")
   menu_historico.grupos << aluno
