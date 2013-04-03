@@ -15,7 +15,9 @@ class ApplicationController < ActionController::Base
   end
 
  def sendEmail (data, nome, descricao)
-    DatasMailer.datas("raphael.sampaio@gmail.com",data, nome, descricao).deliver
+  Aluno.all.each do |aluno|
+    DatasMailer.datas(aluno.email,data, nome, descricao).deliver
+  end
  end
 
 def render_404
