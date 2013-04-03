@@ -1,6 +1,6 @@
-# Additional translations at https://github.com/plataformatec/devise/wiki/I18n
+﻿# Additional translations at https://github.com/plataformatec/devise/wiki/I18n
 
-en:
+pt:
   devise:
     confirmations:
       confirmed: "Your account was successfully confirmed. You are now signed in."
@@ -9,7 +9,7 @@ en:
     failure:
       already_authenticated: "You are already signed in."
       inactive: "Your account was not activated yet."
-      invalid: "Invalid email or password."
+      invalid: "Senha ou usuário inválido."
       invalid_token: "Invalid authentication token."
       locked: "Your account is locked."
       not_found_in_database: "Invalid email or password."
@@ -42,7 +42,7 @@ en:
       updated: "You updated your account successfully."
     sessions:
       signed_in: ""
-      signed_out: "Signed out successfully."
+      signed_out: ""
     unlocks:
       send_instructions: "You will receive an email with instructions about how to unlock your account in a few minutes."
       send_paranoid_instructions: "If your account exists, you will receive an email with instructions about how to unlock it in a few minutes."
