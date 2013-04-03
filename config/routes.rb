@@ -28,13 +28,8 @@ Rails3MongoidDevise::Application.routes.draw do
 
 	resources :avaliacoes_estagio
 
-	get "gestor/new"
-	get "gestor/create"
-	get "gestor/index"
-	get "gestor/destroy"
-	get "gestor/update"
-	get "gestor/edit"
 	get "meu_perfil/index"
+	get "webservice/aluno"
 
 	# The priority is based upon order of creation:
 	# first created -> highest priority.
