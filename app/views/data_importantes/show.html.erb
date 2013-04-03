@@ -1,20 +1,44 @@
-<p id="notice"><%= notice %></p>
+<div class="container-fluid">
 
-<p>
-  <b>Descricao:</b>
-  <%= @data_importante.descricao %>
-</p>
+  <div class="row-fluid">
+    <div class="span12">
 
-<p>
-  <b>Data:</b>
-  <%= @data_importante.data %>
-</p>
+      <div class="box bordered">
+        <div class="box-header">
+          <i class="icon-th-list"></i> Detalhes da Data 
+          <div class="pull-right">
+            <div class="btn-group">
+              <a class="dropdown-toggle" data-toggle="dropdown">
+                <i class="icon-cog"></i>
+              </a>
+              <ul class="dropdown-menu dropdown-left">
+                <li><a href="/data_importantes/<%= @data_importante.id %>/edit">Editar</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
 
-<p>
-  <b>Comentario:</b>
-  <%= @data_importante.comentario %>
-</p>
+        <div class="row-fluid">
+
+          <div class="span6">
+            <div class="padded">
+              <div class="section-title">
+                Dados Básicos
+              </div>
+          <div class="input full-width">
+             <label> Descrição : <%= @data_importante.descricao %> </label>
+             <label> Data : <%= @data_importante.data.strftime('%d/%m/%Y')%> </label>
+             <label> Comentário : <%= @data_importante.comentario %> </label>
+          </div>
+          <br/>
+              
+
+            </div>
+          </div>
+          </div>
+        </div>
+    </div>
+  </div>
+</div>
 
 
-<%= link_to 'Edit', edit_data_importante_path(@data_importante) %> |
-<%= link_to 'Back', data_importantes_path %>
