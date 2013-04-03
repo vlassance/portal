@@ -1,0 +1,33 @@
+<table class="table table-striped data-table">
+    <thead>
+        <tr>
+            <th>Nome</th>
+            <th>Ano</th>
+            <th>Data Início</th>
+            <th>Data Fim</th>
+            <th>Ações</th>
+        </tr>
+    </thead>
+    <tbody>
+        <% @modulos.each do |modulo| %>
+            <tr class="gradeX">
+                <td><%=link_to modulo.nome, modulo%></td>
+                <td><%=modulo.ano.to_s%></td>
+                <td><%= modulo.dataInicio.strftime('%d/%m/%Y') %></td>
+                <td><%= modulo.dataFim.strftime('%d/%m/%Y') %></td>
+                <td class="td-actions">
+                    <div class="btn-group">
+                        <a class="btn medium-blue" href="#"><i class="icon-leaf"></i> Opções</a>
+                        <a class="btn medium-blue dropdown-toggle" data-toggle="dropdown" href="#"><span class="icon-caret-down"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="/modulos/<%= modulo.id %>"><i class="icon-eye-open"></i> Exibir</a></li>
+                            <li><a href="/modulos/<%= modulo.id %>/edit"><i class="icon-pencil"></i> Editar</a></li>
+                            <li><a href="/modulos/<%= modulo.id %>" data-confirm="<%= "Deseja remover o Módulo?" %>" data-method="delete" rel="nofollow"><i class="icon-trash"></i> Remover</a></li>
+                        </ul>
+                    </div>
+
+                </td> 
+             </tr>
+        <% end %>
+    </tbody>
+</table>
