@@ -4,8 +4,12 @@ class VagasController < ApplicationController
   before_filter :check_user, :except => [:show, :index]
 
   def index
-    @vagas = Vaga.all
-
+    @vagas = nil
+    if current_usuario.isAdminEmpresa? or current_usuario.isGestor?
+      @vagas = current_usuario.empresa.vagas
+    else
+      @vagas = Vaga.all
+    end
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @vagas }
@@ -42,13 +46,13 @@ class VagasController < ApplicationController
   # POST /vagas.json
   def create
     @vaga = Vaga.new(params[:vaga])
-
+    @vaga.empresa = current_usuario.empresa
     respond_to do |format|
       if @vaga.save
-        format.html { redirect_success("Vaga criada com sucesso !",:vagas, :index)}
+        format.html { redirect_success("Vaga criada com sucesso!",:vagas, :index)}
         format.json { render json: @vaga, status: :created, location: @vaga }
       else
-        format.html { redirect_error("Erro ao adicionar a vaga!",:vagas, :index)}
+        format.html { redirect_error("Erro ao adicionar a vaga! #{@vaga.errors.full_messages}",:vagas, :index)}
         format.json { render json: @vaga.errors, status: :unprocessable_entity }
       end
     end
@@ -77,13 +81,13 @@ class VagasController < ApplicationController
     @vaga.destroy
 
     respond_to do |format|
-      format.html { redirect_to vagas_url }
+        format.html { redirect_success("Vaga removida com sucesso!",:vagas, :index)}
       format.json { head :no_content }
     end
   end
   protected    
     def check_user
-      if !isAdmin? && !isCoordenador && !isAdminEmpresa?
+      if !current_usuario.isAdmin? && !current_usuario.isCoordenador? && !current_usuario.isAdminEmpresa?
         render_404
       end
     end

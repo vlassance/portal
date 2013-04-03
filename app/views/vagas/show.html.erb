@@ -1,40 +1,71 @@
-<p id="notice"><%= notice %></p>
+<div class="container-fluid">
 
-<p>
-  <b>Nome:</b>
-  <%= @vaga.nome %>
-</p>
+  <div class="row-fluid">
+    <div class="span12">
 
-<p>
-  <b>Descricao:</b>
-  <%= @vaga.descricao %>
-</p>
+      <div class="box bordered">
+        <div class="box-header">
+          <i class="icon-th-list"></i> Detalhes da vaga <%= @vaga.nome.capitalize %>
+          <div class="pull-right">
+            <div class="btn-group">
+              <a class="dropdown-toggle" data-toggle="dropdown">
+                <i class="icon-cog"></i>
+              </a>
+                <ul class="dropdown-menu dropdown-left">
+                  <li><a href="/empresas/<%= @vaga.empresa.id %>/edit">Empresa</a></li>
+                </ul>
+            </div>
+          </div>
+        </div>
 
-<p>
-  <b>Salario:</b>
-  <%= @vaga.salario %>
-</p>
+        <div class="row-fluid">
 
-<p>
-  <b>Requisitos:</b>
-  <%= @vaga.requisitos %>
-</p>
+          <div class="span6">
+            <div class="padded">
+              <div class="section-title">
+                Dados Básicos
+              </div>
+          <div class="input full-width">
+             <label> Nome : <%= @vaga.nome %> </label>
+             <label> Empresa : <%= @vaga.empresa.nome %> </label>
+             <label> Área : <%= @vaga.area %> </label>
+             <label> Descrição : <%= @vaga.descricao %> </label>
+              <label> Contato : <%= @vaga.contatos %> </label>
 
-<p>
-  <b>Linguas:</b>
-  <%= @vaga.linguas %>
-</p>
-
-<p>
-  <b>Conhecimentos:</b>
-  <%= @vaga.conhecimentos %>
-</p>
-
-<p>
-  <b>Area:</b>
-  <%= @vaga.area %>
-</p>
+          </div>
+          <br/>
 
 
-<%= link_to 'Edit', edit_vaga_path(@vaga) %> |
-<%= link_to 'Back', vagas_path %>
+            </div>
+          </div>
+
+          <div class="span6">
+            <div class="padded">
+              <% if @vaga.empresa.logo.file? %>
+                <%= image_tag @vaga.empresa.logo.url(:medium) %>
+              <% end %>
+              <div class="section-title">
+                Benefícios
+              </div>
+          <div class="input full-width">
+             <label> Benefícios : <%= @vaga.beneficios %> </label>
+             <label> Salário : <%= @vaga.salario %> </label>
+          </div>
+
+
+              <div class="section-title">
+                Requisitos
+              </div>
+             <div class="input full-width">
+                <label> Requisistos : <%= @vaga.requisitos %> </label>
+
+            </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+    </div>
+  </div>
+</div>
+

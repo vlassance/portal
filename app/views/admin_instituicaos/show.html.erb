@@ -12,9 +12,11 @@
               <a class="dropdown-toggle" data-toggle="dropdown">
                 <i class="icon-cog"></i>
               </a>
-              <ul class="dropdown-menu dropdown-left">
-                <li><a href="/admin_empresa/<%= @admin_empresa.id %>/edit">Editar</a></li>
-              </ul>
+              <% if current_usuario.isAdmin? %>
+                <ul class="dropdown-menu dropdown-left">
+                  <li><a href="/admin_empresa/<%= @admin_empresa.id %>/edit">Editar</a></li>
+                </ul>
+              <% end %>
             </div>
           </div>
         </div>

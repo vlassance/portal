@@ -89,7 +89,7 @@ class EventosController < ApplicationController
   end
   protected    
     def check_user
-      if !isAdmin? && !isCoordenador && !isAdminEmpresa?
+      if !current_usuario.isAdmin? && !current_usuario.isCoordenador && !current_usuario.isAdminEmpresa?
         render_404
       end
     end

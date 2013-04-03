@@ -14,12 +14,15 @@
                 <td><%= coordenador_estagio.email %></td>
                 <td><%= coordenador_estagio.cpf %></td>
                 <td class="td-actions">
-                    <a class="btn btn-mini dark-blue">
-                        <i class=" icon-ok"></i>
-                    </a>
-                    <a class="btn btn-mini light-blue inverse">
-                        <i class=" icon-remove"></i>
-                    </a>
+                   <div class="btn-group">
+                        <a class="btn medium-blue" href="#"><i class="icon-leaf"></i> Opções</a>
+                        <a class="btn medium-blue dropdown-toggle" data-toggle="dropdown" href="#"><span class="icon-caret-down"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="/coordenador_estagio/<%= coordenador_estagio.id %>"><i class="icon-eye-open"></i> Exibir</a></li>
+                            <li><a href="/coordenador_estagio/<%= coordenador_estagio.id %>/edit"><i class="icon-pencil"></i> Editar</a></li>
+                            <li><a href="/coordenador_estagio/<%= coordenador_estagio.id %>" data-confirm="<%= "Deseja remover o Coordenador de Estágio?" %>" data-method="delete" rel="nofollow"><i class="icon-trash"></i> Remover</a></li>
+                        </ul>
+                    </div>
 <%#= link_to 'Show', empresa %>
 <%#= link_to 'Edit', edit_empresa_path(empresa) %>
 <%#= link_to 'Destroy', empresa, method: :delete, data: { confirm: 'Are you sure?' } %>

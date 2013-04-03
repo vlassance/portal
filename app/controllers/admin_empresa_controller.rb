@@ -26,6 +26,7 @@
   def edit
     @admin_empresa = AdminEmpresa.find(params[:id])
     @empresas = Empresa.all
+    @edit = true
   end
 
   # POST /admin_empresa
@@ -81,7 +82,7 @@
 
   protected    
     def check_user
-      if !isAdmin? and !isAdminEmpresa?
+      if !current_usuario.isAdmin? and !current_usuario.isAdminEmpresa?
         render_404
       end
     end
