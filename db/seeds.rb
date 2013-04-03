@@ -9,6 +9,7 @@
 #Menu.create(:nome => 'Home', :url => '/home')
 #Menu.create(:nome => 'Usuarios', :url => '/users')
 #Menu.create(:nome => 'Grupos de Acesso', :url => '/grupos')
+puts"**inicio dos seeds"
 HistoricoEstagio.destroy_all
 Evento.destroy_all
 Vaga.destroy_all

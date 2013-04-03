@@ -1,9 +1,9 @@
 class ModulosController < ApplicationController
 
   before_filter :check_user
-  
+
   def index
-    @modulos = Modulo.all
+    @modulos = Modulo.where(:ano.gte => Date.today.year)
 
     respond_to do |format|
       format.html # index.html.erb

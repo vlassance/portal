@@ -1,33 +1,75 @@
-<%= form_for(@modulo) do |f| %>
-  <% if @modulo.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@modulo.errors.count, "error") %> prohibited this modulo from being saved:</h2>
+<%= javascript_include_tag "datePicker.js" %>
+<script>
 
-      <ul>
-      <% @modulo.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+ $(document).ready(function(){
+  $( "#modulo_dataInicio" ).datepicker({
+               regional: "pt-BR",
+               dateFormat: 'dd-MM-yyyy',
+        onClose: function ()
+      {
+          this.focus();
+      }
+   });
+   $( "#modulo_dataFim" ).datepicker({
+           regional: "pt-BR",
+    onClose: function ()
+      {
+          this.focus();
+      }
+   });
+ });
+  
+ function validate(){
+  var camposNaoPreenchidos = false;
+  var dataErrada = false;
+  var DateToValue = $("#modulo_tempoFim").val();
+  var DateFromValue = $("#modulo_tempoInicio").val();
 
-  <div class="field">
-    <%= f.label :nome %><br />
+  
+   var parts = DateToValue.split("/");
+   var date_inicio = new Date(parts[1] + "/" + parts[0] + "/" + parts[2]);
+
+   parts = DateFromValue.split("/");
+   var date_final = new Date(parts[1] + "/" + parts[0] + "/" + parts[2]);
+
+  if ((date_inicio.getTime()) < (date_final.getTime())) {
+    alert("Data final deve ser maior que a inicial!");
+    dataErrada = true;
+    var e = window.event;
+    e.cancelBubble = true;
+    e.returnValue = false;
+
+    if (e.stopPropagation) {
+            e.stopPropagation();
+            e.preventDefault();
+      }
+    return false; 
+  } 
+  
+  
+    
+}
+ 
+ 
+</script>
+<%= form_for(@modulo, validate: true) do |f| %>
+  <div class="vpadded">
+  <div class="input full-width">
+    <%= f.label :nome %>
     <%= f.text_field :nome %>
   </div>
-  <div class="field">
-    <%= f.label :ano %><br />
-    <%= f.number_field :ano %>
+  <div class="input full-width">
+    <%= f.label :ano %>
+    <%= f.number_field :ano, :value => Date.today.year %>
   </div>
-  <div class="field">
-    <%= f.label :dataInicio %><br />
+  <div class="input full-width">
+    <%= f.label :dataInicio %>
     <%= f.text_field :dataInicio %>
   </div>
-  <div class="field">
-    <%= f.label :dataFim %><br />
+  <div class="input full-width">
+    <%= f.label :dataFim %>
     <%= f.text_field :dataFim %>
   </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+     <%= f.submit "Salvar", :class => "btn light-blue inverse" %>
+   </div>
 <% end %>
