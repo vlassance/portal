@@ -1,4 +1,4 @@
-<%= javascript_include_tag "datePicker.js" %>
+﻿<%= javascript_include_tag "datePicker.js" %>
 <script>
 
  $(document).ready(function(){
@@ -17,9 +17,14 @@
 <%= form_for(@data_importante, validate: true) do |f| %>
   <div class="vpadded">
   <div class="input full-width">
-    <%= f.label :descricao %>
+    <%= f.label "Módulo" %>
+      <%= collection_select(:data_importante, :modulo_id, Modulo.all, :id, :nome) %>
+  </div>
+    <div class="input full-width">
+    <%= f.label "Descrição" %>
     <%= f.text_field :descricao %>
   </div>
+
   <div class="input full-width">
      <%= f.label :data %>
      <%= f.text_field :data %>

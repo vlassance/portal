@@ -51,7 +51,7 @@ class EventosController < ApplicationController
       if @evento.save
        t1 = Thread.new {sendEmail params[:evento][:dataInicio].to_s, params[:evento][:nome].to_s , params[:evento][:descricao].to_s}
        #t1.join
-        format.html { redirect_to @evento, notice: 'Evento was successfully created.' }
+        format.html { redirect_success("Evento adicionado com sucesso!",:eventos, :index)}
         format.json { render json: @evento, status: :created, location: @evento }
       else
         format.html { render action: "new" }
@@ -67,7 +67,7 @@ class EventosController < ApplicationController
 
     respond_to do |format|
       if @evento.update_attributes(params[:evento])
-        format.html { redirect_to @evento, notice: 'Evento was successfully updated.' }
+        format.html { redirect_success("Evento alterado com sucesso!",:eventos, :index)}
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
@@ -83,7 +83,7 @@ class EventosController < ApplicationController
     @evento.destroy
 
     respond_to do |format|
-      format.html { redirect_to eventos_url }
+        format.html { redirect_success("Evento removido com sucesso!",:eventos, :index)}
       format.json { head :no_content }
     end
   end

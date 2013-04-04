@@ -1,10 +1,9 @@
-class ModulosController < ApplicationController
+﻿class ModulosController < ApplicationController
 
   before_filter :check_user
 
   def index
     @modulos = Modulo.where(:ano.gte => Date.today.year)
-
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @modulos }
@@ -15,7 +14,6 @@ class ModulosController < ApplicationController
   # GET /modulos/1.json
   def show
     @modulo = Modulo.find(params[:id])
-
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @modulo }
@@ -45,10 +43,10 @@ class ModulosController < ApplicationController
 
     respond_to do |format|
       if @modulo.save
-        format.html { redirect_to @modulo, notice: 'Modulo was successfully created.' }
+        format.html { redirect_success("Módulo adicionado com sucesso!",:modulos, :index)}
         format.json { render json: @modulo, status: :created, location: @modulo }
       else
-        format.html { render action: "new" }
+        format.html { redirect_error("Não foi possível criar o módulo!",:modulos, :index)}
         format.json { render json: @modulo.errors, status: :unprocessable_entity }
       end
     end
@@ -61,10 +59,10 @@ class ModulosController < ApplicationController
 
     respond_to do |format|
       if @modulo.update_attributes(params[:modulo])
-        format.html { redirect_to @modulo, notice: 'Modulo was successfully updated.' }
+        format.html { redirect_success("Módulo alterado com sucesso!",:modulos, :index)}
         format.json { head :no_content }
       else
-        format.html { render action: "edit" }
+        format.html { redirect_error("Não foi possível criar o módulo!",:modulos, :index)}
         format.json { render json: @modulo.errors, status: :unprocessable_entity }
       end
     end
@@ -77,7 +75,7 @@ class ModulosController < ApplicationController
     @modulo.destroy
 
     respond_to do |format|
-      format.html { redirect_to modulos_url }
+        format.html { redirect_success("Módulo removido com sucesso!",:modulos, :index)}
       format.json { head :no_content }
     end
   end
