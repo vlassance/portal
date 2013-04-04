@@ -1,12 +1,7 @@
 ﻿<%= form_for(@admin_empresa, :validate => true, html: { multipart: true })  do |f| %>
   
   <div class="input full-width">
-    <label> Empresa </label>
-    <% if @empresas.present? %>
-      <%= collection_select :empresa, :id, @empresas, :id,:nome, options = {}, html_options={:class => "long_text", :id => "selectEmpresa"}%>
-    <% else %>
-      Não há empresas cadastradas. Por favor, entre em contato com a instituição de ensino.
-    <% end %>
+    <p>Empresa: <%= @admin_empresa.empresa.nome %></p>
   </div>
 <%= render partial: "partials/usuarios/form", locals: { f: f } %>
 <% end %>   

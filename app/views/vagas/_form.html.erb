@@ -1,8 +1,53 @@
-<%= form_for(@vaga, :validate => true)  do |f| %>
+<%= javascript_include_tag "datePicker.js" %>
+<script>
+
+ $(document).ready(function(){
+
+$( "#vaga_data_expiracao" ).datepicker({
+             regional: "pt-BR",
+             dateFormat: 'dd-MM-yyyy',
+      onClose: function ()
+    {
+        this.focus();
+    }
+ });
+});
+
+
+  function validate(){
+  var camposNaoPreenchidos = false;
+  var dataErrada = false;
+  var DataAtual = new Date();
+
+  var DateFromValue = $("#vaga_data_expiracao").val();
+   parts = DateFromValue.split("/");
+   var date_final = new Date(parts[1] + "/" + parts[0] + "/" + parts[2]);
+
+  if ((date_final.getTime()) < (DataAtual.getTime())) {
+    alert("Data final deve ser maior que a atual!");
+    dataErrada = true;
+    var e = window.event;
+    e.cancelBubble = true;
+    e.returnValue = false;
+
+    if (e.stopPropagation) {
+            e.stopPropagation();
+            e.preventDefault();
+      }
+    return false; 
+  } 
+  
+  
+    
+}
+
+</script>
+
+<%= form_for(@vaga,  validate: true, :html => {:onsubmit => "return validate();"})  do |f| %>
 
   <div class="vpadded">
      <div class="input full-width">
-         <%= current_usuario.empresa.nome %>
+         <%= current_usuario.empresa.nome if current_usuario.isAdminEmpresa?%>
     </div>
      <br/>
    <div class="input full-width">
@@ -36,6 +81,10 @@
       <div class="input full-width">
         <%= f.label :numero_vagas %>
          <%= f.number_field :numero_vagas, :placeholder => "Número de Vagas" %>
+    </div>
+     <div class="input full-width">
+        <%= f.label :data_expiracao %>
+         <%= f.text_field :data_expiracao, :placeholder => "Data de expiração da Vaga", :id => "vaga_data_expiracao" %>
     </div>
    <%= f.submit "Salvar", :class => "btn light-blue inverse" %>
   <% end %>   

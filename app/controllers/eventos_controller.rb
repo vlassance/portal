@@ -47,6 +47,13 @@ class EventosController < ApplicationController
     params[:evento][:dataFim] = b
     @evento = Evento.new(params[:evento])
 
+    if current_usuario.isAdminEmpresa?
+      @evento.admin_empresa = current_usuario
+    end
+    if current_usuario.isAdmin?
+      @evento.admin_instituicao = current_usuario
+    end
+
     respond_to do |format|
       if @evento.save
        t1 = Thread.new {sendEmail params[:evento][:dataInicio].to_s, params[:evento][:nome].to_s , params[:evento][:descricao].to_s}
@@ -89,7 +96,7 @@ class EventosController < ApplicationController
   end
   protected    
     def check_user
-      if !current_usuario.isAdmin? && !current_usuario.isCoordenador && !current_usuario.isAdminEmpresa?
+      if !current_usuario.isAdmin? && !current_usuario.isCoordenador? && !current_usuario.isAdminEmpresa?
         render_404
       end
     end

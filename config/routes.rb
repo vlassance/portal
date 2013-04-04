@@ -21,6 +21,7 @@ Rails3MongoidDevise::Application.routes.draw do
   resources :admin_empresa
   resources :empresas
   resources :gestor
+  resources :signup_empresa
 
   resources :questionarios
 
