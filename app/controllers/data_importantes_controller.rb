@@ -4,7 +4,7 @@ class DataImportantesController < ApplicationController
 
   def new
     @data_importante = DataImportante.new
-c
+
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @data_importante }
@@ -20,7 +20,8 @@ c
   # POST /data_importantes.json
   def create
     @data_importante = DataImportante.new(params[:data_importante])
-
+    modulo = Modulo.find(params[:data_importante][:modulo_id])
+    @data_importante.modulo = modulo
     respond_to do |format|
       if @data_importante.save
         format.html { redirect_success("Data adiconada com sucesso!",:modulos, :index)}

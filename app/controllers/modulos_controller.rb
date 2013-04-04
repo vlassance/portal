@@ -1,6 +1,6 @@
 ﻿class ModulosController < ApplicationController
 
-  before_filter :check_user
+  before_filter :check_user, :except => [:show]
 
   def index
     @modulos = Modulo.where(:ano.gte => Date.today.year)
