@@ -1,7 +1,7 @@
 class WebservicesController  < ActionController::Base 
 
 	def alunos
-		render json: Aluno.all.to_json(:force_except => true)
+		render json: Aluno.all.to_json(:force_except => true, :include => :grupo)
 	end
 
 	def empresas
@@ -9,19 +9,19 @@ class WebservicesController  < ActionController::Base
 	end
 
 	def gestores
-		render json: Gestor.all.to_json(:force_except => true)
+		render json: Gestor.all.to_json(:force_except => true, :include => :grupo)
 	end
 
 	def adminempresas
-		render json: AdminEmpresa.all.to_json(:force_except => true, :include => :empresa)
+		render json: AdminEmpresa.all.to_json(:force_except => true, :include => :empresa, :include => :grupo)
 	end
 
 	def coordenadores
-		render json: CoordenadorEstagio.all.to_json(:force_except => true)
+		render json: CoordenadorEstagio.all.to_json(:force_except => true, :include => :grupo)
 	end
 
 	def admininstituicoes
-		render json: AdminInstituicao.all.to_json(:force_except => true)
+		render json: AdminInstituicao.all.to_json(:force_except => true, :include => :grupo)
 	end
 
 	def usuarios

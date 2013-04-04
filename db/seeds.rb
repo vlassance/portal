@@ -9,11 +9,15 @@
 #Menu.create(:nome => 'Home', :url => '/home')
 #Menu.create(:nome => 'Usuarios', :url => '/users')
 #Menu.create(:nome => 'Grupos de Acesso', :url => '/grupos')
+puts"**inicio dos seeds"
 HistoricoEstagio.destroy_all
 Evento.destroy_all
 Vaga.destroy_all
 Empresa.destroy_all
 Menu.destroy_all
+Disciplina.destroy_all
+HistoricoEstagio.destroy_all
+
 HistoricoEstagio.create(modulo: "1", nota: 10)
 HistoricoEstagio.create(modulo: "2", nota: 9)
 HistoricoEstagio.create(modulo: "3", nota: 10)
@@ -103,6 +107,10 @@ puts "Criando Menus Basicos"
   menu_alunos.grupos << admin
   menu_alunos.grupos << coordenador
 
+  menu_modulos = Menu.create(:nome => 'Módulos', :url => '/modulos', :icon => "icon-sitemap", :primary => "modulos")
+  menu_modulos.grupos << admin
+  menu_modulos.grupos << coordenador
+
   menu_historico = Menu.create(:nome => 'Estágios', :url => '/historico_estagios', :icon => "icon-bar-chart", :primary => "historico")
   menu_historico.grupos << aluno
 
@@ -137,3 +145,9 @@ puts "Criando Menus Basicos"
   menu_gestores.grupos << admin_empresa
   puts "Menus criados"
  
+ puts"Criando disciplinas"
+ Disciplina.create(:nome => "Estágio Cooperativo I")
+ Disciplina.create(:nome => "Estágio Cooperativo II")
+ Disciplina.create(:nome => "Estágio Cooperativo III")
+ Disciplina.create(:nome => "Estágio Cooperativo IV")
+ Disciplina.create(:nome => "Estágio Cooperativo V")
