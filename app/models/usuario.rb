@@ -46,9 +46,9 @@ class Usuario
   field :pais, :type => String
   field :cep, :type => String
   field :endereco, :type => String
+  field :instituicao, :type => String, :default => "POLI"
 
 
-  attr_accessible :sign_in_count, :last_sign_in_at
   belongs_to :grupo
 
 
