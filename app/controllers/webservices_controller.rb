@@ -25,7 +25,11 @@ class WebservicesController  < ActionController::Base
 	end
 
 	def usuarios
-		render json: Usuario.all.to_json(:force_except => true, :include => :grupo)
+    @usuarios = Usuario.all
+    if params[:id]
+      @usuarios = @usuarios.where(:_id => params[:id])
+    end
+    render json: @usuarios.to_json(:force_except => true, :include => [:grupo, :empresa])
 	end
 
 	def vagas
