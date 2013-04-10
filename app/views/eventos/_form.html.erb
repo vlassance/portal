@@ -4,23 +4,31 @@
 
  $(document).ready(function(){
   
-  $( "#evento_horarioInicio" ).timepicker();
 
   $('#evento_horarioFim').timepicker({
-      hourText: 'Hora',             // Define the locale text for "Hours"
-      minuteText: 'Minuto',         // Define the locale text for "Minute"
+      hourText: 'Hora',             
+      minuteText: 'Minuto',         
       amPmText: ['AM', 'PM'],
       onSelect: function(time, inst) {
         $(this).blur();
       }
   });
 
+  $('#evento_horarioInicio').timepicker({
+    hourText: 'Hora',             
+    minuteText: 'Minuto',         
+    amPmText: ['AM', 'PM'],
+    onSelect: function(time, inst) {
+      $(this).blur();
+    }
+  });
 
   $('#evento_dataInicio')
       .datepicker()
       .on('changeDate', function(ev){
           $('#evento_dataInicio').datepicker('hide');
       });
+      
   $('#evento_dataFim')
   .datepicker()
   .on('changeDate', function(ev){
