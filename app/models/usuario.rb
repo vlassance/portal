@@ -53,6 +53,9 @@ class Usuario
   field :complemento, type: String
   field :bairro, type: String
   field :dump_id, type: Integer
+  field :instituicao, :type => String, :default => "POLI"
+
+
   belongs_to :grupo
 
   #validations

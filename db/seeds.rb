@@ -40,7 +40,7 @@ puts "Criando Grupos"
 puts "Grupos criados com sucesso"	
 
 puts "Criando Usuario Administrador"
-	user = AdminInstituicao.create(:nome => 'Administrador ', login: 'admin', :email => 'admin@gmail.com', :password => '12345678', :password_confirmation => '12345678')
+	user = AdminInstituicao.create(:nome => 'Administrador ', login: 'admin', :email => 'admin@gmail.com', :password => '12345678', :password_confirmation => '12345678', :celular => '1999774433', :telefone => '1932586366')
 	user.grupo = admin
 	if user.save(validate: false)
 	puts "Usuario administrador criado com sucesso! -> login: admin@gmail.com, senha: 12345678"
