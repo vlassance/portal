@@ -2,6 +2,13 @@
 	<%= f.label :nome %>
 	<%= f.text_field :nome, :placeholder => "Nome" %>
 </div>
+
+<% if !@edit %>
+	<div class="input full-width">
+	  <%= f.date_select :data_nascimento, :order=>[:day,:month,:year], :start_year => 1956, :end_year => 2000, :use_month_numbers => true %>
+	</div>
+<% end %>
+
 <div class="input full-width">
 	<%= f.label :sexo %>
       <%= f.select(:gender, options_for_select(sexos))  %>
