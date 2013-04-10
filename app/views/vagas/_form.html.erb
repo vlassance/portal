@@ -1,18 +1,11 @@
-<%= javascript_include_tag "datePicker.js" %>
 <script>
-
 	$(document).ready(function(){
-
-		$( "#vaga_data_expiracao" ).datepicker({
-			regional: "pt-BR",
-			dateFormat: 'dd-MM-yyyy',
-			onClose: function ()
-			{
-				this.focus();
-			}
+		$('#vaga_data_expiracao')
+		.datepicker()
+		.on('changeDate', function(ev){
+			$('#vaga_data_expiracao').datepicker('hide');
 		});
 	});
-
 
 	function validate(){
 		var camposNaoPreenchidos = false;
@@ -90,5 +83,3 @@
 		</div>
 		<%= f.submit "Salvar", :class => "btn light-blue inverse" %>
 	<% end %>   
-
-
