@@ -12,40 +12,23 @@
   <div class="row-fluid">
 
     <div class="span4 faq-left hpadded20">
-      <a href="#" class="btn btn-large btn-block medium-blue">Send us your question</a>
-      <a href="#" class="btn btn-large btn-block light-blue inverse">Contact support</a>
-
       <div class="well faq-well">
-        <div class="contato">
-          <div class="contato-importante-img">
-            <%=image_tag "/assets/users/user3.png" %>
-          </div>
+        <% @coordenador.each do |coord| %>
+          <div class="contato"> 
+            <div class="contato-importante-img">
+              <% if coord.avatar.file? %>
+                <%= image_tag coord.avatar.url(:medium), class: "avatar" %>
+              <% else %>
+                <img class="avatar user_empty" src="../assets/users/user_empty.png">
+              <% end %>
+            </div>
           <div class="contato-importante-dados">
-            <p>nome: <spam> Jorge Risco </spam> </p>
-            <p>email: <spam> jrisco@poli.usp.br </spam> </p>
-            <p>telefone: <spam> 3031-5951 </spam> </p>
+            <p>nome: <spam> <%= coord.nome  %> </spam> </p>
+            <p>email: <spam> <%= coord.email  %> </spam> </p>
+            <p>telefone: <spam> <%= coord.telefone %> </spam> </p>
+          </div> 
           </div>
-        </div>
-                <div class="contato">
-          <div class="contato-importante-img">
-            <%=image_tag "/assets/users/user3.png" %>
-          </div>
-          <div class="contato-importante-dados">
-            <p>nome: <spam> Jorge Risco </spam> </p>
-            <p>email: <spam> jrisco@poli.usp.br </spam> </p>
-            <p>telefone: <spam> 3031-5951 </spam> </p>
-          </div>
-        </div>
-                <div class="contato">
-          <div class="contato-importante-img">
-            <%=image_tag "/assets/users/user3.png" %>
-          </div>
-          <div class="contato-importante-dados">
-            <p>nome: <spam> Jorge Risco </spam> </p>
-            <p>email: <spam> jrisco@poli.usp.br </spam> </p>
-            <p>telefone: <spam> 3031-5951 </spam> </p>
-          </div>
-        </div>
+        <% end %>
       </div>
     </div>
 
