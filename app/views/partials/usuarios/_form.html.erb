@@ -5,15 +5,15 @@
 
 <% if !@edit %>
 	<div class="input full-width">
-	  <%= f.date_select :data_nascimento, :order=>[:day,:month,:year], :start_year => 1956, :end_year => 2000, :use_month_numbers => true %>
+		 <%= f.label :data_nascimento %>
+	 	 <%= f.text_field :data_nascimento, :placeholder => "Data Tipo DD/MM/YYYY" %>
 	</div>
 <% end %>
 
 <div class="input full-width">
-	<%= f.label :sexo %>
-      <%= f.select(:gender, options_for_select(sexos))  %>
+	  <%= f.label :sexo %>
+      <%= f.select(:sexo, options_for_select(sexos))  %>
 </div>
-
 
 <div class="input full-width">
 	<%= f.label :email %>
@@ -66,10 +66,7 @@
 	<%= f.label :estado %>
       <%= f.select(:estado, options_for_select(br_states))  %>
 </div>
-<div class="input full-width">
-	<%= f.label :pais %>
-	<%= f.text_field :pais, :placeholder => "País" %>
-</div>
+
 <div class="input full-width">
 	<%= f.label :cep %>
 	<%= f.text_field :cep, :placeholder => "CEP" %>

@@ -1,4 +1,4 @@
-module ApplicationHelper
+﻿module ApplicationHelper
  
 def br_states
   [
@@ -34,8 +34,8 @@ def br_states
   
    def sexos
     [
-      ['Feminino','Feminino'],
-      ['Masculino','Masculino']
+      ['Masculino','Masculino'],
+      ['Feminino','Feminino']
     ]
    end
 

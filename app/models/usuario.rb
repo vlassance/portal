@@ -44,12 +44,12 @@ class Usuario
   field :telefone, :type => String
   field :cidade, :type => String
   field :estado, :type => String
-  field :pais, :type => String
+  field :pais, :type => String, :default => "Brasil"
   field :cep, :type => String
   field :endereco, :type => String
   field :sexo, :type => String
   field :estado_civil, :type => Integer
-  field :data_nascimento, type: Date
+  field :data_nascimento, type: String
   field :complemento, type: String
   field :bairro, type: String
   field :dump_id, type: Integer

@@ -30,10 +30,11 @@
               </div>
           <div class="input full-width">
              <label> Nome : <%= @admin_empresa.nome %> </label>
+             <label> Sexo : <%= @admin_empresa.sexo %> </label>
+             <label> Estado Civil : <%= @admin_empresa.estado_civil %> </label>
+             <label> Data de Nascimento : <%= @admin_empresa.data_nascimento %> </label>
              <label> CPF : <%= @admin_empresa.cpf %> </label>
-             <label> Cidade : <%= @admin_empresa.cidade %> </label>
-             <label> Estado : <%= @admin_empresa.estado %> </label>
-             <label> Pais : <%= @admin_empresa.pais %> </label>
+             <label> RG : <%= @admin_empresa.rg %> </label>
           </div>
           <br/>
         </div>
@@ -45,9 +46,15 @@
               Contato
               </div>
               <div class="input full-width">
-             <label> Telefone : <%= @admin_empresa.telefone %> </label>
-              <label> Celular : <%= @admin_empresa.celular %> </label>
-              <label> E-mail : <%= @admin_empresa.email %> </label>
+                <label> Telefone : <%= @admin_empresa.telefone %> </label>
+                <label> Celular : <%= @admin_empresa.celular %> </label>
+                <label> E-mail : <%= @admin_empresa.email %> </label>
+                <label> Endereço : <%= @admin_empresa.endereco %> <%= " " %> <%= @admin_empresa.bairro %> </label>
+                <label> Complemento : <%= @admin_empresa.complemento %> </label>
+                <label> CEP : <%= @admin_empresa.cep %> </label>
+                <label> Cidade : <%= @admin_empresa.cidade %> </label>
+                <label> Estado : <%= @admin_empresa.estado %> </label>
+                <label> Pais : <%= @admin_empresa.pais %> </label>
               </div>
             </div>
           </div>
