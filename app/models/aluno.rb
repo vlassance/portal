@@ -7,5 +7,4 @@ class Aluno < Usuario
 	field :nusp, :type => String
 	field :ano_ingresso, type: Integer
 	belongs_to :curso
-
 end
