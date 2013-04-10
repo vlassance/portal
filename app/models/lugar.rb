@@ -12,6 +12,8 @@ class Lugar
   field :site, type: String
   field :latitude, type: Float
   field :longitude, type: Float
+  field :complemento, type: String
+  field :bairro, type: String
 
   #validations
   validates_presence_of :nome, :message => "digite um nome"

@@ -148,7 +148,7 @@ puts "Criando Menus Basicos"
 
  puts "* criando cursos"
  coop = Curso.create(:nome => "Engenharia da Computação", :tipo => "Quadrimestral" )
- semestral = Curso.create(:nome => "Engenharia El;etrica - ênfase em Computação", :tipo => "semestral" )
+ semestral = Curso.create(:nome => "Engenharia Elétrica - ênfase em Computação", :tipo => "Semestral" )
 
  puts"Criando disciplinas"
  disciplina = Disciplina.create(:nome => "Estágio Cooperativo I", :sigla => "PCS2091")

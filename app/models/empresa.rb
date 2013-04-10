@@ -2,7 +2,8 @@ class Empresa < Lugar
 	include Mongoid::Paperclip
 
 	field :cnpj, type: String	
-
+	field :dump_id, type: Integer
+	field :atividades, type: String
 	has_one :admin_empresa
 	has_many :gestor
 	has_many :vagas
