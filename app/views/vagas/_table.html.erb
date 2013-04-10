@@ -10,9 +10,8 @@
 		</tr>
 	</thead>
 	<tbody>
-		<% hoje = Date.new(Date.today.year, Date.today.month, Date.today.day - 1) %>
 		<% @vagas.each do |vaga| %>
-			<% next if vaga.data_expiracao > hoje %>
+			<% next if vaga.data_expiracao < Date.today and current_usuario.isAluno? %>
 			<tr class="gradeX" >
 				<td><%=link_to vaga.nome, vaga%></td>
 				<td><%= vaga.area %></td>
@@ -40,6 +39,5 @@
 				</td>            
 			</tr>
 		<% end %>
-	<% end %>
-</tbody>
+	</tbody>
 </table>

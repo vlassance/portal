@@ -14,7 +14,7 @@ pt:
       locked: "Your account is locked."
       not_found_in_database: "Senha ou usuário inválido."
       timeout: "Your session expired, please sign in again to continue."
-      unauthenticated: "Por favor refaça sei login"
+      unauthenticated: "Por favor refaça seu login"
       unconfirmed: "You have to confirm your account before continuing."
     mailer:
       confirmation_instructions:

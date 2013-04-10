@@ -22,6 +22,7 @@ class Vaga
 
 	validates_presence_of :area, :message => "digite uma area"
 	validates_presence_of :numero_vagas, :message => "digite o numero de vagas"
+	validates_presence_of :data_expiracao, :message => "digite a data de expiracao"
 
 	belongs_to :empresa
 	belongs_to :candidaturas
