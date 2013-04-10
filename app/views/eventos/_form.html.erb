@@ -1,38 +1,47 @@
-<%= javascript_include_tag "jquery.ui.timepicker.js" %>
-<%= javascript_include_tag "datePicker.js" %>
+﻿<%= javascript_include_tag "jquery.ui.timepicker.js" %>
 <%= stylesheet_link_tag    "jquery.ui.timepicker.css" %>
 <script>
 
  $(document).ready(function(){
   
-  $( "#evento_horarioInicio" ).timepicker();
 
-  $( "#evento_horarioFim" ).timepicker();
+  $('#evento_horarioFim').timepicker({
+      hourText: 'Hora',             
+      minuteText: 'Minuto',         
+      amPmText: ['AM', 'PM'],
+      onSelect: function(time, inst) {
+        $(this).blur();
+      }
+  });
 
-$( "#evento_dataInicio" ).datepicker({
-             regional: "pt-BR",
-             dateFormat: 'dd-MM-yyyy',
-      onClose: function ()
-    {
-        this.focus();
+  $('#evento_horarioInicio').timepicker({
+    hourText: 'Hora',             
+    minuteText: 'Minuto',         
+    amPmText: ['AM', 'PM'],
+    onSelect: function(time, inst) {
+      $(this).blur();
     }
+  });
+
+  $('#evento_dataInicio')
+      .datepicker()
+      .on('changeDate', function(ev){
+          $('#evento_dataInicio').datepicker('hide');
+      });
+      
+  $('#evento_dataFim')
+  .datepicker()
+  .on('changeDate', function(ev){
+      $('#evento_dataFim').datepicker('hide');
+  });
+
  });
- $( "#evento_dataFim" ).datepicker({
-         regional: "pt-BR",
-  onClose: function ()
-    {
-        this.focus();
-    }
- });
- });
- 
- 
- 
+  
  function validate(){
   var camposNaoPreenchidos = false;
   var dataErrada = false;
-  var DateToValue = $("#evento_tempoFim").val();
-  var DateFromValue = $("#evento_tempoInicio").val();
+  var DateToValue = $("#evento_dataFim").val();
+  var DateFromValue = $("#evento_dataInicio").val();
 
   
    var parts = DateToValue.split("/");
@@ -62,7 +71,7 @@ $( "#evento_dataInicio" ).datepicker({
  
 </script>
 
-<%= form_for(@evento, validate: true) do |f| %>
+<%= form_for(@evento, validate: true, :html => {:onsubmit => "return validate();" }) do |f| %>
   <div class="vpadded">
 
   <div class="input full-width">

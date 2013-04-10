@@ -28,6 +28,7 @@
                 Dados Básicos
               </div>
           <div class="input full-width">
+              <%= image_tag @aluno.avatar.url(:medium) %>
              <label> Nome : <%= @aluno.nome %> </label>
              <label> Sexo : <%= @aluno.sexo %> </label>
              <label> Estado Civil : <%= @aluno.estado_civil %> </label>
