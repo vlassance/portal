@@ -1,11 +1,11 @@
-<div class="container-fluid">
+﻿<div class="container-fluid">
 
   <div class="row-fluid">
     <div class="span12">
 
       <div class="box bordered">
         <div class="box-header">
-          <i class="icon-th-list"></i> Detalhes do Aluno <%= @aluno.nome %>
+          <i class="icon-th-list"></i> Detalhes do Aluno <%= @aluno.nome.capitalize %>
           <div class="pull-right">
             <div class="btn-group">
               <a class="dropdown-toggle" data-toggle="dropdown">
@@ -19,21 +19,55 @@
             </div>
           </div>
         </div>
+
         <div class="row-fluid">
+
           <div class="span6">
             <div class="padded">
               <div class="section-title">
                 Dados Básicos
               </div>
-            <div class="input full-width">
-              <%= render partial: "partials/usuarios/show", locals: { usuario: @aluno } %>
-              <label> Curriculo : <%= link_to "Curriculo", @aluno.curriculo.attachment.url if @aluno.curriculo %> </label>
+          <div class="input full-width">
+             <label> Nome : <%= @aluno.nome %> </label>
+             <label> Sexo : <%= @aluno.sexo %> </label>
+             <label> Estado Civil : <%= @aluno.estado_civil %> </label>
+             <label> Data de Nascimento : <%= @aluno.data_nascimento %> </label>
+             <label> CPF : <%= @aluno.cpf %> </label>
+             <label> RG : <%= @aluno.rg %> </label>
+             <label> Número USP : <%= @aluno.nusp.to_s %> </label>
+             <label> Curriculo : <%= link_to "Curriculo", @aluno.curriculo.attachment.url if @aluno.curriculo %> </label>
+
+          </div>
+          <br/>
+        </div>
+      </div>
+      <div class="span6">
+        <div class="padded">
+            <div class="section-title">
+              Contato
+              </div>
+              <div class="input full-width">
+             <label> Telefone : <%= @aluno.telefone %> </label>
+              <label> Celular : <%= @aluno.celular %> </label>
+              <label> E-mail : <%= @aluno.email %> </label>
+              <label> Endereço : <%= @aluno.endereco %> <%= " " %> <%= @aluno.bairro %> </label>
+              <label> Complemento : <%= @aluno.complemento %> </label>
+              <label> CEP : <%= @aluno.cep %> </label>
+              <label> Cidade : <%= @aluno.cidade %> </label>
+              <label> Estado : <%= @aluno.estado %> </label>
+              <label> Pais : <%= @aluno.pais %> </label>
+
+              </div>
             </div>
-          </br>
           </div>
         </div>
-			</div>
+      </div>
     </div>
   </div>
 </div>
+
+
+
+
+
 

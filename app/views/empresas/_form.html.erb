@@ -12,22 +12,32 @@
         <%= f.label :endereco %>
          <%= f.text_field :endereco, :placeholder => "Endereço" %>
     </div>
+
+    <div class="input full-width">
+        <%= f.label :complemento %>
+         <%= f.text_field :complemento, :placeholder => "Complemento" %>
+    </div>
+    <div class="input full-width">
+        <%= f.label :bairro %>
+         <%= f.text_field :bairro, :placeholder => "Bairro" %>
+    </div>
+   <div class="input full-width">
+    <%= f.label :cep %>
+     <%= f.text_field :cep, :placeholder => "CEP" %>
+  </div>
    <div class="input full-width">
         <%= f.label :cidade %>
          <%= f.text_field :cidade, :placeholder => "Cidade" %>
     </div>
    <div class="input full-width">
         <%= f.label :estado %>
-         <%= f.text_field :estado, :placeholder => "Estado" %>
+      <%= f.select(:estado, options_for_select(br_states))  %>
     </div>
    <div class="input full-width">
         <%= f.label :pais %>
          <%= f.text_field :pais, :placeholder => "País" %>
     </div>
-   <div class="input full-width">
-        <%= f.label :cep %>
-         <%= f.text_field :cep, :placeholder => "CEP" %>
-    </div>
+
    <div class="input full-width">
         <%= f.label :telefone %>
          <%= f.text_field :telefone, :placeholder => "Telefone" %>

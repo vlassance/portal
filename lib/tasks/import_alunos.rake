@@ -15,7 +15,7 @@ require 'csv'
 				e.curso = semestral
 			end
 			e.ano_ingresso = row[4].to_i
-			e.data_nascimento = row[5].to_date if !row[5].blank?
+			e.data_nascimento = row[5].to_s if !row[5].blank?
 			e.estado_civil = row[6]
 			e.sexo = row[7]
 			e.telefone = row[8]

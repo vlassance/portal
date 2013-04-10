@@ -1,11 +1,34 @@
-<div class="input full-width">
+﻿<div class="input full-width">
 	<%= f.label :nome %>
 	<%= f.text_field :nome, :placeholder => "Nome" %>
 </div>
+
+<% if !@edit %>
+	<div class="input full-width">
+		 <%= f.label :data_nascimento %>
+	 	 <%= f.text_field :data_nascimento, :placeholder => "Data Tipo DD/MM/YYYY" %>
+	</div>
+<% end %>
+
+<div class="input full-width">
+	  <%= f.label :sexo %>
+      <%= f.select(:sexo, options_for_select(sexos))  %>
+</div>
+
 <div class="input full-width">
 	<%= f.label :email %>
 	<%= f.text_field :email, :placeholder => "E-mail" %>
 </div>
+<% if !@aluno.nil? %>
+<div class="input full-width">
+		<%= f.label "Perfil do Linkedin" %>
+		<%= f.text_field :linkedin_id, :placeholder => "Linkedin" %>
+	</div>
+	<div class="input full-width">
+		<%= f.label "Número USP" %>
+		<%= f.text_field :nusp, :placeholder => "Número USP" %>
+	</div>
+<% end %>
 <div class="input full-width">
 	<%= f.label :celular %>
 	<%= f.text_field :celular, :placeholder => "Celular" %>
@@ -19,8 +42,20 @@
 	<%= f.text_field :cpf, :placeholder => "CPF" %>
 </div>
 <div class="input full-width">
+	<%= f.label :RG %>
+	<%= f.text_field :rg, :placeholder => "RG" %>
+</div>
+<div class="input full-width">
 	<%= f.label :endereco %>
 	<%= f.text_field :endereco, :placeholder => "Endereço" %>
+</div>
+<div class="input full-width">
+    <%= f.label :complemento %>
+     <%= f.text_field :complemento, :placeholder => "Complemento" %>
+</div>
+<div class="input full-width">
+    <%= f.label :bairro %>
+     <%= f.text_field :bairro, :placeholder => "Bairro" %>
 </div>
 <div class="input full-width">
 	<%= f.label :cidade %>
@@ -29,37 +64,34 @@
 
 <div class="input full-width">
 	<%= f.label :estado %>
-	<%= f.text_field :estado, :placeholder => "Estado" %>
+      <%= f.select(:estado, options_for_select(br_states))  %>
 </div>
-<div class="input full-width">
-	<%= f.label :pais %>
-	<%= f.text_field :pais, :placeholder => "País" %>
-</div>
+
 <div class="input full-width">
 	<%= f.label :cep %>
 	<%= f.text_field :cep, :placeholder => "CEP" %>
 </div>
 
 <% if !@aluno.nil? %>
-<div class="input full-width">
-	<%= f.label "Perfil do Facebook" %>
-	<%= f.text_field :facebook_id, :placeholder => "Facebook" %>
-</div>
-<div class="input full-width">
-	<%= f.label "Perfil do Linkedin" %>
-	<%= f.text_field :linkedin_id, :placeholder => "Linkedin" %>
-</div>
+	<div class="input full-width">
+		<%= f.label "Perfil do Facebook" %>
+		<%= f.text_field :facebook_id, :placeholder => "Facebook" %>
+	</div>
+	<div class="input full-width">
+		<%= f.label "Perfil do Linkedin" %>
+		<%= f.text_field :linkedin_id, :placeholder => "Linkedin" %>
+	</div>
 <% end %>
 
 <% if !@edit %>
- <div class="input full-width">
-	<%= f.label :password %>
-	<%= f.password_field :password, :placeholder => "Senha" %>
-</div>
- <div class="input full-width">
-	<%= f.label :password_confirmation %>
-	<%= f.password_field :password_confirmation, :placeholder => "Digite de novo a Senha" %>
-</div>
+	 <div class="input full-width">
+		<%= f.label :password %>
+		<%= f.password_field :password, :placeholder => "Senha" %>
+	</div>
+	 <div class="input full-width">
+		<%= f.label :password_confirmation %>
+		<%= f.password_field :password_confirmation, :placeholder => "Digite de novo a Senha" %>
+	</div>
 <% end %>
 
 <% if !@aluno.nil? %>
