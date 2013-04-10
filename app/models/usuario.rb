@@ -52,7 +52,7 @@ class Usuario
   field :data_nascimento, type: Date
   field :complemento, type: String
   field :bairro, type: String
-
+  field :dump_id, type: Integer
   belongs_to :grupo
 
   #validations

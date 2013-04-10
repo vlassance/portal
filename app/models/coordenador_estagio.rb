@@ -1,3 +1,3 @@
 class CoordenadorEstagio < Usuario
-	  field :instituicao,  :type => String, :default => "POLI"
+	field :nusp, type: Integer
 end

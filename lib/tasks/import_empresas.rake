@@ -19,4 +19,5 @@ require 'csv'
 				puts e.errors.messages
 			end
 		end
+	    puts 'Empresas importadas'
 end

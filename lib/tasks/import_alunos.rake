@@ -35,4 +35,5 @@ require 'csv'
 				puts e.errors.messages
 			end
 		end
+	    puts 'Alunos importados'
 end

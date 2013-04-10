@@ -5,7 +5,6 @@ class Aluno < Usuario
 	field :facebook_id, :type => String
 	field :linkedin_id, :type => String
 	field :nusp, :type => String
-	field :dump_id, type: Integer
 	field :ano_ingresso, type: Integer
 	belongs_to :curso
 
