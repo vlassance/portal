@@ -1,0 +1,17 @@
+<%= form_for(@usuario, :url => { :action => "alterar_senha" } ) do |f| %>
+  <div class="field">
+    <%= f.label "Senha atual" %> <i>(Precisamos da sua senha atual para alterá-la)</i><br />
+    <%= f.password_field :current_password %>
+  </div>
+  <div class="field">
+    <%= f.label "Nova senha" %><br />
+    <%= f.password_field :password, :autocomplete => "off"  %>
+  </div>
+  <div class="field">
+    <%= f.label "Confirme a nova senha" %><br />
+    <%= f.password_field :password_confirmation %>
+  </div>
+  <div class="action_container">
+    <%= f.submit "Submeter!", class: 'btn btn-info' %>
+  </div>
+<% end %>
