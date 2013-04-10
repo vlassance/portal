@@ -2,6 +2,8 @@ class ContatosImportantesController < ApplicationController
 
   def index
 
+	@coordenador = CoordenadorEstagio.all
+
     @faqs = []
     path = "http://143.107.102.37:3001/faqs.json"
 
