@@ -1,5 +1,6 @@
 class MeuPerfilController < ApplicationController
 	def index
+		@edit = true
 		if current_usuario.isAdmin?
 			@perfil 				= AdminInstituicao.to_s.pluralize.underscore
 			@admin_instituicao 		= AdminInstituicao.find(current_usuario.id)

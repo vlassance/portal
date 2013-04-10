@@ -66,6 +66,7 @@ class AlunosController < ApplicationController
   # PUT /alunos/1
   # PUT /alunos/1.json
   def update
+    @edit = true
     if params[:aluno][:curriculo].present?
       curriculo_seed = params[:aluno].delete(:curriculo)
       curriculo = Curriculo.gerar(curriculo_seed)
