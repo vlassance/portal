@@ -6,6 +6,10 @@ class ApplicationController < ActionController::Base
   	redirect_to({:controller=> controller, :action => action}, :flash => { :notice_success => message })   
   end
 
+  def redirect_success_home(message)
+    redirect_to('/home', flash: { notice_success: message })
+  end
+
   def redirect_success_show(message, controller, id)
     redirect_to({:controller=> controller, :action => :show, :id => id}, :flash => { :notice_success => message })   
   end
@@ -15,9 +19,9 @@ class ApplicationController < ActionController::Base
   end
 
  def sendEmail (data, nome, descricao)
-  Aluno.all.each do |aluno|
-    DatasMailer.datas(aluno.email,data, nome, descricao).deliver
-  end
+  #Aluno.all.each do |aluno|
+  #  DatasMailer.datas(aluno.email,data, nome, descricao).deliver
+  # end
  end
 
 def render_404

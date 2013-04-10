@@ -21,6 +21,7 @@ Estagio.destroy_all
 Candidatura.destroy_all
 AvaliacaoEstagio.destroy_all
 Resposta.destroy_all
+Curso.destroy_all
 
 HistoricoEstagio.create(modulo: "1", nota: 10)
 HistoricoEstagio.create(modulo: "2", nota: 9)
@@ -44,7 +45,7 @@ aluno = Grupo.create(:nome => 'Aluno', :internal_id => Grupo::ALUNO.to_i)
 puts "Grupos criados com sucesso"	
 
 puts "Criando Usuario Administrador"
-user = AdminInstituicao.create(:nome => 'Administrador ', login: 'admin', :email => 'admin@gmail.com', :password => '12345678', :password_confirmation => '12345678')
+user = AdminInstituicao.create(:nome => 'Administrador ', login: 'admin', :email => 'admin@gmail.com', :password => '12345678', :password_confirmation => '12345678', :celular => '1999774433', :telefone => '1932586366')
 user.grupo = admin
 if user.save(validate: false)
 	puts "Usuario administrador criado com sucesso! -> login: admin@gmail.com, senha: 12345678"
@@ -156,9 +157,36 @@ menu_gestores = Menu.create(:nome => 'Gestores', :url => '/gestor', :icon => "ic
 menu_gestores.grupos << admin_empresa
 puts "Menus criados"
 
+
+puts "* criando cursos"
+coop = Curso.create(:nome => "Engenharia da Computação", :tipo => "Quadrimestral" )
+semestral = Curso.create(:nome => "Engenharia Elétrica - ênfase em Computação", :tipo => "Semestral" )
+
 puts"Criando disciplinas"
-Disciplina.create(:nome => "Estágio Cooperativo I")
-Disciplina.create(:nome => "Estágio Cooperativo II")
-Disciplina.create(:nome => "Estágio Cooperativo III")
-Disciplina.create(:nome => "Estágio Cooperativo IV")
-Disciplina.create(:nome => "Estágio Cooperativo V")
+disciplina = Disciplina.create(:nome => "Estágio Cooperativo I", :sigla => "PCS2091")
+disciplina.curso = coop
+disciplina.save
+
+disciplina = Disciplina.create(:nome => "Estágio Cooperativo II", :sigla => "PCS2092")
+disciplina.curso = coop
+disciplina.save
+
+disciplina = Disciplina.create(:nome => "Estágio Cooperativo III", :sigla => "PCS2093")
+disciplina.curso = coop
+disciplina.save
+
+disciplina = Disciplina.create(:nome => "Estágio Cooperativo IV", :sigla => "PCS2094")
+disciplina.curso = coop
+disciplina.save
+
+disciplina = Disciplina.create(:nome => "Estágio Cooperativo V", :sigla => "PCS2095")
+disciplina.curso = coop
+disciplina.save
+
+disciplina = Disciplina.create(:nome => "Estágio Supervisionado I", :sigla => "PCS2500")
+disciplina.curso = semestral
+disciplina.save
+
+disciplina = Disciplina.create(:nome => "Estágio Supervisionado II", :sigla => "PCS2600")
+disciplina.curso = semestral
+disciplina.save
