@@ -1,6 +1,7 @@
 source :rubygems
 
 gem 'rails', '3.2.11'
+gem 'rest-client'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
