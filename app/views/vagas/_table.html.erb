@@ -1,21 +1,24 @@
-﻿
-<table class="table table-striped data-table">
+﻿<table class="table table-striped data-table">
 	<thead>
 		<tr>
 			<th>Nome</th>
 			<th>Área</th>
 			<th>Número de Vagas</th>
 			<th>Salário</th>
+			<th>Data de expiração</th>
 			<th>Opções</th>
 		</tr>
 	</thead>
 	<tbody>
+		<% hoje = Date.new(Date.today.year, Date.today.month, Date.today.day - 1) %>
 		<% @vagas.each do |vaga| %>
+			<% next if vaga.data_expiracao > hoje %>
 			<tr class="gradeX" >
 				<td><%=link_to vaga.nome, vaga%></td>
 				<td><%= vaga.area %></td>
 				<td><%= vaga.numero_vagas %></td>
 				<td><%= vaga.salario %></td>
+				<td><%= vaga.data_expiracao.strftime('%d/%m/%Y') %></td>
 				<td class="td-actions">
 					<div class="btn-group">
 						<a class="btn medium-blue" href="#"><i class="icon-leaf"></i> Opções</a>
@@ -37,5 +40,6 @@
 				</td>            
 			</tr>
 		<% end %>
-	</tbody>
+	<% end %>
+</tbody>
 </table>

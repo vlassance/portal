@@ -36,7 +36,7 @@ class AdminInstituicaosController < ApplicationController
     @admin_instituicao = AdminInstituicao.new(params[:admin_instituicao])
     grupo_admin = Grupo.where(internal_id: Grupo::ADMIN_INSTITUICAO).first
     @admin_instituicao.grupo = grupo_admin
-
+    
     respond_to do |format|
       if @admin_instituicao.save
         format.html { redirect_success_show("Administrador adicionado com sucesso!",:admin_instituicaos, @admin_instituicao.id)}

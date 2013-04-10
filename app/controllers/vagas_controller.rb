@@ -38,17 +38,12 @@ class VagasController < ApplicationController
 		end
 	end
 
-	# GET /vagas/1/edit
-	def edit
-		@vaga = Vaga.find(params[:id])
-	end
-
 	# POST /vagas
 	# POST /vagas.json
 	def create
 		@vaga = Vaga.new(params[:vaga])
+		@vaga.empresa = current_usuario.isAdminEmpresa? ? current_usuario.empresa : nil
 
-		@vaga.empresa = current_usuario.empresa
 		respond_to do |format|
 			if @vaga.save
 				format.html { redirect_success("Vaga criada com sucesso!",:vagas, :index)}

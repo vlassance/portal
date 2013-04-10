@@ -7,6 +7,9 @@ class Evento
   field :dataFim, type: Date
   field :descricao, type: String
 
+  belongs_to :admin_instituicao
+  belongs_to :admin_empresa
+
   validates_presence_of :nome, :message => "digite um nome"
   validates_presence_of :descricao, :message => "digite uma descricao"
   validates_presence_of :horarioInicio, :message => "digite um horario"

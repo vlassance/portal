@@ -47,7 +47,6 @@ class Usuario
   field :cep, :type => String
   field :endereco, :type => String
 
-
   belongs_to :grupo
 
 

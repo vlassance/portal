@@ -1,29 +1,39 @@
-<%= form_for(@data_importante) do |f| %>
-  <% if @data_importante.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@data_importante.errors.count, "error") %> prohibited this data_importante from being saved:</h2>
+﻿<%= javascript_include_tag "datePicker.js" %>
+<script>
 
-      <ul>
-      <% @data_importante.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+ $(document).ready(function(){
+  $( "#data_importante_data" ).datepicker({
+               regional: "pt-BR",
+               dateFormat: 'dd-MM-yyyy',
+        onClose: function ()
+      {
+          this.focus();
+      }
+   });
+ });
+  
 
-  <div class="field">
-    <%= f.label :descricao %><br />
+</script>
+<%= form_for(@data_importante, validate: true) do |f| %>
+  <div class="vpadded">
+  <div class="input full-width">
+    <%= f.label "Módulo" %>
+      <%= collection_select(:data_importante, :modulo_id, Modulo.all, :id, :nome) %>
+  </div>
+    <div class="input full-width">
+    <%= f.label "Descrição" %>
     <%= f.text_field :descricao %>
   </div>
-  <div class="field">
-    <%= f.label :data %><br />
-    <%= f.text_field :data %>
+
+  <div class="input full-width">
+     <%= f.label :data %>
+     <%= f.text_field :data %>
   </div>
-  <div class="field">
-    <%= f.label :comentario %><br />
-    <%= f.text_field :comentario %>
+  <div class="input full-width">
+      <%= f.label :comentario %>
+     <%= f.text_area :comentario %>
   </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+     <%= f.submit "Salvar", :class => "btn light-blue inverse" %>
+   </div>
 <% end %>
+

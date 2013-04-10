@@ -1,25 +1,78 @@
-<p id="notice"><%= notice %></p>
+<div class="container-fluid">
 
-<p>
-  <b>Nome:</b>
-  <%= @modulo.nome %>
-</p>
+  <div class="row-fluid">
+    <div class="span12">
 
-<p>
-  <b>Ano:</b>
-  <%= @modulo.ano %>
-</p>
+      <div class="box bordered">
+        <div class="box-header">
+          <i class="icon-th-list"></i> Detalhes do  <%= @modulo.nome.capitalize + " - " + @modulo.ano.to_s %>
+          <div class="pull-right">
+            <div class="btn-group">
+              <a class="dropdown-toggle" data-toggle="dropdown">
+                <i class="icon-cog"></i>
+              </a>
+              <% if current_usuario.isAdmin? or current_usuario.isCoordenador? %>
+                <ul class="dropdown-menu dropdown-left">
+                  <li><a href="/data_importantes/new">Adicionar Data</a></li>
+                  <li><a href="/modulos/<%= @modulo.id %>/edit">Editar</a></li>
+                </ul>
+              <% end %>
+            </div>
+          </div>
+        </div>
 
-<p>
-  <b>Datainicio:</b>
-  <%= @modulo.dataInicio %>
-</p>
+        <div class="row-fluid">
 
-<p>
-  <b>Datafim:</b>
-  <%= @modulo.dataFim %>
-</p>
+          <div class="span6">
+            <div class="padded">
+              <div class="section-title">
+                Dados Básicos
+              </div>
+          <div class="input full-width">
+             <label> Data de Início : <%= @modulo.dataInicio.strftime('%d/%m/%Y')%> </label>
+             <label> Data Final : <%= @modulo.dataFim.strftime('%d/%m/%Y') %> </label>
+          </div>
+          <br/>
+              <div class="section-title">
+                Datas Importantes
+              </div>
+                <table class="table table-striped data-table">
+                    <thead>
+                        <tr>
+                            <th>Descrição</th>
+                            <th>Data</th>
+                            <% if current_usuario.isAdmin? or current_usuario.isCoordenador? %>
+                                <th>Ações</th>
+							<% end %>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% @modulo.data_importantes.each do |data_importante| %>
+                            <tr class="gradeX" >
+                             <td><%= data_importante.descricao %></td>
+                             <td><%= data_importante.data.strftime('%d/%m/%Y') %></td>
+                             <% if current_usuario.isAdmin? or current_usuario.isCoordenador? %>
+                                 <td class="td-actions">
+						          <div class="btn-group">
+						              <a class="btn medium-blue" href="#"><i class="icon-leaf"></i> Opções</a>
+						              <a class="btn medium-blue dropdown-toggle" data-toggle="dropdown" href="#"><span class="icon-caret-down"></span></a>
+						              <ul class="dropdown-menu">
+						                    <li><a href="/data_importantes/<%= data_importante.id %>/edit"><i class="icon-pencil"></i> Editar</a></li>
+						                    <li><a href="/data_importantes/<%= data_importante.id %>" data-confirm="<%= "Deseja remover esse Evento?" %>" data-method="delete" rel="nofollow"><i class="icon-trash"></i> Remover</a></li>
+						              </ul>
+						            </div>
+						        </td>
 
+							 <% end %>
+                            </tr>
+                        <% end %>
+                    </tbody>
+                </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 
-<%= link_to 'Edit', edit_modulo_path(@modulo) %> |
-<%= link_to 'Back', modulos_path %>

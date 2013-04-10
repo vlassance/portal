@@ -9,7 +9,7 @@ class Vaga
 	field :beneficios, type: String
 	field :contatos, type: String
 	field :numero_vagas, type: Integer
-
+	field :data_expiracao, type: Date
 
 	#validations
 	validates_presence_of :nome, :message => "digite um nome"
