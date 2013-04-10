@@ -1,4 +1,4 @@
-source :rubygems
+source 'https://rubygems.org'
 
 gem 'rails', '3.2.11'
 
@@ -56,6 +56,6 @@ gem "better_errors", ">= 0.6.0", :group => :development
 gem "binding_of_caller", ">= 0.6.9", :group => :development
 gem 'client_side_validations'
 
-group :development, :test do
-    gem 'railroady'
-end
+#group :development, :test do
+#    gem 'railroady'
+#end

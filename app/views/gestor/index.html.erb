@@ -1,2 +1,2 @@
-<%= layout_index({title: "Gestores", button_path: new_gestor_path, button_title: "Novo Gestor" }) %>
+<%= layout_index({title: "Gestores", button_path: new_gestor_path, button_title: "Novo Gestor", can_create: (!current_usuario.isAluno? && !current_usuario.isGestor?) }) %>
 

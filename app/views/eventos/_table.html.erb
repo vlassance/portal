@@ -6,6 +6,7 @@
       <th>Data de Término</th>
       <th>Horario de Inicio</th>
       <th>Horario de Termino</th>
+      <th>Criado por</th>
       <th>Opcoes</th>
     </tr>
   </thead>
@@ -18,6 +19,15 @@
         <td><%= evento.dataFim.strftime('%d/%m/%Y') %></td>
         <td><%= evento.horarioInicio %></td>
         <td><%= evento.horarioFim %></td>
+        <td>
+          <% if !evento.admin_empresa.nil? %>
+          <%= evento.admin_empresa.empresa.nome %>
+          <% elsif !evento.admin_instituicao.nil? %>
+          <%= evento.admin_instituicao.nome %>
+          <% else %>
+          <%= "POLI" %>
+          <% end %> 
+        </td> 
         <td class="td-actions">
           <div class="btn-group">
               <a class="btn medium-blue" href="#"><i class="icon-leaf"></i> Opções</a>

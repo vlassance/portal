@@ -4,7 +4,7 @@ html {
 body {
 	position: relative;
 	padding-top: 69px;
-	background: #DDDCE2 url(../img/content_bg.jpg) repeat left top;
+	background: #DDDCE2 url(./Measure Template_files/content_bg.jpg) repeat left top;
 	-webkit-font-smoothing: antialiased;
 	font-size: 14px;
 	font-family: 'Lato', sans-serif !important;
@@ -142,7 +142,7 @@ input[type="color"]:focus,
     filter: none;
     padding: 7px 0 8px 0;
     /*background: none repeat scroll 0 0 #242b35;*/
-    background: url("../img/nav_bg.jpg") 0 0 repeat;
+    background: url("nav_bg.jpg") 0 0 repeat;
 }
 .navbar .brand {
     font-size: 26px;
@@ -848,7 +848,7 @@ input[type="color"]:focus,
 .i_shuffle, 
 .i_twitter, 
 .i_youtube{
-	background: url('../img/icons.png') no-repeat;
+	background: url('icons.png') no-repeat;
 	display: inline-block;
 }
 .i_bars{

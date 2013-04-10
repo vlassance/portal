@@ -1,43 +1,43 @@
-﻿
-<table class="table table-striped data-table">
-    <thead>
-        <tr>
-            <th>Nome</th>
-            <th>Empresa</th>
-            <th>Área</th>
-            <th>Data de expiração</th>
-            <th>Opções</th>
-        </tr>
-    </thead>
-    <tbody>
-        <% @vagas.each do |vaga| %>
-        <% a = Date.today
-            b = Date.today.day - 1 
-            c = Date.new(a.year, a.month, b) %>
-
-
-
-        <% if vaga.data_expiracao > c %>
-            <tr class="gradeX" >
-                <td><%=link_to vaga.nome, vaga%></td>
-                <td><%= vaga.empresa.nome if !vaga.empresa.nil?%></td>
-                <td><%= vaga.area %></td>
-                <td><%= vaga.data_expiracao.strftime('%d/%m/%Y') %></td>
-                <td class="td-actions">
-                    <div class="btn-group">
-                        <a class="btn medium-blue" href="#"><i class="icon-leaf"></i> Opções</a>
-                        <a class="btn medium-blue dropdown-toggle" data-toggle="dropdown" href="#"><span class="icon-caret-down"></span></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="/vagas/<%= vaga.id %>"><i class="icon-eye-open"></i> Exibir</a></li>
-                            <% if current_usuario.isAdmin? or current_usuario.isAdminEmpresa? or current_usuario.isCoordenador? %>
-                                <li><a href="/vagas/<%= vaga.id %>/edit"><i class="icon-pencil"></i> Editar</a></li>
-                                <li><a href="/vagas/<%= vaga.id %>" data-confirm="<%= "Deseja remover a Vaga?" %>" data-method="delete" rel="nofollow"><i class="icon-trash"></i> Remover</a></li>
-                            <% end %>
-                        </ul>
-                    </div>
-                </td>            
-            </tr>
-            <% end %>
-        <% end %>
-    </tbody>
+﻿<table class="table table-striped data-table">
+	<thead>
+		<tr>
+			<th>Nome</th>
+			<th>Área</th>
+			<th>Número de Vagas</th>
+			<th>Salário</th>
+			<th>Data de expiração</th>
+			<th>Opções</th>
+		</tr>
+	</thead>
+	<tbody>
+		<% @vagas.each do |vaga| %>
+			<% next if vaga.data_expiracao < Date.today and current_usuario.isAluno? %>
+			<tr class="gradeX" >
+				<td><%=link_to vaga.nome, vaga%></td>
+				<td><%= vaga.area %></td>
+				<td><%= vaga.numero_vagas %></td>
+				<td><%= vaga.salario %></td>
+				<td><%= vaga.data_expiracao.strftime('%d/%m/%Y') %></td>
+				<td class="td-actions">
+					<div class="btn-group">
+						<a class="btn medium-blue" href="#"><i class="icon-leaf"></i> Opções</a>
+						<a class="btn medium-blue dropdown-toggle" data-toggle="dropdown" href="#"><span class="icon-caret-down"></span></a>
+						<ul class="dropdown-menu">
+							<li><a href="/vagas/<%= vaga.id %>"><i class="icon-eye-open"></i> Exibir</a></li>
+							<% if current_usuario.isAdminEmpresa? %>
+								<li><a href="/vagas/<%= vaga.id %>/edit"><i class="icon-pencil"></i> Editar</a></li>
+								<li><a href="/vagas/<%= vaga.id %>" data-confirm="<%= "Deseja remover a Vaga?" %>" data-method="delete" rel="nofollow"><i class="icon-trash"></i> Remover</a></li>
+							<% elsif current_usuario.isAluno? %>
+								<% if current_usuario.candidaturas.any? { |c| c.vaga_id == vaga.id } %>
+									<li><a href="/candidaturas/<%= (current_usuario.candidaturas.select { |c| c.vaga_id == vaga.id }).first.id %>/desistir"><i class="icon-trash"></i> Desistir</a></li>
+								<% else %>
+									<li><a href="/candidaturas/<%= vaga.id %>/aceitar"><i class="icon-pencil"></i> Candidatar-se</a></li>
+								<% end %>
+							<% end %>
+						</ul>
+					</div>
+				</td>            
+			</tr>
+		<% end %>
+	</tbody>
 </table>

@@ -39,6 +39,7 @@ class Usuario
 
   field :nome, :type => String
   field :cpf, :type => String
+  field :rg, :type => String
   field :celular, :type => String
   field :telefone, :type => String
   field :cidade, :type => String
@@ -46,11 +47,16 @@ class Usuario
   field :pais, :type => String
   field :cep, :type => String
   field :endereco, :type => String
+  field :sexo, :type => String
+  field :estado_civil, :type => Integer
+  field :data_nascimento, type: Date
+  field :complemento, type: String
+  field :bairro, type: String
+  field :dump_id, type: Integer
   field :instituicao, :type => String, :default => "POLI"
 
 
   belongs_to :grupo
-
 
   #validations
 
