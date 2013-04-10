@@ -1,4 +1,4 @@
-<div class="input full-width">
+﻿<div class="input full-width">
 	<%= f.label :nome %>
 	<%= f.text_field :nome, :placeholder => "Nome" %>
 </div>
@@ -6,6 +6,16 @@
 	<%= f.label :email %>
 	<%= f.text_field :email, :placeholder => "E-mail" %>
 </div>
+<% if !@aluno.nil? %>
+<div class="input full-width">
+		<%= f.label "Perfil do Linkedin" %>
+		<%= f.text_field :linkedin_id, :placeholder => "Linkedin" %>
+	</div>
+	<div class="input full-width">
+		<%= f.label "Número USP" %>
+		<%= f.text_field :nusp, :placeholder => "Número USP" %>
+	</div>
+<% end %>
 <div class="input full-width">
 	<%= f.label :celular %>
 	<%= f.text_field :celular, :placeholder => "Celular" %>
@@ -53,25 +63,25 @@
 </div>
 
 <% if !@aluno.nil? %>
-<div class="input full-width">
-	<%= f.label "Perfil do Facebook" %>
-	<%= f.text_field :facebook_id, :placeholder => "Facebook" %>
-</div>
-<div class="input full-width">
-	<%= f.label "Perfil do Linkedin" %>
-	<%= f.text_field :linkedin_id, :placeholder => "Linkedin" %>
-</div>
+	<div class="input full-width">
+		<%= f.label "Perfil do Facebook" %>
+		<%= f.text_field :facebook_id, :placeholder => "Facebook" %>
+	</div>
+	<div class="input full-width">
+		<%= f.label "Perfil do Linkedin" %>
+		<%= f.text_field :linkedin_id, :placeholder => "Linkedin" %>
+	</div>
 <% end %>
 
 <% if !@edit %>
- <div class="input full-width">
-	<%= f.label :password %>
-	<%= f.password_field :password, :placeholder => "Senha" %>
-</div>
- <div class="input full-width">
-	<%= f.label :password_confirmation %>
-	<%= f.password_field :password_confirmation, :placeholder => "Digite de novo a Senha" %>
-</div>
+	 <div class="input full-width">
+		<%= f.label :password %>
+		<%= f.password_field :password, :placeholder => "Senha" %>
+	</div>
+	 <div class="input full-width">
+		<%= f.label :password_confirmation %>
+		<%= f.password_field :password_confirmation, :placeholder => "Digite de novo a Senha" %>
+	</div>
 <% end %>
 
 <% if !@aluno.nil? %>
