@@ -24,6 +24,8 @@ class Vaga
 	validates_presence_of :numero_vagas, :message => "digite o numero de vagas"
 	validates_presence_of :data_expiracao, :message => "digite a data de expiracao"
 
+	# TODO: Adicionar campo para modulo em _form.html.erb
+	belongs_to :modulo, class_name: "Modulo", inverse_of: nil
 	belongs_to :empresa
 	belongs_to :candidaturas
 

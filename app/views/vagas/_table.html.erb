@@ -31,7 +31,7 @@
 								<% if current_usuario.candidaturas.any? { |c| c.vaga_id == vaga.id } %>
 									<li><a href="/candidaturas/<%= (current_usuario.candidaturas.select { |c| c.vaga_id == vaga.id }).first.id %>/desistir"><i class="icon-trash"></i> Desistir</a></li>
 								<% else %>
-									<li><a href="/candidaturas/<%= vaga.id %>/aceitar"><i class="icon-pencil"></i> Candidatar-se</a></li>
+									<li><a href="/candidaturas/<%= vaga.id %>/candidatar"><i class="icon-pencil"></i> Candidatar-se</a></li>
 								<% end %>
 							<% end %>
 						</ul>

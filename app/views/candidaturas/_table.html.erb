@@ -45,10 +45,9 @@
 							<% end %>
 							<% if current_usuario.isAluno? %>
 								<% if candidatura.aceita and candidatura.validada %>
-									<li><a href="/candidaturas/<%= candidatura.id %>/confirmar"><i class="icon-trash"></i> Confirmar</a></li>
-								<% else %>
-									<li><a href="/candidaturas/<%= candidatura.id %>/desistir"><i class="icon-trash"></i> Desistir</a></li>
+									<li><a href="/candidaturas/<%= candidatura.id %>/aceitar"><i class="icon-ok"></i> Confirmar</a></li>
 								<% end %>
+								<li><a href="/candidaturas/<%= candidatura.id %>/desistir"><i class="icon-trash"></i> Desistir</a></li>
 							<% end %>
 						</ul>
 					</div>

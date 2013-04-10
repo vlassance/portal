@@ -34,7 +34,10 @@
 							</div>
 							<br/>
 							<div class="input full-width">
-								<label> Relatório: <%= link_to "Relatorio", @avaliacao.relatorio.attachment.url if @avaliacao.relatorio %> </label>
+								<label> Relatório Aluno: <%= link_to "Relatorio", @avaliacao.relatorio_aluno.attachment.url if @avaliacao.relatorio_aluno %> </label>
+							</div>
+							<div class="input full-width">
+								<label> Relatório Gestor: <%= link_to "Relatorio", @avaliacao.relatorio_gestor.attachment.url if @avaliacao.relatorio_gestor %> </label>
 							</div>
 							<br/>
 							<div class="input full-width">

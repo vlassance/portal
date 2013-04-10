@@ -41,15 +41,23 @@ class AvaliacoesEstagioController < ApplicationController
 	def update
 		@avaliacao = AvaliacaoEstagio.find(params[:id])
 
-		params[:resposta].each do |key, value|
-			r = Resposta.find(key)
-			r.update_attributes descricao: value
+		if params[:resposta].present?
+			params[:resposta].each do |key, value|
+				r = Resposta.find(key)
+				r.update_attributes descricao: value
+			end
 		end
 
-		if params[:avaliacao_estagio].present? && params[:avaliacao_estagio][:relatorio].present?
-			relatorio_seed = params[:avaliacao_estagio].delete(:relatorio)
-			relatorio = Relatorio.gerar(relatorio_seed)
-			params[:avaliacao_estagio][:relatorio] = relatorio
+		if params[:avaliacao_estagio].present? && params[:avaliacao_estagio][:relatorio_aluno].present?
+			relatorio_aluno_seed = params[:avaliacao_estagio].delete(:relatorio_aluno)
+			relatorio_aluno = RelatorioAluno.gerar(relatorio_aluno_seed)
+			params[:avaliacao_estagio][:relatorio_aluno] = relatorio_aluno
+		end
+
+		if params[:avaliacao_estagio].present? && params[:avaliacao_estagio][:relatorio_gestor].present?
+			relatorio_gestor_seed = params[:avaliacao_estagio].delete(:relatorio_gestor)
+			relatorio_gestor = RelatorioGestor.gerar(relatorio_gestor_seed)
+			params[:avaliacao_estagio][:relatorio_gestor] = relatorio_gestor
 		end
 
 		respond_to do |format|
