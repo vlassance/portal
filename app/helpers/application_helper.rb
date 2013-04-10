@@ -1,6 +1,45 @@
 module ApplicationHelper
  
+def br_states
+  [
+   ['São Paulo', 'SP'],
+    ['Acre', 'AC'],
+    ['Alagoas', 'AL'],
+    ['Amapá', 'AP'],
+    ['Amazonas', 'AM'],
+    ['Bahia', 'BA'],
+    ['Ceará', 'CE'],
+    ['Distrito Federal', 'DF'],
+    ['Espírito Santo', 'ES'],
+    ['Goiás', 'GO'],
+    ['Maranhão', 'MA'],
+    ['Mato Grosso', 'MT'],
+    ['Mato Grosso do Sul', 'MS'],
+    ['Minas Gerais', 'MG'],
+    ['Pará', 'PA'],
+    ['Paraába', 'PB'],
+    ['Paraná', 'PR'],
+    ['Pernambuco', 'PE'],
+    ['Piauí', 'PI'],
+    ['Rio de Janeiro', 'RJ'],
+    ['Rio Grande do Norte', 'RN'],
+    ['Rio Grande do Sul', 'RS'],
+    ['Rondônia', 'RO'],
+    ['Roraima', 'RR'],
+    ['Santa Catarina', 'SC'],
+    ['Sergipe', 'SE'],
+    ['Tocantins', 'TO']
+  ]
+  end
+  
+   def sexos
+    [
+      ['Feminino','Feminino'],
+      ['Masculino','Masculino']
+    ]
+   end
 
+   
   def layout_index (options)
     notice = ""
     flash.each do |name, msg|       

@@ -3,6 +3,12 @@
 	<%= f.text_field :nome, :placeholder => "Nome" %>
 </div>
 <div class="input full-width">
+	<%= f.label :sexo %>
+      <%= f.select(:gender, options_for_select(sexos))  %>
+</div>
+
+
+<div class="input full-width">
 	<%= f.label :email %>
 	<%= f.text_field :email, :placeholder => "E-mail" %>
 </div>
@@ -51,7 +57,7 @@
 
 <div class="input full-width">
 	<%= f.label :estado %>
-	<%= f.text_field :estado, :placeholder => "Estado" %>
+      <%= f.select(:estado, options_for_select(br_states))  %>
 </div>
 <div class="input full-width">
 	<%= f.label :pais %>

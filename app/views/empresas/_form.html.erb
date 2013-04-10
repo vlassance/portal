@@ -27,7 +27,7 @@
     </div>
    <div class="input full-width">
         <%= f.label :estado %>
-         <%= f.text_field :estado, :placeholder => "Estado" %>
+      <%= f.select(:estado, options_for_select(br_states))  %>
     </div>
    <div class="input full-width">
         <%= f.label :pais %>
