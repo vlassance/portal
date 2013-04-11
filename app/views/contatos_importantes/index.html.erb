@@ -37,11 +37,14 @@
         <ol class="faq-list">
           <% @faqs.each do |faq| %>
           <li>
-            <h4 id="faq-question-1"><%= faq.pergunta %></h4>
-            <p><%= faq.resposta.gsub(/&nbsp;/, "<br/>").html_safe %><p>
+            <h4 id="faq-question-1">
+				(<%= link_to faq.assunto, :assunto => faq.id_assunto %>) <%= faq.pergunta %>
+			</h4>
+            <p><%= simple_format(faq.resposta).html_safe %><p>
           </li>
           <% end %>
         </ol>
+		<%= link_to "Voltar a todas as FAQs", nil, :class => "btn light-blue inverse" if not params[:assunto].nil? %>
       </div>
     </div>
 
