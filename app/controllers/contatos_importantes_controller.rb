@@ -11,10 +11,14 @@ class ContatosImportantesController < ApplicationController
     faqs_json = JSON.parse response
 
     faqs_json.each do |f_json|
-    	faq = Faq.new
-    	faq.pergunta = f_json["question"]
-    	faq.resposta = f_json["answer"]
-    	@faqs << faq
+      if params[:assunto].nil? or params[:assunto].to_i == f_json["subject"]["id"].to_i
+      	faq = Faq.new
+        faq.id_assunto = f_json["subject"]["id"]
+        faq.assunto = f_json["subject"]["subject"]
+      	faq.pergunta = f_json["question"]
+      	faq.resposta = f_json["answer"]
+      	@faqs << faq
+      end
     end
   end
 end
