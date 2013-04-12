@@ -29,7 +29,9 @@ require 'csv'
 			e.bairro = row[15].to_s
 			e.cidade = row[16] 
 			e.estado = row[17] 
-			e.cep = row[18] 
+			e.cep = row[18]
+      grupo = Grupo.where(internal_id: Grupo::ALUNO).first
+      e.grupo = grupo
 			if !e.save(validate: false)
 				puts e.errors.messages
 			end
