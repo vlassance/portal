@@ -11,6 +11,8 @@ require 'csv'
 			e.nusp = row[4]
 			e.password = e.nusp
 			e.password = e.nusp
+      grupo = Grupo.where(internal_id: Grupo::COORDERNADOR).first
+      e.grupo = grupo
 			if !e.save(validate: false)
 				puts e.errors.messages
 			end

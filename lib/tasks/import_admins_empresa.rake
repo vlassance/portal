@@ -13,6 +13,8 @@ require 'csv'
 			e.celular = row[5]
 			e.password = "12345678"
 			e.password = "12345678"
+      grupo = Grupo.where(internal_id: Grupo::ADMIN_EMPRESA).first
+      e.grupo = grupo
 			if !e.save(validate: false)
 				puts e.errors.messages
 			end
