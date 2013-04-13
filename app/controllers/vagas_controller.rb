@@ -7,10 +7,11 @@ class VagasController < ApplicationController
 		@vagas = nil
 		if current_usuario.isAdminEmpresa? or current_usuario.isGestor?
 			@vagas = current_usuario.empresa.vagas
+		elsif current_usuario.isAluno?
+			@vagas = Vaga.where(:data_expiracao.gte => Date.today, :numero_vagas.gt => 0)
 		else
 			@vagas = Vaga.all
 		end
-
 		respond_to do |format|
 			format.html # index.html.erb
 			format.json { render json: @vagas }

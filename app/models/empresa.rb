@@ -1,3 +1,4 @@
+# coding: utf-8
 class Empresa < Lugar
 	include Mongoid::Paperclip
 
@@ -7,10 +8,18 @@ class Empresa < Lugar
 	has_one :admin_empresa
 	has_many :gestor
 	has_many :vagas
-	has_many :estagiarios, class_name: "Aluno", inverse_of: :estagio
+	has_many :estagios
 
 	has_mongoid_attached_file :logo, :styles => { :medium => "300x300>", :thumb => "100x100>" }
 
 	validates_presence_of :cnpj, :message => "digite um CNPJ"
 
+
+ def setLatLong 
+    coordenadas = Geocoder.search(self.endereco + " " + self.cep + " " + self.cidade + " " + self.estado)
+    if !coordenadas.nil?
+	  	self.latitude = coordenadas[0].latitude
+	  	self.longitude = coordenadas[0].longitude
+	 end
+  end
 end
