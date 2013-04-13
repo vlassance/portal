@@ -29,7 +29,7 @@
 						<a class="btn medium-blue" href="#"><i class="icon-leaf"></i> Opções</a>
 						<a class="btn medium-blue dropdown-toggle" data-toggle="dropdown" href="#"><span class="icon-caret-down"></span></a>
 						<ul class="dropdown-menu">
-							<% if current_usuario.isAdmin? %>
+							<% if current_usuario.isAdmin? or current_usuario.isCoordenador? %>
 								<% if candidatura.validada %>
 									<li><a href="/candidaturas/<%= candidatura.id %>/desistir"><i class="icon-trash"></i> Desistir</a></li>
 								<% else %>

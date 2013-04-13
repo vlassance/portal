@@ -25,6 +25,6 @@ class Vaga
 	validates_presence_of :data_expiracao, :message => "digite a data de expiracao"
 
 	belongs_to :empresa
-	belongs_to :candidaturas
+	has_many :candidaturas
 
 end

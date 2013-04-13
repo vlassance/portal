@@ -7,7 +7,7 @@ class CandidaturasController < ApplicationController
 			@candidaturas = Candidatura.all.select { |c| c.vaga.empresa.id == current_usuario.empresa_id }
 		elsif current_usuario.isAluno?
 			@candidaturas = current_usuario.candidaturas
-		elsif current_usuario.isAdmin?
+		elsif current_usuario.isAdmin? or current_usuario.isCoordenador?
 			@candidaturas = Candidatura.all
 		else
 			render_404
@@ -29,26 +29,23 @@ class CandidaturasController < ApplicationController
 			candidatura.aceita = false
 			candidatura.validada = false
 			candidatura.save
-
-			redirect_to candidaturas_url
+			t1 = Thread.new {CandidaturaMailer.candidatura(candidatura.vaga.empresa.admin_empresa.email, vaga.nome, current_usuario.nome).deliver}
+			redirect_success("Candidatura efetuada com sucesso!",:candidaturas, :index)
 		elsif current_usuario.isAdminEmpresa?
 			candidatura = Candidatura.find(params[:id])
 			candidatura.aceita = true
 			candidatura.save
-
-			respond_to do |format|
-				format.html { redirect_to candidaturas_url }
-				format.json { head :no_content }
-			end
-		elsif current_usuario.isAdmin?
+			t1 = Thread.new {
+				CandidaturaMailer.contratacao(candidatura.aluno.email, vaga.nome, current_usuario.nome).deliver
+			}
+			redirect_success("Candidatura aprovada com sucesso!",:candidaturas, :index)
+		elsif current_usuario.isAdmin? or current_usuario.isCoordenador?
 			candidatura = Candidatura.find(params[:id])
 			candidatura.validada = true
+			candidatura.vaga.numero_vagas = candidatura.vaga.numero_vagas - 1
+			candidaturas.vaga.save
 			candidatura.save
-
-			respond_to do |format|
-				format.html { redirect_to candidaturas_url }
-				format.json { head :no_content }
-			end
+			redirect_success("Candidatura aprovada com sucesso!",:candidaturas, :index)
 		else
 			render_404
 		end
@@ -68,11 +65,7 @@ class CandidaturasController < ApplicationController
 		else
 			render_404
 		end
-
-		respond_to do |format|
-			format.html { redirect_to candidaturas_url }
-			format.json { head :no_content }
-		end
+	   redirect_success("Candidatura cancelada com sucesso!",:candidaturas, :index)
 	end
 
 end
