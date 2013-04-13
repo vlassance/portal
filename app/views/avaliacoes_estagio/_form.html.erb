@@ -10,29 +10,22 @@
 			</ul>
 		</div>
 	<% end %>
-
 	<div class="field">
 		<%= f.label :aluno_id %>
-		<% if @avaliacao.questionario? %>
-			<label><%= @avaliacao.aluno.nome %></label>
-		<% else %>
-			<%= f.select :aluno_id, options_from_collection_for_select(Aluno.all, :id, :nome) %>
-		<% end %>
+		<label><%= @avaliacao.aluno.nome %></label>
 	</div>
+	<br />
 	<div class="field">
 		<%= f.label :empresa_id %>
-		<% if @avaliacao.questionario? %>
-			<label><%= @avaliacao.empresa.nome %></label>
-		<% else %>
-			<%= f.select :empresa_id, options_from_collection_for_select(Empresa.all, :id, :nome) %>
-		<% end %>
+		<label><%= @avaliacao.empresa.nome %></label>
 	</div>
+	<br />
 	<div class="field">
-		<%= f.label :questionario_id %>
-		<% if @avaliacao.questionario? %>
-			<label><%= @avaliacao.questionario.nome %></label>
+		<%= f.label :nota %>
+		<% if current_usuario.isCoordenador? %>
+			<%= f.text_field :nota, :placeholder => "Nota" %>
 		<% else %>
-			<%= f.select :questionario_id, options_from_collection_for_select(Questionario.all, :id, :nome) %>
+			<label><%= @avaliacao.nota %></label>
 		<% end %>
 	</div>
 	<br />
@@ -40,14 +33,31 @@
 		<label>Perguntas e Respostas</label>
 		<% @avaliacao.respostas.each do |r| %>
 			<label><%= r.pergunta.descricao %></label>
-			<input id="resposta_" name="<%= "resposta[#{r.id}]" %>" value="<%= r.descricao%>" size="100" type="text" />
+			<% if current_usuario.isAluno? and @avaliacao.editavel? %>
+				<input id="resposta_" name="<%= "resposta[#{r.id}]" %>" value="<%= r.descricao%>" size="100" type="text" />
+			<% else %>
+				<label><%= r.descricao %></label>
+			<% end %>
+			<br />
 		<% end %>
 	<% end %>
-	<div class="field">
-		<%= f.label "Relatório #{"(última versão carregada em #{@avaliacao.relatorio.attachment_updated_at.to_date.strftime('%d/%m/%Y')})" if @avaliacao.relatorio}" %>
-		<%= f.file_field :relatorio %>
-	</div>
-	<div class="actions">
-		<%= f.submit "Salvar", :class => "btn light-blue inverse" %>
-	</div>
+	<label><%= link_to "Relatório Aluno", @avaliacao.relatorio_aluno.attachment.url if @avaliacao.relatorio_aluno %></label>
+	<% if current_usuario.isAluno? and @avaliacao.editavel? %>
+		<div class="field">
+			<%= f.label "Relatório Aluno#{"(última versão carregada em #{@avaliacao.relatorio_aluno.attachment_updated_at.to_date.strftime('%d/%m/%Y')})" if @avaliacao.relatorio_aluno }" %>
+			<%= f.file_field :relatorio_aluno %>
+		</div>
+	<% end %>
+	<label><%= link_to "Relatório Gestor", @avaliacao.relatorio_gestor.attachment.url if @avaliacao.relatorio_gestor %></label>
+	<% if current_usuario.isGestor? and @avaliacao.editavel? %>
+		<div class="field">
+			<%= f.label "Relatório Gestor#{"(última versão carregada em #{@avaliacao.relatorio_gestor.attachment_updated_at.to_date.strftime('%d/%m/%Y')})" if @avaliacao.relatorio_gestor }" %>
+			<%= f.file_field :relatorio_gestor %>
+		</div>
+	<% end %>
+	<% if current_usuario.isCoordenador? or @avaliacao.editavel? %>
+		<div class="actions">
+			<%= f.submit "Salvar", :class => "btn light-blue inverse" %>
+		</div>
+	<% end %>
 <% end %>

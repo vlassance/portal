@@ -1,0 +1,22 @@
+<table class="table table-striped data-table">
+	<thead>
+		<tr>
+			<th>Aluno</th>
+			<th>Empresa</th>
+			<th>Nota</th>
+			<th>Avaliação</th>
+		</tr>
+	</thead>
+	<tbody>
+		<% if @estagios != nil %>
+			<% @estagios.each do |estagio| %>
+				<tr class="gradeX">
+					<td><%= estagio.aluno.nome %></td>
+					<td><%= estagio.empresa.nome %></td>
+					<td><%= estagio.avaliacao_estagio.nota %></td>
+					<td><%= link_to 'Avaliacão', edit_avaliacao_estagio_path(estagio.avaliacao_estagio) %></td>
+				</tr>
+			<% end %>
+		<% end %>
+	</tbody>
+</table>

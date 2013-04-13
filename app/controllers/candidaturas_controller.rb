@@ -19,7 +19,7 @@ class CandidaturasController < ApplicationController
 		end
 	end
 
-	def aceitar
+	def candidatar
 		if current_usuario.isAluno?
 			vaga = Vaga.find(params[:id])
 
@@ -29,8 +29,44 @@ class CandidaturasController < ApplicationController
 			candidatura.aceita = false
 			candidatura.validada = false
 			candidatura.save
+<<<<<<< HEAD
 			t1 = Thread.new {CandidaturaMailer.candidatura(candidatura.vaga.empresa.admin_empresa.email, vaga.nome, current_usuario.nome).deliver}
 			redirect_success("Candidatura efetuada com sucesso!",:candidaturas, :index)
+=======
+
+			redirect_to candidaturas_url
+		else
+			render_404
+		end
+	end
+
+	def aceitar
+		if current_usuario.isAluno?
+			candidatura = Candidatura.find(params[:id])
+
+			avaliacao = AvaliacaoEstagio.new
+			avaliacao.aluno = current_usuario
+			avaliacao.empresa = candidatura.vaga.empresa
+			avaliacao.modulo = candidatura.vaga.modulo
+			avaliacao.questionario = Questionario.first
+			avaliacao.questionario.perguntas.each do |p|
+				r = Resposta.new
+				r.pergunta = p
+				avaliacao.respostas << r
+				r.save
+			end
+			avaliacao.save
+
+			estagio = Estagio.new
+			estagio.aluno = current_usuario
+			estagio.empresa = candidatura.vaga.empresa
+			estagio.avaliacao_estagio = avaliacao
+			estagio.save
+
+			candidatura.destroy
+
+			redirect_to estagios_url
+>>>>>>> origin/develop
 		elsif current_usuario.isAdminEmpresa?
 			candidatura = Candidatura.find(params[:id])
 			candidatura.aceita = true
