@@ -18,7 +18,7 @@
             <img class="avatar user_empty">
           <% end %>
           <span class="text" id="profile-text">
-            <%= current_usuario.nome %> <b class="caret"></b>
+            <%= current_usuario.nome.split(" ")[0].to_s %> <b class="caret"></b>
           </span>
       </a>
 

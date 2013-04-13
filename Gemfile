@@ -37,7 +37,7 @@ gem 'jquery-rails'
 
 # To use debugger
 # gem 'debugger'
-gem "geokit"
+gem "geocoder"
 gem "puma", ">= 1.6.3"
 gem "mongoid", ">= 3.1.0"
 gem "mongoid-paperclip", :require => "mongoid_paperclip"

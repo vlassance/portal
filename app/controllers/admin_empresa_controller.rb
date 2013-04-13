@@ -53,9 +53,10 @@
   # PUT /admin_empresa/1.json
   def update
     @admin_empresa = AdminEmpresa.find(params[:id])
-    empresa = Empresa.find(params[:empresa][:id].to_s)
-    @admin_empresa.empresa = empresa
-
+    if params[:empresa]
+      empresa = Empresa.find(params[:empresa][:id].to_s)
+      @admin_empresa.empresa = empresa
+    end
     respond_to do |format|
       if @admin_empresa.update_attributes(params[:admin_empresa])
         format.html { redirect_success_show("Administrador alterado com sucesso!",:admin_empresa, @admin_empresa.id)}

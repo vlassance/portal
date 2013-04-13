@@ -7,6 +7,7 @@ Rails3MongoidDevise::Application.routes.draw do
 	resources :candidaturas
 
 	resources :coordenador_estagio
+	resources :estagios
 
 	devise_for :usuarios
 	devise_for :admin_instituicao
@@ -22,6 +23,7 @@ Rails3MongoidDevise::Application.routes.draw do
 	resources :vagas
 	resources :candidaturas do
 		member do
+			get :candidatar
 			get :aceitar
 			get :desistir
 		end

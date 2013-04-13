@@ -1,87 +1,98 @@
 <script>
+	$(document).ready(function(){
+		$('#vaga_data_expiracao')
+		.datepicker()
+		.on('changeDate', function(ev){
+			$('#vaga_data_expiracao').datepicker('hide');
+		});
+	});
 
+<<<<<<< HEAD
  $(document).ready(function(){
+
+
   $('#vaga_data_expiracao')
     .datepicker()
     .on('changeDate', function(ev){
-        $('#vaga_data_expiracao').datepicker('hide');
+        $('#vaga_data_expiracao').datepicker('hide')
+        $('#vaga_data_expiracao').text($('#vaga_data_expiracao').text()  + "a");
     });
   });
+=======
+	function validate(){
+		var camposNaoPreenchidos = false;
+		var dataErrada = false;
+		var DataAtual = new Date();
+>>>>>>> origin/develop
 
+		var DateFromValue = $("#vaga_data_expiracao").val();
+		parts = DateFromValue.split("/");
+		var date_final = new Date(parts[1] + "/" + parts[0] + "/" + parts[2]);
 
-  function validate(){
-  var camposNaoPreenchidos = false;
-  var dataErrada = false;
-  var DataAtual = new Date();
+		if ((date_final.getTime()) < (DataAtual.getTime())) {
+			alert("Data final deve ser maior que a atual!");
+			dataErrada = true;
+			var e = window.event;
+			e.cancelBubble = true;
+			e.returnValue = false;
 
-  var DateFromValue = $("#vaga_data_expiracao").val();
-   parts = DateFromValue.split("/");
-   var date_final = new Date(parts[1] + "/" + parts[0] + "/" + parts[2]);
-
-  if ((date_final.getTime()) < (DataAtual.getTime())) {
-    alert("Data final deve ser maior que a atual!");
-    dataErrada = true;
-    var e = window.event;
-    e.cancelBubble = true;
-    e.returnValue = false;
-
-    if (e.stopPropagation) {
-            e.stopPropagation();
-            e.preventDefault();
-      }
-    return false; 
-  } 
-  
-  
-    
-}
+			if (e.stopPropagation) {
+				e.stopPropagation();
+				e.preventDefault();
+			}
+			return false; 
+		} 
+		else return true;
+	}
 
 </script>
 
 <%= form_for(@vaga,  validate: true, :html => {:onsubmit => "return validate();"})  do |f| %>
 
-  <div class="vpadded">
-     <div class="input full-width">
-         <%= current_usuario.empresa.nome if current_usuario.isAdminEmpresa?%>
-    </div>
-     <br/>
-   <div class="input full-width">
-        <%= f.label :nome %>
-         <%= f.text_field :nome, :placeholder => "Nome" %>
-    </div>
-   <div class="input full-width">
-        <%= f.label :area %>
-         <%= f.text_field :area, :placeholder => "Área" %>
-    </div>
-   <div class="input full-width">
-        <%= f.label :descricao %>
-         <%= f.text_area :descricao, :placeholder => "Conhecimentos" %>
-    </div>  
-     <div class="input full-width">
-        <%= f.label :requisitos %>
-         <%= f.text_area :requisitos, :placeholder => "Requisistos" %>
-    </div>  
-   <div class="input full-width">
-        <%= f.label :beneficios %>
-         <%= f.text_area :beneficios, :placeholder => "Línguas" %>
-    </div>  
-     <div class="input full-width">
-        <%= f.label :salario %>
-         <%= f.text_field :salario, :placeholder => "Salário" %>
-    </div>   
-  <div class="input full-width">
-        <%= f.label :contatos %>
-         <%= f.text_area :contatos, :placeholder => "Contatos" %>
-    </div>
-      <div class="input full-width">
-        <%= f.label :numero_vagas %>
-         <%= f.number_field :numero_vagas, :placeholder => "Número de Vagas" %>
-    </div>
-     <div class="input full-width">
-        <%= f.label :data_expiracao %>
-         <%= f.text_field :data_expiracao, :placeholder => "Data de expiração da Vaga", :id => "vaga_data_expiracao" %>
-    </div>
-   <%= f.submit "Salvar", :class => "btn light-blue inverse" %>
-  <% end %>   
-
-
+	<div class="vpadded">
+		<div class="input full-width">
+			<%= current_usuario.empresa.nome if current_usuario.isAdminEmpresa?%>
+		</div>
+		<br/>
+		<div class="input full-width">
+			<%= f.label :nome %>
+			<%= f.text_field :nome, :placeholder => "Nome" %>
+		</div>
+		<div class="input full-width">
+			<%= f.label :area %>
+			<%= f.text_field :area, :placeholder => "Área" %>
+		</div>
+		<div class="input full-width">
+			<%= f.label :descricao %>
+			<%= f.text_area :descricao, :placeholder => "Conhecimentos" %>
+		</div>  
+		<div class="input full-width">
+			<%= f.label :requisitos %>
+			<%= f.text_area :requisitos, :placeholder => "Requisistos" %>
+		</div>  
+		<div class="input full-width">
+			<%= f.label :beneficios %>
+			<%= f.text_area :beneficios, :placeholder => "Línguas" %>
+		</div>  
+		<div class="input full-width">
+			<%= f.label :salario %>
+			<%= f.text_field :salario, :placeholder => "Salário" %>
+		</div>   
+		<div class="input full-width">
+			<%= f.label :contatos %>
+			<%= f.text_area :contatos, :placeholder => "Contatos" %>
+		</div>
+		<div class="input full-width">
+			<%= f.label :numero_vagas %>
+			<%= f.number_field :numero_vagas, :placeholder => "Número de Vagas" %>
+		</div>
+		<div class="input full-width">
+			<%= f.label :data_expiracao %>
+			<%= f.text_field :data_expiracao, :placeholder => "Data de expiração da Vaga", :id => "vaga_data_expiracao" %>
+		</div>
+		<div class="input full-width">
+			<%= f.label :modulo %>
+			<%= f.select :modulo, options_from_collection_for_select(Modulo.all, :id, :nome) %>
+		</div>
+		<%= f.submit "Salvar", :class => "btn light-blue inverse" %>
+	<% end %>   

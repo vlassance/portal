@@ -127,9 +127,14 @@ def br_states
 
   def nav_active(options = {})
     cumbs = request.fullpath.to_s
-    if options[:secondary] and cumbs.include? options[:secondary].to_s
-      return "active" 
-    elsif options[:primary] and cumbs.include? options[:primary].to_s
+    paths = cumbs.split("/")
+    found = false
+    paths.each do |path|
+      if !options[:primary].blank? and options[:primary].to_s == path
+        found = true
+      end
+    end
+    if found
       return "active" 
     end
       return ""
