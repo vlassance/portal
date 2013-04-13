@@ -1,3 +1,5 @@
+
+
 <%= stylesheet_link_tag "contatos_importantes.css" %>
 
 <div class="container-fluid">
@@ -38,7 +40,7 @@
           <% @faqs.each do |faq| %>
           <li>
             <h4 id="faq-question-1">
-				(<%= link_to faq.assunto, :assunto => faq.id_assunto %>) <%= faq.pergunta %>
+				(<%= link_to faq.assunto, "#", onclick: "filtrar_assunto('#{faq.assunto}')" %>) <%= faq.pergunta %>
 			</h4>
             <p><%= simple_format(faq.resposta).html_safe %><p>
           </li>
@@ -53,3 +55,12 @@
 </div>
 </div>
 </div>
+
+<script>
+ 
+ function filtrar_assunto(assunto){
+    alert($("#faq-search").text());
+    $("#faq-search").value(assunto);
+}
+ 
+</script>

@@ -78,8 +78,9 @@
                 <label> Estado : <%= @empresa.estado %> </label>
                 <label> Pais : <%= @empresa.pais %> </label>
                 <label> CEP : <%= @empresa.cep %> </label>
-                  <%=image_tag "http://maps.google.com/maps/api/staticmap?size=450x300&sensor=false&zoom=16&markers=0%2C0", :alt => "Mapa" %>
-
+                <% if !@empresa.latitude.blank? and !@empresa.longitude.blank? %> 
+                  <%=image_tag "http://maps.google.com/maps/api/staticmap?size=450x300&sensor=false&zoom=16&markers=#{@empresa.latitude}%2C#{@empresa.longitude}", :alt => "Mapa" %>
+                  <% end %>
             </div>
               </div>
 

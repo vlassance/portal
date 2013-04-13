@@ -15,6 +15,7 @@ require 'csv'
 			e.complemento = row[9]
 			e.telefone = row[10]
 			e.atividades = row[14]
+			e.setLatLong
 			if !e.save(validate: false)
 				puts e.errors.messages
 			end

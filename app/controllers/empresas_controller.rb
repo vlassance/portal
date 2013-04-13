@@ -1,6 +1,6 @@
 class EmpresasController < ApplicationController
 
-  before_filter :check_user, :except => [:show]
+  before_filter :check_user, :except => [:show, :index]
   # GET /empresas
   # GET /empresas.json
   def index
@@ -47,7 +47,7 @@ class EmpresasController < ApplicationController
   # POST /empresas.json
   def create
     @empresa = Empresa.new(params[:empresa])
-    @empresa = setLatLong(@empresa)
+    @empresa.setLatLong
     respond_to do |format|
       if @empresa.save
         format.html { redirect_success("Empresa adicionada com sucesso!",:empresas, :index)}
@@ -63,10 +63,7 @@ class EmpresasController < ApplicationController
   # PUT /empresas/1.json
   def update
     @empresa = Empresa.find(params[:id])
-    empresaFake = Empresa.new(params[:empresa])
-    empresaFake = setLatLong(empresaFake)
-    @empresa.latitude = empresaFake.latitude
-    @empresa.longitude = empresaFake.longitude
+    @empresa.setLatLong
     respond_to do |format|
       if @empresa.update_attributes(params[:empresa])
         format.html { redirect_success("Empresa alterada com sucesso!",:empresas, :index)}
@@ -90,16 +87,7 @@ class EmpresasController < ApplicationController
     end
   end
 
-  def setLatLong (lugar)
-   begin 
-         coordenadas = Geokit::Geocoders::MultiGeocoder.geocode(@instituicao.Endereco + " " + @instituicao.CEP + " " + @instituicao.Cidade + " " + @instituicao.Estado)
-          lugar.latitude = coordenadas.lat
-          lugar.longitude = coordenadas.lng
-        rescue
-          # se um endereço não for encontrado, localizated se manterá false
-    end  
-    return lugar
-  end
+ 
 
 protected    
     def check_user

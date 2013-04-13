@@ -67,7 +67,7 @@ else
 end
 
 puts "Criando Empresa"
-	empresa = Empresa.create(:nome => 'Software Express')
+	empresa = Empresa.create(:nome => 'Fake Express')
 	if empresa.save(validate: false)
 	puts "empresa criada com sucesso"
 else
@@ -111,7 +111,7 @@ puts "Criando Menus Basicos"
   menu_modulos.grupos << admin
   menu_modulos.grupos << coordenador
 
-  menu_historico = Menu.create(:nome => 'Estágios', :url => '/historico_estagios', :icon => "icon-bar-chart", :primary => "historico")
+  menu_historico = Menu.create(:nome => 'Estágios', :url => '/historico_estagios', :icon => "icon-bar-chart", :primary => "historico_estagios")
   menu_historico.grupos << aluno
 
   menu_eventos = Menu.create(:nome => 'Eventos', :url => '/eventos', :icon => "icon-calendar", :primary => "eventos")
