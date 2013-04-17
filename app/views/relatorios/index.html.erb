@@ -1,0 +1,83 @@
+<div class="container-fluid">
+	<div class="row-fluid">
+	  <div class="span8">
+		  
+<h3>Relatório sobre estágios por módulo</h3>
+
+<%= form_tag('/relatorios/show') do -%>
+
+<div class="control-group">
+	<%= label_tag "mods", "Módulo", :class => "control-label strong" %>
+	<div class="controls">
+		<dl style='margin-bottom:0px;' class="control-label-desc">
+		    <%= collection_select :modulo, :id, @modulos, :id, :nome, :include_blank => false, :selected => @mod %>
+		</dl>
+    </div>
+	<%= submit_tag "Visualizar relatório", :class => "btn light-blue inverse" %>
+</div>
+
+<% end -%>   
+
+<% if not params[:modulo].nil? %>
+<% if not @qtde_estagios.nil? and not @qtde_estagios.empty? %>
+<script>
+/* Pie chart */
+$(function () {
+    if ($("#grafico-estagios").length) {
+        var data = [];
+		<% i = 0; %>
+		<% @qtde_estagios.each_pair do |k, v| %>
+	        data[<%= i %>] = { label: "<%= k %>", data: <%= v %> }
+			<% i += 1 %>
+		<% end %>
+
+        $.plot($("#grafico-estagios"), data,
+            {
+                colors: [lightBlue, mediumBlue, darkBlue, "#333"],
+                series: {
+                    pie: {
+                        show: true,
+                        label: {
+                            show: true,
+                            threshold: 0.1
+                        }
+                    }
+                },
+                legend: {
+                    show: true,
+                    noColumns: 1, // number of colums in legend table
+                    labelBoxBorderColor: "#444", // border color for the little label boxes
+                    container: null, // container (as jQuery object) to put legend in, null means default on top of graph
+                    position: "ne", // position of default legend container within plot
+                    margin: [5, 10], // distance from grid edge to default legend container within plot
+                    backgroundOpacity: 0 // set to 0 to avoid background
+                },
+                grid: {
+                    hoverable: true,
+                    clickable: false
+                }
+            });
+    }
+});
+</script>
+	    <div class="box bordered">
+	      <div class="box-header">
+	        <i class="icon-bar-chart"></i> Gráfico que representa o número de estagiários por empresa
+	      </div>
+
+	      <div class="padded">
+	        <div class="row-fluid">
+	          <div class="span12">
+	            <div class="chart" id="grafico-estagios" style="width: 100%; height: 300px;"></div>
+	          </div>
+	        </div>
+	      </div>
+	    </div>
+<% else %>
+		  <h4>Não há estagiários nesse módulo com estágios aceitos.</h4>
+<% end %>
+<% end %>
+
+		</div>
+	</div>
+</div>

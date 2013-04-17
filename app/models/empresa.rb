@@ -17,7 +17,7 @@ class Empresa < Lugar
 
  def setLatLong 
     coordenadas = Geocoder.search(self.endereco + " " + self.cep + " " + self.cidade + " " + self.estado)
-    if !coordenadas.nil?
+    if !coordenadas.nil? && !coordenadas[0].blank?
 	  	self.latitude = coordenadas[0].latitude
 	  	self.longitude = coordenadas[0].longitude
 	 end
